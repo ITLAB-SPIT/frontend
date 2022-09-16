@@ -1,0 +1,17 @@
+@import "/public/assets/css/variablesAndThemes/variables.scss";
+
+.Read_more {
+    height: max-content;
+    width: fit-content;
+    font-size: inherit;
+
+    span {
+        font-size: inherit;
+    }
+
+    .read_more {
+        color: var(--primary-300);
+        margin-left: 1rem;
+        cursor: pointer;
+    }
+}

@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "next": "12.3.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.4.0",
+    "react-toastify": "^9.0.8",
+    "sass": "^1.54.9"
   },
   "devDependencies": {
     "eslint": "8.23.1",
