@@ -1,0 +1,175 @@
+.Main_container {
+  display: flex;
+  background-color: black;
+  .right_container {
+    background-color: #bfbfbf;
+    flex: 5;
+    height: calc(100vh - 70px);
+  }
+  .left_container {
+    flex: 7;
+    background-color: #000000;
+    color: #bfbfbf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .error_container {
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 1.5rem;
+  }
+
+  .close_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e74c3c;
+  }
+
+  .signup_container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+  }
+
+  h3 {
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  label {
+    margin-bottom: 0.2rem;
+    font-size: 1.4rem;
+  }
+
+  input {
+    margin-bottom: 1.5rem;
+    border: 1px solid #bfbfbf;
+    border-radius: 3px;
+    background-color: #f8f8f8;
+    padding: 0.5rem;
+    font-size: 1.3rem;
+
+    &:hover {
+      outline: 2px solid grey;
+    }
+
+    &:focus {
+      outline: 2px solid grey;
+    }
+  }
+  ::placeholder {
+    color: #bfbfbf;
+  }
+  button {
+    background-color: #bfbfbf;
+    border: 1px solid #bfbfbf;
+    border-radius: 3px;
+    color: black;
+    font-size: 1.5rem;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+
+    &:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+  }
+
+  .login_container {
+    border: 1px solid #bfbfbf;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 1rem;
+
+    &:hover {
+      border: 1px solid white;
+    }
+    p {
+      display: inline;
+      font-size: 1.3rem;
+      margin-right: 5px;
+    }
+  }
+
+  .link {
+    font-size: 1.3rem;
+    color: white;
+    &:hover {
+      color: #b8b8b8;
+      text-decoration: underline;
+    }
+  }
+
+  .hr_container {
+    display: flex;
+    align-items: center;
+    color: #b8b8b8;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  hr {
+    display: inline-block;
+    border: 0;
+    border-top: 1px solid #b8b8b8;
+    width: 50%;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  .other_signup_container {
+    text-align: center;
+
+    .icons_container {
+      text-align: center;
+
+      .icons {
+        margin: 1rem;
+        margin-left: 0;
+        padding: 5px;
+        color: black;
+        border-radius: 3px;
+        background: #b8b8b8;
+        &:hover {
+          background-color: black;
+          color: white;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .company_info_container {
+    border: 1px solid #b8b8b8;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-around;
+    color: #b8b8b8;
+    margin-top: 1rem;
+
+    &:hover {
+      border: 1px solid white;
+    }
+
+    a {
+      margin: 5px;
+      font-size: 1rem;
+
+      &:hover {
+        color: white;
+        text-decoration: underline;
+      }
+    }
+  }
+}

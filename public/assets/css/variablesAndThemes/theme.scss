@@ -1,0 +1,57 @@
+body {
+  /* variable colors */
+  --primary-000: var(--black);
+  --primary-100: var(--orange);
+  --primary-200: var(--green);
+  --primary-300: var(--blue);
+
+  /* secondary */
+  --secondary-000: var(--purple);
+  --secondary-100: var(--violet);
+  --secondary-200: var(--pink);
+
+  /* accents */
+  --accent-000: var(--green);
+
+  /* txt */
+  --txt-000: var(--neutral-light-000);
+  --txt-100: var(--neutral-light-100);
+  --txt-200: var(--neutral-light-200);
+  --txt-300: var(--neutral-light-300);
+  --txt-400: var(--neutral-light-400);
+  --txt-500: var(--neutral-light-500);
+
+  /* shadows */
+  --box-shadow-000: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  --box-shadow-300: 0px 4px 4px rgba(50, 50, 71, 0.1),
+    0px 4px 8px rgba(50, 50, 71, 0.21);
+
+  &.light {
+    /* variable colors */
+    --primary-000: var(--neutral-light-000);
+    --primary-100: var(--orange);
+    --primary-200: var(--green);
+    --primary-300: var(--blue);
+
+    /* secondary */
+    --secondary-000: var(--purple);
+    --secondary-100: var(--violet);
+    --secondary-200: var(--pink);
+
+    /* accents */
+    --accent-000: var(--green);
+
+    /* txt */
+    --txt-000: var(--dark-blue);
+    --txt-100: var(--neutral-light-300);
+    --txt-200: var(--neutral-light-200);
+    --txt-300: var(--neutral-light-100);
+    --txt-400: var(--neutral-light-400);
+    --txt-500: var(--neutral-light-500);
+
+    /* shadows */
+    --box-shadow-000: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    --box-shadow-300: 0px 4px 4px rgba(50, 50, 71, 0.1),
+      0px 4px 8px rgba(50, 50, 71, 0.21);
+  }
+}

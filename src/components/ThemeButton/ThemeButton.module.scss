@@ -1,0 +1,61 @@
+@import "/public/assets/css/variablesAndThemes/variables.scss";
+
+.theme_btn {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    z-index: var(--z-navbar);
+
+    &::before {
+        content: '☀️';
+        font-size: 25px;
+        opacity: 0;
+        position: absolute;
+        text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    &::after {
+        content: '🌒';
+        font-size: 25px;
+        opacity: 1;
+        position: absolute;
+        text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    &.dark::before {
+        opacity: 0;
+    }
+
+    &.dark::after {
+        opacity: 1;
+    }
+
+    &.light::before {
+        opacity: 1;
+    }
+
+    &.light::after {
+        opacity: 0;
+    }
+
+    &.animate {
+        animation: animate .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(0);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+}
