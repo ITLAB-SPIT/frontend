@@ -4,10 +4,11 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple, BsGithub } from "react-icons/bs";
 import { GrLinkedinOption } from "react-icons/gr";
-import { ToastContainer, toast } from "react-toastify";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+
 const Login = () => {
   const [loginData, setLoginData] = useState({ devname: "", password: "" });
   const handleChange = (event) => {
