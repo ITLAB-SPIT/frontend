@@ -4,9 +4,9 @@ import "../public/assets/css/globals.scss";
 import "../public/assets/css/utils.scss";
 import { useEffect } from "react";
 import { Footer, Navbar } from "../src/components/import";
-
+import { SessionProvider } from "next-auth/react";
 const DEFAULT_THEME = process.env.NEXT_PUBLIC_DEFAULT_THEME;
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, session }) {
   useEffect(() => {
     setTheme();
   }, []);
@@ -25,11 +25,15 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div className="App">
-      <Navbar />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-      <Footer />
+      <SessionProvider session={session}>
+        <div className="App">
+          <Navbar />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+          <Footer />
+        </div>
+      </SessionProvider>
     </div>
   );
 }
