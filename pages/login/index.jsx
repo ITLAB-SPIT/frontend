@@ -33,8 +33,12 @@ const Login = () => {
   };
 
   const submit = () => {
-    const message = isInputValid();
-
+      const message = isInputValid();
+      axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
+      name: "shreyash",
+      password: "shreyash",
+    });
+    
     if (message.isValid) {
       console.log("shalom");
       axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
