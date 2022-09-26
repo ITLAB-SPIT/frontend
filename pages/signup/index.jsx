@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-const Login = () => {
+const Signup = () => {
   const [loginData, setLoginData] = useState({
     devname: "",
     password: "",
@@ -152,4 +152,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
