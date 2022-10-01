@@ -1,0 +1,11 @@
+@import "/public/assets/css/variablesAndThemes/variables.scss";
+
+.Devmates {
+    min-width: 100%;
+
+    .title {
+        font-size: 1.6rem;
+        font-weight: $font-bold;
+        color: var(--txt-200);
+    }
+}

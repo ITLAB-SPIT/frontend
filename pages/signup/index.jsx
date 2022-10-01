@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import styles from "./Signup.module.scss";
 import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
-import { BsTwitter, BsGithub } from "react-icons/bs";
+import { BsGithub, BsGoogle } from "react-icons/bs";
 import { GrLinkedinOption } from "react-icons/gr";
 import { ToastContainer, toast } from "react-toastify";
+import { useSession, signIn, signOut } from "next-auth/react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-const Login = () => {
+import Router from "next/router";
+
+const Signup = () => {
+  const { data: session } = useSession();
   const [loginData, setLoginData] = useState({
     firstname: "",
     lastname: "",
@@ -81,7 +84,7 @@ const Login = () => {
     if (message.isValid && toggleInput) {
       console.log("submit");
       axios
-        .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/signup`, {
+        .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/signup`, {
           firstname: loginData.firstname,
           lastname: loginData.lastname,
           email: loginData.email,
@@ -114,6 +117,11 @@ const Login = () => {
       <AiOutlineCloseCircle size={"2rem"} />
     </i>
   );
+
+  if (session) {
+    Router.push("/");
+    return;
+  }
 
   return (
     <div className={styles.Main_container + " " + "container"}>
@@ -190,10 +198,21 @@ const Login = () => {
           <div className={styles.other_signup_container}>
             <label>Signup using</label>
             <div className={styles.icons_container}>
-              <FcGoogle className={styles.icons} size={"3.5rem"} />
-              <BsTwitter className={styles.icons} size={"3.5rem"} />
-              <GrLinkedinOption className={styles.icons} size={"3.5rem"} />
-              <BsGithub className={styles.icons} size={"3.5rem"} />
+              <BsGoogle
+                className={styles.icons}
+                size={"3.5rem"}
+                onClick={() => signIn("google")}
+              />
+              <GrLinkedinOption
+                className={styles.icons}
+                size={"3.5rem"}
+                onClick={() => signIn("linkedin")}
+              />
+              <BsGithub
+                className={styles.icons}
+                size={"3.5rem"}
+                onClick={() => signIn("github")}
+              />
             </div>
           </div>
           <div className={styles.company_info_container}>
@@ -217,7 +236,7 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
 
 // import React, { useState } from "react";
 // import styles from "./Signup.module.scss";
@@ -263,7 +282,7 @@ export default Login;
 //     const message = isInputValid();
 //     if (message.isValid) {
 //       axios
-//         .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/signup`, {
+//         .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/signup`, {
 //           name: "shreyash",
 //           password: "shreyash",
 //         })

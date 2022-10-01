@@ -1,0 +1,73 @@
+@import "/public/assets/css/variablesAndThemes/variables.scss";
+
+.Rightbar {
+
+    min-width: 30rem;
+    background: var(--txt-400);
+    max-height: 30rem;
+    border-radius: $br-0;
+}
+.rightCard h1 {
+    margin: 2rem 0 1rem 2rem;
+    
+}
+
+
+.listRecommend{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 2rem;
+}
+
+.user_profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .profile {
+        display: flex;
+        align-items: center;
+        font-size: 1.1rem;
+
+        .nameFollow{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            svg{
+                font-size: 1.5rem;
+                color:white;
+            }
+        }
+        .image {
+            position: relative;
+            width: 4.5rem;
+            height: 4.5rem;
+            object-fit: cover;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+
+        .info {
+            font-size: 1.2rem;
+            color: var(--txt-200);
+
+            .name {
+                font-size: 1.3rem;
+                font-weight: $font-bold;
+                margin-bottom: .1rem;
+                color: var(--txt-100);
+            }
+        }
+        
+
+    }
+
+
+
+}

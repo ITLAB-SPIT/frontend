@@ -1,0 +1,103 @@
+@import "/public/assets/css/variablesAndThemes/variables.scss";
+
+.Sidebar {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 25rem;
+  max-width: 20rem;
+  gap: 2rem;
+}
+
+.SidebarWrapperTop {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
+  align-items: center;
+  background-color: var(--txt-400);
+  padding: 2rem;
+  border-radius: $br-0;
+}
+.SidebarWrapperBottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
+  align-items: center;
+  background-color: var(--txt-400);
+  padding: 2rem;
+  border-radius: $br-0;
+}
+
+.image {
+  position: relative;
+  width: 7.5rem;
+  height: 7.5rem;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profileInfoName {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+  margin-top: 10px;
+  align-items: center;
+}
+.profileInfoDesc {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 200;
+  align-items: center;
+}
+
+.listTab {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 25px;
+  width: 100%;
+}
+.listTabBottom {
+  align-items: center;
+  border-radius: 25px;
+  width: 100%;
+}
+
+.groupTab {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+.groupIcon {
+  padding: 3px 0 0 3px;
+  font-size: 1.5rem;
+}
+.groupTabName {
+  color: var(--txt-100);
+  font-size: 12px;
+  padding: 0 0 0 10px;
+}
+
+
+.partition {
+  width: 100%;
+  border: none;
+  background-color: var(--txt-300);
+  height: 1px;
+}
