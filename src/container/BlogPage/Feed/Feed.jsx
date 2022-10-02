@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./Feed.module.scss";
 import { AiOutlineArrowUp } from "react-icons/ai";
-import Posts from "../Posts/Posts";
 import Blogs from "../Blogs/Blogs";
-import Hackathons from "../Hackathons/Hackathons";
+import Share from "../../../components/Share/Share";
 
 const Feed = () => {
-  const [activeLink, setActiveLink] = useState("posts");
+  const [activeLink, setActiveLink] = useState("blogs");
   const [scrollBtnActive, setScrollBtnActive] = useState(false);
   const [addContainerShow, setAddContainerShow] = useState(false);
 
@@ -32,7 +31,7 @@ const Feed = () => {
 
   return (
     <div className={styles.Feed}>
-      <div className={styles.top_nav}>
+      {/* <div className={styles.top_nav}>
         <div className={styles.tab_container}>
           <div
             className={
@@ -44,21 +43,9 @@ const Feed = () => {
             Blogs
           </div>
         </div>
-        <div className={styles.utils}>
-          <div
-            className={styles.add_btn}
-            onClick={() => setAddContainerShow((active) => !active)}
-          >
-            +
-          </div>
-        </div>
-      </div>
-      <div
-        className={
-          styles.add_container + ` ${addContainerShow ? styles.active : ""}`
-        }
-      >
-        Hello
+      </div> */}
+      <div>
+        <Share />
       </div>
       <div className={styles.posts}>
         <div
@@ -69,15 +56,7 @@ const Feed = () => {
         >
           <AiOutlineArrowUp />
         </div>
-        {activeLink === "posts" ? (
-          <Posts />
-        ) : activeLink === "blogs" ? (
-          <Blogs />
-        ) : activeLink === "hackathons" ? (
-          <Hackathons />
-        ) : (
-          ""
-        )}
+        <Blogs />
       </div>
     </div>
   );
