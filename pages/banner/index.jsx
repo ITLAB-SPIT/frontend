@@ -1,5 +1,7 @@
 // Homepage component
 import React from 'react';
+// import Background.css;
+// import 'bootstrap/dist/css/bootstrap.min.css';
 // import Navbar from '../../components/navbar';
 import Banner from '../../src/components/Banner/Banner.js';
 import Feedback from '../../src/components/Banner/Feedback.js';
@@ -24,3 +26,4 @@ const Homepage = () => {
 }
 
 export default Homepage;
+

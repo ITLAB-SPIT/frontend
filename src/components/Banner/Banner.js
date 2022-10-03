@@ -3,7 +3,7 @@ import { Container , Row, Col} from "react-bootstrap";
 // import headerImg from "../assets/img/header-img.svg";
 import {ArrowRightCircle} from "react-bootstrap-icons";
 import Picture from "./assets/img/companyLogo.png";
-// import 'animate.css';
+// import styles from './Banner.module.scss';
 import TrackVisibility from "react-on-screen";
 // import { isVisible } from "@testing-library/user-event/dist/utils";
 
@@ -63,7 +63,7 @@ const  Banner =()=>{
                   <h1 className="Tech"> {name }
                     <span className="wrap">{text}</span>
                   </h1>
-                  <p>{info}</p>
+                  <p >{info}</p>
 
                   <span className="tagline"> 
                   

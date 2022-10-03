@@ -4,8 +4,8 @@ import logo from "./assets/img/logo.svg";
 import navItem1 from "./assets/img/nav-icon1.svg";
 import navItem2 from "./assets/img/nav-icon2.svg";
 import navItem3 from "./assets/img/nav-icon3.svg";
-
-export const Footer= () => {
+// import styles from './Banner.module.scss';
+const Footer= () => {
     return (
       <footer className="footer">
         <Container>
@@ -16,7 +16,7 @@ export const Footer= () => {
               <img src={logo} alt="Logo"></img>
             </Col>
             <Col sm={6} className="text-center text-sm-end">
-              <div className="social-icon">
+              <div >
                 <a href="#">
                   <img src={navItem1} alt="" />{" "}
                 </a>
@@ -34,3 +34,5 @@ export const Footer= () => {
       </footer>
     );
 }
+
+export default Footer;

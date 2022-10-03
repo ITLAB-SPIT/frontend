@@ -7,7 +7,7 @@ import navItem3 from './assets/img/nav-icon3.svg';
 
 
 
-export const NavBar = () => {
+const NavBar = () => {
     const [activeLink, setActiveLink] = useState('home');
     const [scrolled, setScrolled] = useState(false);
 
@@ -109,3 +109,4 @@ export const NavBar = () => {
     );
 }
 
+export default NavBar;
