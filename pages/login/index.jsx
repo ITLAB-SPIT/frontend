@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styles from "./Login.module.scss";
 import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
-import { BsTwitter, BsGithub } from "react-icons/bs";
+import { BsGithub, BsGoogle } from "react-icons/bs";
 import { GrLinkedinOption } from "react-icons/gr";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Router from "next/router";
-import "react-toastify/dist/ReactToastify.css";
+
 import axios from "axios";
 
 const Login = () => {
@@ -58,18 +58,19 @@ const Login = () => {
 
   const submit = () => {
     const message = isInputValid();
-    console.log("message");
-    console.log(message);
+
     if (message.isValid) {
       axios
-        .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
+        .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/login`, {
           email: loginData.email,
           password: loginData.password,
         })
         .then((res) => {
           Router.push("/");
         })
-        .catch((err) => {});
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       toast.error(message.message, {
         position: "top-right",
@@ -91,12 +92,25 @@ const Login = () => {
   );
 
   if (session) {
-    return (
-      <div>
-        <p>Welcome, {session.user.email}</p>
-        <button onClick={() => signOut()}>signOut</button>
-      </div>
-    );
+    const { email, name, image } = session.user;
+    axios
+      .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/loginauth`, {
+        email: email,
+        name: name,
+        image: image,
+      })
+      .then((res) => {
+        Router.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // return (
+    //   <div>
+    //     <p>Welcome, {session.user.email}</p>
+    //     <button onClick={() => signOut()}>signOut</button>
+    //   </div>
+    // );
   } else {
     return (
       <div className={styles.Main_container}>
@@ -133,7 +147,7 @@ const Login = () => {
             />
             <div className={styles.password_text_container}>
               <label>Password</label>
-              <Link href="/">
+              <Link href="/forgot-password">
                 <a className={styles.link}>Forgot Password</a>
               </Link>
             </div>
@@ -158,15 +172,10 @@ const Login = () => {
             <div className={styles.other_login_container}>
               <label>Login using</label>
               <div className={styles.icons_container}>
-                <FcGoogle
+                <BsGoogle
                   className={styles.icons}
                   size={"3.5rem"}
                   onClick={() => signIn("google")}
-                />
-                <BsTwitter
-                  className={styles.icons}
-                  size={"3.5rem"}
-                  onClick={() => signIn("twitter")}
                 />
                 <GrLinkedinOption
                   className={styles.icons}
@@ -243,7 +252,7 @@ export default Login;
 //     console.log(loginData);
 //     if (message.isValid) {
 //       console.log("shalom");
-//       axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
+//       axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/login`, {
 //         email: loginData.email,
 //         password: loginData.password,
 //       });

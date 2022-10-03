@@ -1,0 +1,123 @@
+@import "/public/assets/css/variablesAndThemes/variables.scss";
+
+.Profile_container {
+    display: flex;
+    gap: 2rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    min-height: 100%;
+
+    .title {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+        font-weight: $font-bold;
+    }
+
+    .profile {
+        width: 26%;
+
+        .user_info {
+            display: flex;
+
+            .avatar {
+                img {
+                    width: 7rem;
+                    height: 7rem;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+            }
+
+            .info {
+                margin-left: 2rem;
+                padding-top: .5rem;
+                width: 20rem;
+
+                .name {
+                    font-size: 1.6rem;
+                    font-weight: $font-bold;
+                    color: var(--txt-100);
+                    margin-bottom: .5rem;
+                }
+
+                .subTitle {
+                    color: var(--txt-200);
+                    font-weight: $font-bold;
+                    font-size: 1.3rem;
+                }
+            }
+
+
+        }
+    }
+
+    .stats {
+        width: 34%;
+
+        .stats_container {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-gap: 2rem;
+
+            .card {
+                grid-column-end: span 4;
+                display: flex;
+                gap: 1.5rem;
+
+                .icon {
+                    background: var(--txt-400);
+                    width: 3rem;
+                    height: 3rem;
+                    padding: .4rem;
+                    display: grid;
+                    place-items: center;
+                    border-radius: 50%;
+                    margin-top: .3rem;
+
+                    svg {
+                        font-size: 1.6rem;
+                    }
+                }
+
+                .count {
+                    font-size: 2.4rem;
+                }
+
+                .sub_title {
+                    color: var(--txt-200);
+                    font-weight: 600;
+                    font-size: 1.2rem;
+                }
+
+                &:first-child {
+                    svg {
+                        color: var(--primary-300);
+                    }
+                }
+
+                &:nth-child(2) {
+                    svg {
+                        color: var(--secondary-100);
+                    }
+                }
+
+                &:nth-child(3) {
+                    svg {
+                        color: var(--secondary-200);
+                    }
+                }
+
+                &:last-child {
+                    svg {
+                        color: var(--primary-100);
+                    }
+                }
+            }
+        }
+
+        .skills {
+            width: 40%;
+        }
+
+    }
+}

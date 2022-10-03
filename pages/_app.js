@@ -24,17 +24,15 @@ function MyApp({ Component, pageProps, session }) {
   const Layout = Component.Layout || EmptyLayout;
 
   return (
-    <div className="App">
-      <SessionProvider session={session}>
-        <div className="App">
-          <Navbar />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-          <Footer />
-        </div>
-      </SessionProvider>
-    </div>
+    <SessionProvider session={session}>
+      <div className="App">
+        <Navbar />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+        <Footer />
+      </div>
+    </SessionProvider>
   );
 }
 
