@@ -1,74 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import "/public/assets/css/variablesAndThemes/variables.scss";
-
-html {
-  scroll-behavior: smooth;
-  font-size: 62.5%;
-  // overflow-x: hidden !important;
-  overflow-y: auto;
-  /* Take rems according to this font 1rem = 10px */
-
-  @media screen and (max-width: 2300px) {
-    font-size: 70%;
-  }
-
-  @media screen and (max-width: 2300px) and (min-width: 620px) {
-    font-size: 62.5%;
-  }
-
-  @media screen and (max-width: 620px) {
-    font-size: 55%;
-  }
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", sans-serif;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  // overflow-x: hidden !important;
-  // overflow-y: auto !important;
-  background: var(--primary-000);
-  color: var(--txt-100);
-
-  @media screen and (max-width: $break-point-tab) {
-    padding-top: $nav-height-sm;
-  }
-}
-
-.App {
-  min-height: calc(100vh - $nav-height);
-  display: flex;
-  flex-direction: column;
-}
+@import "Background.css";
 
 /************ Custom Font ************/
 @font-face {
   font-family: Centra;
-  src: url('../font/CentraNo2-Bold.ttf');
+  src: url('./assets/font/CentraNo2-Bold.ttf');
   font-weight: 700;
 }
 
 @font-face {
   font-family: Centra;
-  src: url('../font/CentraNo2-Medium.ttf');
+  src: url('./assets/font/CentraNo2-Medium.ttf');
   font-weight: 500;
 }
 
 @font-face {
   font-family: Centra;
-  src: url('../font/CentraNo2-Book.ttf');
+  src: url('./assets/font/CentraNo2-Book.ttf');
   font-weight: 400;
 }
 
@@ -326,9 +273,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 /************ Banner Css ************/
 .banner {
   margin-top: 0;
-  padding: 260px 0 100px 0;
+  padding: 160px 0 140px 0;
   /* background-image: url('./assets/img/banner-bg.png'); */
-  background-color: #303030;
+  /* background-color: #303030; */
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -337,7 +284,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .banner .tagline {
   font-weight: 700;
   letter-spacing: 0.8px;
-  padding: 8px 10px;
+  /* padding: 8px 10px; */
   background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%);
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 20px;
@@ -346,17 +293,54 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   display: inline-block;
   padding-left: 20px;
   padding-right: 20px;
+
+  /* background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%); */
+  padding: 15px 40px;
+  color: #fff;
+  /* font-weight: 500; */
+  /*  letter-spacing: 0.5px; */
+  border-radius: 18px;
   /* border-radius: 20%; */
 }
 
-.banner h1 {
+.banner .tagline svg {
+  top: 15px;
+  transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1), opacity 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  margin-left: 40px;
+  opacity: 0;
+  position: absolute;
+  transform: translateX(75%) scaleX(0.1);
+  width: 40px;
+  height: 40px;
+  transform-origin: center;
+}
+
+.banner .tagline:hover{
+  cursor: pointer;
+}
+
+.banner .tagline:hover svg {
+  opacity: 1;
+  transform: translateX(30px) scaleX(1);
+}
+
+.banner .tagline:hover span {
+  transform: translateX(-30px);
+}
+
+.banner .tagline span {
+  display: inline-block;
+  transition: transform 0.5s cubic-bezier(0.86, 0.82, 0.07, 1);
+}
+
+/* .banner h1 {
   font-size: 65px;
   font-weight: 700;
   letter-spacing: 0.8px;
   line-height: 1;
   margin-bottom: 20px;
   display: block;
-}
+} */
 
 .banner p {
   color: #B8B8B8;
@@ -388,7 +372,30 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   margin-left: 25px;
 }
 
+.Crack {
+  color: #ff49b6;
+  font-size: 72px;
+  font-weight: 450;
+}
+
+.Tech {
+  font-size: 65px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  margin-bottom: 20px;
+  display: block;
+}
+
+#pageImg {
+  
+  scale: 1.2;
+  /* size: 1rem; */ 
+
+}
 .banner img {
+  /* height: 10%;
+  size: 1rem; */
   /* z-index: 10; */
   /* animation: updown 3s linear infinite; */
 }
@@ -602,7 +609,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   z-index: -4;
 }
 
-/************ Projects Css ************/
+/************ Con Css ************/
 .contact {
   background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
   padding: 60px 0 200px 0;
@@ -692,10 +699,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 /************ Footer Css ************/
 .footer {
   padding: 0 0 50px 0;
-  background-image: url('../images/footer-bg.png');
+  background-image: url('./assets/img/footer-bg.png');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  background: #000;
 }
 
 .newsletter-bx {

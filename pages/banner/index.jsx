@@ -1,29 +1,26 @@
 // Homepage component
 import React from 'react';
-import { Container , Row, Col} from "react-bootstrap";
-// import { BrowserRouter } from 'react-router-dom';
-import { Footer, Navbar } from "../../src/components/Navbar/Navbar.jsx";
+// import Navbar from '../../components/navbar';
+import Banner from '../../src/components/Banner/Banner.js';
+import Feedback from '../../src/components/Banner/Feedback.js';
+import WhyUs from '../../src/components/Banner/WhyUs.js';
+import Contact from '../../src/components/Banner/Contact.js';
+import Footer from '../../src/components/Banner/Footer.js';
+import { Navbar } from '../../src/components/import.js';
 
-const Banner = () => {
+const Homepage = () => {
     return ( 
         <div>
-            <section className="Homepage" id='home'>
-            {/* <Navbar /> */}
-            <Container>
-                <Row className="align-items-center">
-                    <Col lg={6} md={6} sm={12} xs={12}>
-                        <div>Hello</div>
-                        <button onClick={() => console.log("Button is working")}>Loreum</button>
-                    
-                        <button onClick={() => console.log("Second button is working")}>Ipsum</button>
-                    </Col>
-                </Row>
-            </Container>
-            {/* <Footer /> */}
-       </section>
+            <Navbar/>
+            <Banner/>
+            <WhyUs/>
+            <Feedback/>
+            <Contact/>
+            <Footer/>
+            {/* <Skills/> */}
         </div>
      );
     
 }
 
-export default Banner;
+export default Homepage;
