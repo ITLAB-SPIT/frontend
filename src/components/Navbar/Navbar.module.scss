@@ -6,7 +6,9 @@
     left: 0;
     width: 100%;
     height: $nav-height;
-    background-color: #222222;
+    background-color: transparent;
+
+    // background-color: #222222;
     color: var(--txt-000);
     display: flex;
     align-items: center;
