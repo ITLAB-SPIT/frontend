@@ -10,10 +10,12 @@ const BlogPage = () => {
   const [blogsData, setBlogsData] = React.useState([]);
 
   useEffect(() => {
+    console.log("i was called");
     axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/blogsData`).then((res) => {
       console.log("res.data for blogs data");
       console.log(res.data);
       setBlogsData(res.data);
+      localStorage.setItem("blogsData", JSON.stringify(res.data));
     });
   }, []);
 

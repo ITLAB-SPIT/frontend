@@ -153,6 +153,7 @@ const Editor = () => {
       .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/create-blog`, {
         name:
           localStorage.getItem("firstname") +
+            " " +
             localStorage.getItem("lastname") || session.user.name,
         userImageUrl: localStorage.getItem("image") || session.user.image,
         email: localStorage.getItem("email") || session.user.email,
