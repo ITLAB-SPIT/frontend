@@ -51,22 +51,23 @@ const Navbar = () => {
 	}, [lastScrollY]);
 
 	return (
-		<div ref={navbarRef} className={styles.Navbar_container + " " + 'container' + ` ${show ? styles.active : styles.hide}`}>
-			<div className={styles.logo}>Logo</div>
+		<div ref={navbarRef} className={styles.Navbar_container + " " + 'Container' + ` ${show ? styles.active : styles.hide}`}>
+			<div className={styles.logo}>Code.Int</div>
 			<div className={styles.links_container}>
-				<div className={styles.link}>Find Teammates</div>
-				<div className={styles.link_dropdown}><div>Participate</div><BiChevronDown /></div>
-				<div className={styles.link_dropdown}><div>Learn</div><BiChevronDown /></div>
+				<div className={styles.link}>Trending</div>
+				<div className={styles.link_dropdown}><div>Post Blog</div></div>
+				<div className={styles.link_dropdown}><div>RoadMap</div></div>
+				<div className={styles.link_dropdown}><div>About Us</div><BiChevronDown /></div>
 			</div>
 			<div className={styles.search_container}>
-				<input type="text" placeholder='Search...' />
+				<input type="text" placeholder='Search it..' />
 				<BiSearch />
 			</div>
 			{
 				isAuthenticated ?
 					<div className={styles.authenticated_container}>
 						<div ref={avatarRef} className={styles.avatar} onClick={() => setSidebarOpen(active => !active)}>
-							<img src="/assets/images/avatar.jpg" alt="" />
+							<img src="/assets/images/NavImg.jpg" alt="" />
 						</div>
 					</div>
 					: <div className={styles.utils_container}>

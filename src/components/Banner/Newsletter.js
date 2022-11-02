@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Col, Row, Alert } from "react-bootstrap";
-// import e from "express";
+import styles from "./Newsletter.module.scss";
 
 export const Newsletter = ({ status, message, onValidated }) => {
   const [email, setEmail] = useState("");
@@ -24,7 +24,7 @@ export const Newsletter = ({ status, message, onValidated }) => {
 
   return (
     <Col lg={12}>
-      <div className="newsletter-bx wow slideInUp">
+      <div className={styles.news_letter_bx}>
         <Row>
           <Col lg={12} md={6} xl={5}>
             <h3>
@@ -36,14 +36,14 @@ export const Newsletter = ({ status, message, onValidated }) => {
           </Col>
           <Col md={6} xl={7}>
             <form onSubmit={handleSubmit}>
-              <div className="new-email-bx">
+              <div className={styles.new_email_bx}>
                 <input
                   value={email}
                   type="email"
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email Address"
                 />
-                <button type="submit">Submit</button>
+                <button type={styles.submit}>Submit</button>
               </div>
             </form>
           </Col>
@@ -52,4 +52,3 @@ export const Newsletter = ({ status, message, onValidated }) => {
     </Col>
   );
 };
-

@@ -24,6 +24,11 @@
         transition: all 0.2s ease-in-out;
     }
 
+    .logo{
+        color: #e921c7;
+        // text-size-adjust: 100%;
+    }
+
     .links_container {
         display: flex;
         margin-left: 60px;
@@ -49,7 +54,7 @@
 
     .search_container {
         margin-left: auto;
-        width: 400px;
+        // width: 400px;
         height: max-content;
         border-radius: $br-0;
         overflow: hidden;

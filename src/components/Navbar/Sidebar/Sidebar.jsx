@@ -30,7 +30,7 @@ const Sidebar = ({ avatarRef, setSidebarOpen }) => {
 			</div>
 			<div className={styles.user_info}>
 				<div className={styles.avatar}>
-					<img src="/assets/images/avatar.jpg" alt="" />
+					<img src="/assets/images/NavImg.jpg" alt="" />
 				</div>
 				<div className={styles.info}>
 					<div className={styles.name}><LimitChar word="Shubham Tech" fitContent={true} limit={15} /></div>

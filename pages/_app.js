@@ -1,6 +1,7 @@
 import "../public/assets/css/variablesAndThemes/root.scss";
 import "../public/assets/css/variablesAndThemes/theme.scss";
 import "../public/assets/css/globals.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../public/assets/css/utils.scss";
 // import "../public/assets/css/banner.css";
 import { useEffect } from "react";
@@ -27,13 +28,11 @@ function MyApp({ Component, pageProps, session }) {
   return (
     <div className="App">
       <SessionProvider session={session}>
-        <div className="App">
-          <Navbar />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-          <Footer />
-        </div>
+        <Navbar />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+        <Footer />
       </SessionProvider>
     </div>
   );
