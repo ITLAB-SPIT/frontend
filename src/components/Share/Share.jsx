@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./Share.module.scss";
+import Router from "next/router";
 
 const Share = () => {
   return (
@@ -15,7 +16,9 @@ const Share = () => {
             alt=""
           />
         </div>
-        <button>Start a blog...</button>
+        <button onClick={() => Router.push("/blogs/create-blog")}>
+          Start a blog...
+        </button>
       </div>
       <hr></hr>
     </div>

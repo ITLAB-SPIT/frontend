@@ -17,11 +17,11 @@ const BlogCard = () => {
               height="100%"
               layout="fill"
               objectFit="cover"
-              alt=""
+              alt="User Image"
             />
           </div>
           <div className={styles.info}>
-            <div className={styles.name}>Noman</div>
+            <div className={styles.name}>Shreyash</div>
             <div className={styles.circle}></div>
             <div className={styles.time}>1d ago</div>
           </div>

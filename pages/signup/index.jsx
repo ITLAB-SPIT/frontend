@@ -9,6 +9,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Router from "next/router";
+import { signUp } from "../../store/actions/main";
 
 const Signup = () => {
   const { data: session } = useSession();
@@ -74,38 +75,46 @@ const Signup = () => {
     return message;
   };
 
+  const handleSignupSubmit = () => {
+    const { dispatch } = props;
+    dispatch(signUp(loginData));
+  };
+
   const submit = () => {
     const message = isInputValid();
-    console.log(loginData);
+
     if (message.isValid && !toggleInput) {
       setToggleInput(true);
       return;
     }
+
     if (message.isValid && toggleInput) {
-      console.log("submit");
-      axios
-        .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/signup`, {
-          firstname: loginData.firstname,
-          lastname: loginData.lastname,
-          email: loginData.email,
-          password: loginData.password,
-        })
-        .then((res) => {
-          console.log(" ");
-          console.log(res);
-        })
-        .catch((error) => {
-          console.log("error");
-          console.log(error);
-        });
+      handleSignupSubmit();
+      // axios
+      //   .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/signup`, {
+      //     firstname: loginData.firstname,
+      //     lastname: loginData.lastname,
+      //     email: loginData.email,
+      //     password: loginData.password,
+      //   })
+      //   .then((res) => {
+      //     if (res.status === 200) {
+      //       toast.success("Signup successful.");
+      //       Router.push("/blogs");
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //     if (err.response.status === 409) {
+      //       setToggleInput(false);
+      //       toast.error("Email already exists.", {
+      //         progress: undefined,
+      //         className: styles.error_container,
+      //       });
+      //     }
+      //   });
     } else {
       toast.error(message.message, {
-        position: "top-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
         progress: undefined,
         className: styles.error_container,
       });
@@ -119,7 +128,7 @@ const Signup = () => {
   );
 
   if (session) {
-    Router.push("/");
+    Router.push("/blogs");
     return;
   }
 
@@ -235,6 +244,19 @@ const Signup = () => {
     </div>
   );
 };
+
+// const mapStateToProps = (state) => {
+//   return {
+//     user: state.auth.user,
+//     isLoggedIn: state.auth.isLoggedIn,
+//   };
+// };
+
+// const mapDispatchToProps = {
+//   setBasicUserInfo,
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Signup);
 
 export default Signup;
 

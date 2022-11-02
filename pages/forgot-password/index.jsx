@@ -9,9 +9,11 @@ import {
 } from "react-icons/ai";
 import axios from "axios";
 import Router from "next/router";
+import { Dna } from "react-loader-spinner";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const CloseButton = ({ closeToast }) => (
     <i className={"material-icons " + styles.close_icon} onClick={closeToast}>
@@ -29,18 +31,33 @@ const ForgotPassword = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
+
     if (validateEmail(email)) {
-      Router.push({
-        pathname: "/forgot-password/check-email",
-        query: { email: email },
-      });
+      setIsLoading(true);
       axios
         .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/forgot-password`, {
           email: email,
         })
-        .then((res) => {})
+        .then((res) => {
+          if (res.status === 200) {
+            setIsLoading(false);
+            Router.push({
+              pathname: "/forgot-password/check-email",
+              query: { email: email },
+            });
+          }
+        })
         .catch((err) => {
+          console.log("got err");
           console.log(err);
+          setIsLoading(false);
+
+          if (err.response.status === 403) {
+            toast.error("Account with given email doesnt exist.", {
+              progress: undefined,
+              className: styles.error_container,
+            });
+          }
         });
     } else {
       toast.error("Please enter a valid email address.", {
@@ -55,6 +72,23 @@ const ForgotPassword = () => {
       });
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className={styles.Main_Container}>
+        <div className={styles.loader}>
+          <Dna
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.Main_Container}>

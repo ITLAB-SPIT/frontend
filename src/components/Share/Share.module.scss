@@ -31,6 +31,9 @@
       &::placeholder {
         color: var(--txt-200);
       }
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 

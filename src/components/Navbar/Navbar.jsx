@@ -3,6 +3,8 @@ import styles from "./Navbar.module.scss";
 import { BiChevronDown, BiSearch } from "react-icons/bi";
 import axios from "axios";
 import Sidebar from "./Sidebar/Sidebar";
+import Link from "next/link";
+import Image from "next/image";
 
 const Navbar = () => {
   const [show, setShow] = useState(true);
@@ -58,9 +60,18 @@ const Navbar = () => {
         ` ${show ? styles.active : styles.hide}`
       }
     >
-      <div className={styles.logo}>Logo</div>
+      <div>
+        <Image
+          className={styles.logo}
+          src={"/assets/images/logo.png"}
+          width={"40px"}
+          height={"40px"}
+        ></Image>
+      </div>
       <div className={styles.links_container}>
-        <div className={styles.link}>Find Teammates</div>
+        <div className={styles.link}>
+          <Link href={"/blogs"}>Blogs</Link>
+        </div>
         <div className={styles.link_dropdown}>
           <div>Participate</div>
           <BiChevronDown />

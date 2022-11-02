@@ -19,12 +19,12 @@ const Rightbar = () => {
                     height="100%"
                     layout="fill"
                     objectFit="cover"
-                    alt=""
+                    alt="User Image"
                   />
                 </div>
                 <div className={styles.info}>
                   <div className={styles.nameFollow}>
-                    <div className={styles.name}>Noman</div>
+                    <div className={styles.name}>Shreyash</div>
                     <MdAdd />
                   </div>
                   <div className={styles.desc}>
@@ -50,7 +50,7 @@ const Rightbar = () => {
                 </div>
                 <div className={styles.info}>
                   <div className={styles.nameFollow + " " + styles.name}>
-                    <div className={styles.name}>Noman</div>
+                    <div className={styles.name}>Shreyash</div>
                     <MdAdd />
                   </div>
                   <div className={styles.desc}>
@@ -76,7 +76,7 @@ const Rightbar = () => {
                 </div>
                 <div className={styles.info}>
                   <div className={styles.nameFollow + " " + styles.name}>
-                    <div className={styles.name}>Noman</div>
+                    <div className={styles.name}>Shreyash</div>
                     <MdAdd />
                   </div>
                   <div className={styles.desc}>
@@ -101,7 +101,7 @@ const Rightbar = () => {
                 </div>
                 <div className={styles.info}>
                   <div className={styles.nameFollow + " " + styles.name}>
-                    <div className={styles.name}>Noman</div>
+                    <div className={styles.name}>Shreyash</div>
                     <MdAdd />
                   </div>
                   <div className={styles.desc}>
