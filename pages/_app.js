@@ -26,15 +26,26 @@ function MyApp({ Component, pageProps, session }) {
   const Layout = Component.Layout || EmptyLayout;
 
   return (
-    <div className="App">
+    <>
+      <div className="App">
+        <SessionProvider session={session}>
+          <Navbar />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+          <Footer />
+        </SessionProvider>
+      </div>
       <SessionProvider session={session}>
-        <Navbar />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-        <Footer />
+        <div className="App">
+          <Navbar />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+          <Footer />
+        </div>
       </SessionProvider>
-    </div>
+    </>
   );
 }
 

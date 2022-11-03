@@ -1,27 +1,33 @@
-import React, { useRef, useEffect } from 'react'
-import LimitChar from '../../UI/LimitChar/LimitChar'
-import Link from 'next/link'
-import styles from './Sidebar.module.scss'
-import { BiLogOut } from "react-icons/bi"
-import { MdManageAccounts, MdPeopleAlt } from "react-icons/md"
-import { RiDashboardFill } from "react-icons/ri"
-import { BsBookmarkStarFill } from "react-icons/bs"
-import { AiOutlineCalendar } from "react-icons/ai"
-import { CgClose } from "react-icons/cg"
-
+import React, { useRef, useEffect } from "react";
+import LimitChar from "../../UI/LimitChar/LimitChar";
+import Link from "next/link";
+import styles from "./Sidebar.module.scss";
+import { BiLogOut } from "react-icons/bi";
+import { MdManageAccounts, MdPeopleAlt } from "react-icons/md";
+import { RiDashboardFill } from "react-icons/ri";
+import { BsBookmarkStarFill } from "react-icons/bs";
+import { AiOutlineCalendar } from "react-icons/ai";
+import { CgClose } from "react-icons/cg";
+import { signOut } from "next-auth/react";
+import Router from "next/router";
 const Sidebar = ({ avatarRef, setSidebarOpen }) => {
-	const sidebarRef = useRef(null);
+  const sidebarRef = useRef(null);
 
-	useEffect(() => {
-		document.addEventListener("mousedown", clickOutsideRef);
-		return () => document.removeEventListener("mousedown", clickOutsideRef);
-	}, [])
+  useEffect(() => {
+    document.addEventListener("mousedown", clickOutsideRef);
+    return () => document.removeEventListener("mousedown", clickOutsideRef);
+  }, []);
 
-	const clickOutsideRef = (e) => {
-		if (sidebarRef.current && avatarRef.current && !sidebarRef.current.contains(e.target) && !avatarRef.current.contains(e.target)) {
-			setSidebarOpen(false)
-		}
-	};
+  const clickOutsideRef = (e) => {
+    if (
+      sidebarRef.current &&
+      avatarRef.current &&
+      !sidebarRef.current.contains(e.target) &&
+      !avatarRef.current.contains(e.target)
+    ) {
+      setSidebarOpen(false);
+    }
+  };
 
 	return (
 		<div ref={sidebarRef} className={styles.Sidebar_container}>
@@ -71,4 +77,4 @@ const Sidebar = ({ avatarRef, setSidebarOpen }) => {
 	)
 }
 
-export default Sidebar
+export default Sidebar;
