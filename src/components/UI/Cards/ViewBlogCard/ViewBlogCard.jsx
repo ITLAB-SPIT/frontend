@@ -14,8 +14,6 @@ const ViewBlogCard = (props) => {
   const blogData = JSON.parse(localStorage.getItem("blogsData"))[
     localStorage.getItem("blogIndex")
   ];
-  console.log("blogData");
-  console.log(blogData);
   return (
     <div className={styles.Blog_card}>
       <div className={styles.user_profile}>

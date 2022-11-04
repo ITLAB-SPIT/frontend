@@ -6,6 +6,7 @@ import LimitChar from "../../LimitChar/LimitChar";
 import Image from "next/image";
 import styles from "./BlogCard.module.scss";
 import Link from "next/link";
+import Router from "next/router";
 
 const BlogCard = (props) => {
   return (
@@ -35,13 +36,22 @@ const BlogCard = (props) => {
           </div>
         </div>
         <div className={styles.connections}>
-          <div className={styles.connect}>
-            <Link
+          <div
+            className={styles.connect}
+            onClick={() => {
+              console.log("view link was clicked, index is " + props.index);
+              localStorage.setItem("blogIndex", props.index);
+              Router.push("/blogs/blog");
+            }}
+          >
+            View
+            {/* <Link
               href={"/blogs/blog"}
-              onClick={localStorage.setItem("blogIndex", props.index)}
-            >
-              View
-            </Link>
+              onClick={() => {
+                console.log("view link is clicked");
+                localStorage.setItem("blogIndex", props.index);
+              }}
+            ></Link> */}
           </div>
         </div>
       </div>
