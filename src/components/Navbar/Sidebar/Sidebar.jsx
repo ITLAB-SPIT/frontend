@@ -10,7 +10,10 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import { CgClose } from "react-icons/cg";
 import { signOut } from "next-auth/react";
 import Router from "next/router";
-const Sidebar = ({ avatarRef, setSidebarOpen }) => {
+import { connect } from "react-redux";
+import { logout } from "../../../../store/actions/main";
+
+const Sidebar = ({ avatarRef, setSidebarOpen, dispatch }) => {
   const sidebarRef = useRef(null);
 
   useEffect(() => {
@@ -39,7 +42,7 @@ const Sidebar = ({ avatarRef, setSidebarOpen }) => {
       </div>
       <div className={styles.user_info}>
         <div className={styles.avatar}>
-          <img src="/assets/images/mySelf.jpg" alt="" />
+          <img src="/assets/images/mySelf.jpg" alt="User Image" />
         </div>
         <div className={styles.info}>
           <div className={styles.name}>
@@ -91,6 +94,7 @@ const Sidebar = ({ avatarRef, setSidebarOpen }) => {
         onClick={async () => {
           setSidebarOpen(false);
           await signOut({ callbackUrl: "/api/auth/logout" });
+          dispatch(logout());
         }}
       >
         <BiLogOut />
@@ -100,4 +104,11 @@ const Sidebar = ({ avatarRef, setSidebarOpen }) => {
   );
 };
 
-export default Sidebar;
+const mapStateToProps = (state) => {
+  return {
+    user: state.auth.user,
+    isLoggedIn: state.auth.isLoggedIn,
+  };
+};
+
+export default connect(mapStateToProps)(Sidebar);

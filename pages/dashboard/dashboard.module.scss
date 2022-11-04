@@ -1,0 +1,48 @@
+@import "/public/assets/css/variablesAndThemes/variables.scss";
+
+.Dashboard {
+    min-height: calc(100vh - 2 * $nav-height);
+
+    .bottom_container {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        display: grid;
+        grid-template-columns: repeat(14, 1fr);
+        grid-gap: 3rem;
+        background: #27282F;
+        min-height: 100%;
+
+        .left {
+            grid-column-end: span 10;
+
+            .tab_container {
+                display: flex;
+                gap: 3rem;
+                font-size: 1.6rem;
+                margin-bottom: 2rem;
+
+                .link {
+                    color: var(--txt-200);
+                    font-weight: $font-bold;
+                    cursor: pointer;
+                    padding: .5rem .8rem;
+                    text-align: center;
+                    width: max-content;
+
+                    &:hover {
+                        color: var(--txt-000);
+                    }
+
+                    &.active {
+                        color: var(--txt-000);
+                        border-bottom: 3px solid var(--primary-200);
+                    }
+                }
+            }
+        }
+
+        .right {
+            grid-column-end: span 4;
+        }
+    }
+}

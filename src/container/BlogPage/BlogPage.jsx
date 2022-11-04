@@ -1,17 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Feed from "./Feed/Feed";
 import styles from "./BlogPage.module.scss";
 import Rightbar from "./Rightbar/Rightbar";
 import Sidebar from "./Sidebar/Sidebar";
+import { Dna } from "react-loader-spinner";
+import axios from "axios";
 
 const BlogPage = () => {
-  return (
-    <div className={styles.Home_page + " container"}>
-      <Sidebar />
-      <Feed />
-      <Rightbar />
-    </div>
-  );
+  const [blogsData, setBlogsData] = React.useState([]);
+
+  useEffect(() => {
+    console.log("i was called");
+    axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/blogsData`).then((res) => {
+      console.log("res.data for blogs data");
+      console.log(res.data);
+      setBlogsData(res.data);
+      localStorage.setItem("blogsData", JSON.stringify(res.data));
+    });
+  }, []);
+
+  if (!blogsData) {
+    return (
+      <div className={styles.loader}>
+        <Dna
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="dna-loading"
+          wrapperStyle={{}}
+          wrapperClass="dna-wrapper"
+        />
+      </div>
+    );
+  } else {
+    return (
+      <div className={styles.Home_page + " container"}>
+        <Sidebar />
+        <Feed />
+        <Rightbar />
+      </div>
+    );
+  }
 };
 
 export default BlogPage;
