@@ -7,10 +7,7 @@ const Blogs = () => {
   const [blogsData, setBlogsData] = React.useState([]);
 
   useEffect(() => {
-    console.log("i was called");
     axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/blogsData`).then((res) => {
-      console.log("res.data for blogs data");
-      console.log(res.data);
       setBlogsData(res.data);
       localStorage.setItem("blogsData", JSON.stringify(res.data));
     });
@@ -19,7 +16,7 @@ const Blogs = () => {
   const getBlogCards = () => {
     const data = JSON.parse(localStorage.getItem("blogsData")).map(
       (blog, index) => {
-        return <BlogCard key={index} blogData={blog} />;
+        return <BlogCard key={index} index={index} blogData={blog} />;
       }
     );
     return data;
