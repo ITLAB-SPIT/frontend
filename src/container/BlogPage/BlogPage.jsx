@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import SingleBlog from "./SingleBlog/SingleBlog";
 import Feed from "./Feed/Feed";
 import styles from "./BlogPage.module.scss";
 import Rightbar from "./Rightbar/Rightbar";
@@ -6,14 +7,11 @@ import Sidebar from "./Sidebar/Sidebar";
 import { Dna } from "react-loader-spinner";
 import axios from "axios";
 
-const BlogPage = () => {
+const BlogPage = (props) => {
   const [blogsData, setBlogsData] = React.useState([]);
 
   useEffect(() => {
-    console.log("i was called");
     axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/blogsData`).then((res) => {
-      console.log("res.data for blogs data");
-      console.log(res.data);
       setBlogsData(res.data);
       localStorage.setItem("blogsData", JSON.stringify(res.data));
     });
@@ -33,13 +31,23 @@ const BlogPage = () => {
       </div>
     );
   } else {
-    return (
-      <div className={styles.Home_page + " container"}>
-        <Sidebar />
-        <Feed />
-        <Rightbar />
-      </div>
-    );
+    if (props.pageName === "blogs") {
+      return (
+        <div className={styles.Home_page + " container"}>
+          <Sidebar />
+          <Feed />
+          <Rightbar />
+        </div>
+      );
+    } else {
+      return (
+        <div className={styles.Home_page + " container"}>
+          <Sidebar />
+          <SingleBlog />
+          <Rightbar />
+        </div>
+      );
+    }
   }
 };
 

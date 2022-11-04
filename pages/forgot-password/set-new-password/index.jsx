@@ -68,7 +68,7 @@ const SetNewPassword = () => {
       });
     } else {
       axios
-        .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/reset-password`, {
+        .patch(`${process.env.NEXT_PUBLIC_SERVER_URL}/reset-password`, {
           email: userData.email,
           password: userData.password,
         })

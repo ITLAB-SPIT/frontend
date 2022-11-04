@@ -22,7 +22,7 @@ const BlogPage = (props) => {
   }, []);
 
   if (auth) {
-    return <BlogContainer />;
+    return <BlogContainer pageName={"blogs"} />;
   } else {
     return (
       <div className={styles.loader}>

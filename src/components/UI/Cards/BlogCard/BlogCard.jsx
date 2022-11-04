@@ -1,9 +1,11 @@
 import React from "react";
 import { BsBookmarkPlus, BsFillBookmarkCheckFill } from "react-icons/bs";
 import { BiLike, BiCommentDetail } from "react-icons/bi";
+import { AiFillLike } from "react-icons/ai";
 import LimitChar from "../../LimitChar/LimitChar";
 import Image from "next/image";
 import styles from "./BlogCard.module.scss";
+import Link from "next/link";
 
 const BlogCard = (props) => {
   return (
@@ -11,24 +13,35 @@ const BlogCard = (props) => {
       <div className={styles.user_profile}>
         <div className={styles.profile}>
           <div className={styles.image}>
-            <Image
+            {/* <Image
               src={props.blogData.userImageUrl}
               width="100%"
               height="100%"
               layout="fill"
               objectFit="cover"
               alt="User Image"
-            />
+            /> */}
+            <img src={props.blogData.userImageUrl} alt={"User Image"}></img>
           </div>
           <div className={styles.info}>
             <div className={styles.name}>{props.blogData.name}</div>
-            <div className={styles.circle}></div>
-            <div className={styles.time}>1d ago</div>
+            <div className={styles.circle} />
+            <div className={styles.time}>
+              {props.blogData.date.substr(0, 10)}
+            </div>
+            <div className={styles.circle} />
+            <div className={styles.time}>5 min read</div>
+            <div className={styles.circle} />
           </div>
         </div>
         <div className={styles.connections}>
           <div className={styles.connect}>
-            <span>+</span>Follow
+            <Link
+              href={"/blogs/blog"}
+              onClick={localStorage.setItem("blogIndex", props.index)}
+            >
+              View
+            </Link>
           </div>
         </div>
       </div>
@@ -47,9 +60,13 @@ const BlogCard = (props) => {
           </div>
           <div className={styles.card_footer}>
             <div className={styles.tags}>
-              <div className={styles.category}>
-                <LimitChar limit={15} word={"Web development"}></LimitChar>
-              </div>
+              {props.blogData.tags.split(",").map((tag, index) => {
+                return (
+                  <div className={styles.category} key={index}>
+                    <LimitChar limit={15} word={tag}></LimitChar>
+                  </div>
+                );
+              })}
             </div>
             <div className={styles.utils}>
               <div className={styles.icon}>
@@ -62,8 +79,8 @@ const BlogCard = (props) => {
           </div>
         </div>
         <div className={styles.card_right}>
-          <Image
-            src={"/assets/images/mySelf.jpg"}
+          <img
+            src={props.blogData.bannerImage}
             width="100%"
             height="100%"
             layout="fill"
