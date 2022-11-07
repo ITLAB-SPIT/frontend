@@ -69,11 +69,46 @@ export const login = (loginDetails) => {
 };
 
 export const signUp = (signUpDetails) => {
+  console.log("signup was called.");
   return async (dispatch) => {
     try {
       dispatch(deAuthenticateAction());
       // Signup code. And storing data in result variable
-      dispatch(authenticateAction(result));
+      axios
+        .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/signup`, {
+          email: signUpDetails.email,
+          password: signUpDetails.password,
+          firstname: signUpDetails.firstname,
+          lastname: signUpDetails.lastname,
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            console.log("res.data");
+            console.log(res.data);
+            //temporary code
+            localStorage.setItem("firstname", signUpDetails.firstname);
+            localStorage.setItem("lastname", signUpDetails.lastname);
+            localStorage.setItem("email", signUpDetails.email);
+            localStorage.setItem("image", signUpDetails.image);
+            dispatch(authenticateAction(signUpDetails));
+            Router.push("/blogs");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          // if (err.response.status == 401) {
+          //   toast.error("Invalid Credentials.", {
+          //     position: "top-right",
+          //     autoClose: 5000,
+          //     hideProgressBar: false,
+          //     closeOnClick: true,
+          //     pauseOnHover: true,
+          //     draggable: true,
+          //     progress: undefined,
+          //     className: styles.error_container,
+          //   });
+          // }
+        });
     } catch (error) {
       console.log(error);
       dispatch(deAuthenticateAction());
