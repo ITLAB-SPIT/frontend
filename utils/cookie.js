@@ -1,4 +1,5 @@
 import cookie from "js-cookie";
+import { useRouter } from "next/router";
 
 export const setCookie = (key, value) => {
   if (process.browser) {
@@ -24,7 +25,6 @@ export const getCookie = (key, req) => {
 };
 
 const getCookieFromBrowser = (key) => {
-  console.log(cookie);
   return cookie.get(key);
 };
 
