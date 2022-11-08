@@ -1,9 +1,7 @@
 import "../public/assets/css/variablesAndThemes/root.scss";
 import "../public/assets/css/variablesAndThemes/theme.scss";
 import "../public/assets/css/globals.scss";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "../public/assets/css/utils.scss";
-// import "../public/assets/css/banner.css";
 import { useEffect } from "react";
 import { Footer, Navbar } from "../src/components/import";
 import { SessionProvider } from "next-auth/react";
@@ -31,26 +29,15 @@ function MyApp({ Component, pageProps, session }) {
 
   return (
     <Provider store={initStore()}>
-      <>
+      <SessionProvider session={session}>
         <div className="App">
-          <SessionProvider session={session}>
-            <Navbar />
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-            <Footer />
-          </SessionProvider>
+          <Navbar />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+          <Footer />
         </div>
-        <SessionProvider session={session}>
-          <div className="App">
-            <Navbar />
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-            <Footer />
-          </div>
-        </SessionProvider>
-      </>
+      </SessionProvider>
     </Provider>
   );
 }
