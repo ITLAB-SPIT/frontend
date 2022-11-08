@@ -35,8 +35,6 @@ export const login = (loginDetails) => {
         })
         .then((res) => {
           if (res.status === 200) {
-            console.log("res.data");
-            console.log(res.data);
             //temporary code
             localStorage.setItem("firstname", res.data.firstname);
             localStorage.setItem("lastname", res.data.lastname);
@@ -69,7 +67,6 @@ export const login = (loginDetails) => {
 };
 
 export const signUp = (signUpDetails) => {
-  console.log("signup was called.");
   return async (dispatch) => {
     try {
       dispatch(deAuthenticateAction());
@@ -83,8 +80,6 @@ export const signUp = (signUpDetails) => {
         })
         .then((res) => {
           if (res.status === 200) {
-            console.log("res.data");
-            console.log(res.data);
             //temporary code
             localStorage.setItem("firstname", signUpDetails.firstname);
             localStorage.setItem("lastname", signUpDetails.lastname);
@@ -117,7 +112,6 @@ export const signUp = (signUpDetails) => {
 };
 
 export const logout = () => {
-  console.log("logout called here");
   return async (dispatch) => {
     dispatch(deAuthenticateAction());
   };
