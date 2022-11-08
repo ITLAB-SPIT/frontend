@@ -11,7 +11,7 @@ const Home = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  import { Login } from "./login";
+
   return (
     <div>
       <Head>
