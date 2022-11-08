@@ -1,0 +1,46 @@
+@import "/public/assets/css/variablesAndThemes/variables.scss";
+
+.Main_Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  .Share_Container {
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+    background: var(--txt-400);
+    border-radius: 0.7rem;
+
+    .image {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+    }
+    button {
+      background: var(--txt-400);
+      border: none;
+      outline: none;
+      color: var(--txt-100);
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-left: 1.5rem;
+      &::placeholder {
+        color: var(--txt-200);
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  hr {
+    margin-top: 1rem;
+    color: black;
+    border: 1px solid #343434;
+    width: 98%;
+  }
+}

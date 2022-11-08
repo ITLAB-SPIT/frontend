@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import styles from "./Feed.module.scss";
+import styles from "./SingleBlog.module.scss";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import Blogs from "../Blogs/Blogs";
 import Share from "../../../components/Share/Share";
+import BlogCard from "../../../components/UI/Cards/BlogCard/BlogCard";
+import ViewBlogCard from "../../../components/UI/Cards/ViewBlogCard/ViewBlogCard";
 
-const Feed = () => {
+const SingleBlog = () => {
   const [activeLink, setActiveLink] = useState("blogs");
   const [scrollBtnActive, setScrollBtnActive] = useState(false);
   const [addContainerShow, setAddContainerShow] = useState(false);
@@ -31,22 +33,6 @@ const Feed = () => {
 
   return (
     <div className={styles.Feed}>
-      {/* <div className={styles.top_nav}>
-        <div className={styles.tab_container}>
-          <div
-            className={
-              styles.nav_link +
-              ` ${activeLink === "blogs" ? styles.active : ""}`
-            }
-            onClick={() => setActiveLink("blogs")}
-          >
-            Blogs
-          </div>
-        </div>
-      </div> */}
-      <div>
-        <Share />
-      </div>
       <div className={styles.posts}>
         <div
           onClick={scrollToTop}
@@ -56,10 +42,12 @@ const Feed = () => {
         >
           <AiOutlineArrowUp />
         </div>
-        <Blogs />
+        <div>
+          <ViewBlogCard></ViewBlogCard>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Feed;
+export default SingleBlog;

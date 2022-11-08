@@ -8,10 +8,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Router from "next/router";
-
 import axios from "axios";
+import { connect } from "react-redux";
+import { login } from "../../store/actions/main";
 
-const Login = () => {
+const Login = (props) => {
   const { data: session } = useSession();
   const [loginData, setLoginData] = useState({ email: "", password: "" });
 
@@ -59,25 +60,36 @@ const Login = () => {
     const message = isInputValid();
 
     if (message.isValid) {
-      axios
-        .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/login`, {
-          email: loginData.email,
-          password: loginData.password,
-        })
-        .then((res) => {
-          Router.push("/");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      handleLoginSubmit();
+      // axios
+      //   .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/login`, {
+      //     email: loginData.email,
+      //     password: loginData.password,
+      //   })
+      //   .then((res) => {
+      //     if (res.status === 200) {
+      //       toast.success("Login successful!");
+      //       console.log(res.data);
+      //       Router.push("/");
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //     if (err.response.status == 401) {
+      //       toast.error("Invalid Credentials.", {
+      //         position: "top-right",
+      //         autoClose: 5000,
+      //         hideProgressBar: false,
+      //         closeOnClick: true,
+      //         pauseOnHover: true,
+      //         draggable: true,
+      //         progress: undefined,
+      //         className: styles.error_container,
+      //       });
+      //     }
+      //   });
     } else {
       toast.error(message.message, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
         progress: undefined,
         className: styles.error_container,
       });
@@ -90,6 +102,16 @@ const Login = () => {
     </i>
   );
 
+  const handleLoginSubmit = () => {
+    const { dispatch } = props;
+    dispatch(login(loginData));
+  };
+
+  if (props.isLoggedIn === true) {
+    console.log("this is the reason.");
+    Router.push("/blogs");
+  }
+
   if (session) {
     const { email, name, image } = session.user;
     axios
@@ -99,7 +121,9 @@ const Login = () => {
         image: image,
       })
       .then((res) => {
-        Router.push("/");
+        if (res.status === 200) {
+          Router.push("/");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -210,7 +234,14 @@ const Login = () => {
 };
 
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    user: state.auth.user,
+    isLoggedIn: state.auth.isLoggedIn,
+  };
+};
+
+export default connect(mapStateToProps)(Login);
 
 // import React, { useState } from "react";
 // import styles from "./Login.module.scss";

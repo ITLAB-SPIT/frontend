@@ -7,6 +7,10 @@ import "../public/assets/css/utils.scss";
 import { useEffect } from "react";
 import { Footer, Navbar } from "../src/components/import";
 import { SessionProvider } from "next-auth/react";
+import { Provider } from "react-redux";
+import withRedux from "next-redux-wrapper";
+import { initStore } from "../store/store";
+
 const DEFAULT_THEME = process.env.NEXT_PUBLIC_DEFAULT_THEME;
 function MyApp({ Component, pageProps, session }) {
   useEffect(() => {
@@ -26,29 +30,31 @@ function MyApp({ Component, pageProps, session }) {
   const Layout = Component.Layout || EmptyLayout;
 
   return (
-    <>
-      <div className="App">
-        <SessionProvider session={session}>
-          <Navbar />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-          <Footer />
-        </SessionProvider>
-      </div>
-      <SessionProvider session={session}>
+    <Provider store={initStore()}>
+      <>
         <div className="App">
-          <Navbar />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-          <Footer />
+          <SessionProvider session={session}>
+            <Navbar />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+            <Footer />
+          </SessionProvider>
         </div>
-      </SessionProvider>
-    </>
+        <SessionProvider session={session}>
+          <div className="App">
+            <Navbar />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+            <Footer />
+          </div>
+        </SessionProvider>
+      </>
+    </Provider>
   );
 }
 
-export default MyApp;
-
 const EmptyLayout = ({ children }) => <>{children}</>;
+
+export default withRedux(initStore)(MyApp);

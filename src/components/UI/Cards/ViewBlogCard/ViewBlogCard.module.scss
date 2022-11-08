@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: space-between;
     font-size: 1.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 
     .profile {
       display: flex;
@@ -99,7 +99,6 @@
             border-radius: $br-0;
             background: var(--txt-300);
             padding: 0.4rem 1rem;
-            margin-right: 0.5rem;
             cursor: pointer;
           }
         }
@@ -131,7 +130,38 @@
       margin-top: 0.5rem;
     }
   }
-
   .blog_bottom {
+    border: 1px solid white;
+    border-radius: 1rem;
+    margin-top: 4rem;
+    padding: 1rem 3rem;
+
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .left_div {
+      display: flex;
+      align-items: center;
+      .sub_left_div {
+        margin-right: 3rem;
+        display: flex;
+        align-items: center;
+        .num {
+          margin-left: 0.5rem;
+          font-size: 1.5rem;
+        }
+      }
+    }
+    .right_div {
+      display: flex;
+      align-items: center;
+      .sub_right_div {
+        display: flex;
+        align-items: center;
+        margin-left: 3rem;
+      }
+    }
   }
 }
