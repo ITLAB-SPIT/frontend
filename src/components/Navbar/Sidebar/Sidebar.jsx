@@ -103,53 +103,6 @@ const Sidebar = ({ avatarRef, setSidebarOpen, dispatch }) => {
     </div>
   );
 };
-	return (
-		<div ref={sidebarRef} className={styles.Sidebar_container}>
-			<div className={styles.close_sidebar} onClick={() => setSidebarOpen(false)}>
-				<CgClose />
-			</div>
-			<div className={styles.user_info}>
-				<div className={styles.avatar}>
-					<img src="/assets/images/NavImg.jpg" alt="" />
-				</div>
-				<div className={styles.info}>
-					<div className={styles.name}><LimitChar word="Shubham Tech" fitContent={true} limit={15} /></div>
-					<div className={styles.subTitle}><LimitChar word={"Full Stack Developer"} fitContent={true} limit={20} /></div>
-				</div>
-			</div>
-			<div className={styles.links}>
-				<Link href='/dashboard'>
-					<div className={styles.link + " " + styles.xl} onClick={() => setSidebarOpen(false)}>
-						<RiDashboardFill />
-						<div>Dashboard</div>
-					</div>
-				</Link>
-				<Link href='/calendar'>
-					<div className={styles.link} onClick={() => setSidebarOpen(false)}>
-						<AiOutlineCalendar />
-						<div>Calendar</div>
-					</div>
-				</Link>
-				<div className={styles.link} onClick={() => setSidebarOpen(false)}>
-					<MdPeopleAlt />
-					<div>Friends</div>
-				</div>
-				<div className={styles.link + " " + styles.sm} onClick={() => setSidebarOpen(false)}>
-					<BsBookmarkStarFill />
-					<div>Library</div>
-				</div>
-				<div className={styles.link} onClick={() => setSidebarOpen(false)}>
-					<MdManageAccounts />
-					<div>Account</div>
-				</div>
-			</div>
-			<div className={styles.logout_btn} onClick={() => setSidebarOpen(false)}>
-				<BiLogOut />
-				<div>Sign out</div>
-			</div>
-		</div>
-	)
-
 
 const mapStateToProps = (state) => {
   return {
