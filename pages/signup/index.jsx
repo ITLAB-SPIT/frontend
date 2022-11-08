@@ -10,9 +10,8 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Router from "next/router";
 import { signUp } from "../../store/actions/main";
-
+import { connect } from "react-redux";
 const Signup = (props) => {
-
   const { data: session } = useSession();
   const [loginData, setLoginData] = useState({
     firstname: "",
@@ -78,6 +77,7 @@ const Signup = (props) => {
 
   const handleSignupSubmit = () => {
     const { dispatch } = props;
+    localStorage.setItem("loginData", JSON.stringify(loginData));
     dispatch(signUp(loginData));
   };
 
@@ -246,20 +246,24 @@ const Signup = (props) => {
   );
 };
 
-// const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
+  return {
+    user: state.auth.user,
+    isLoggedIn: state.auth.isLoggedIn,
+  };
+};
+
+// const mapDispatchToProps = (dispatch) => {
 //   return {
-//     user: state.auth.user,
-//     isLoggedIn: state.auth.isLoggedIn,
-//   };
+//     onSubmit: (data) => {
+//         dispatch(setAddresses(data))
+//     }
+// }
 // };
 
-// const mapDispatchToProps = {
-//   setBasicUserInfo,
-// };
+export default connect(mapStateToProps)(Signup);
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Signup);
-
-export default Signup;
+// export default Signup;
 
 // import React, { useState } from "react";
 // import styles from "./Signup.module.scss";
