@@ -149,7 +149,7 @@ const Sidebar = ({ avatarRef, setSidebarOpen, dispatch }) => {
 			</div>
 		</div>
 	)
-}
+
 
 const mapStateToProps = (state) => {
   return {

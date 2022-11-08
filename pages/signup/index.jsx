@@ -11,7 +11,8 @@ import axios from "axios";
 import Router from "next/router";
 import { signUp } from "../../store/actions/main";
 
-const Signup = () => {
+const Signup = (props) => {
+
   const { data: session } = useSession();
   const [loginData, setLoginData] = useState({
     firstname: "",

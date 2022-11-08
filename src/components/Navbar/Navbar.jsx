@@ -1,8 +1,3 @@
-import React, { useEffect, useRef, useState } from 'react'
-import styles from './Navbar.module.scss'
-import { BiChevronDown, BiSearch } from 'react-icons/bi'
-import axios from 'axios'
-import Sidebar from './Sidebar/Sidebar'
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Navbar.module.scss";
 import { BiChevronDown, BiSearch } from "react-icons/bi";
@@ -12,39 +7,38 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Navbar = () => {
-	const [show, setShow] = useState(true);
-	const [lastScrollY, setLastScrollY] = useState(0);
-	const navbarRef = useRef(null);
-	const avatarRef = useRef(null);
-	const [data, setData] = useState();
-	const [sidebarOpen, setSidebarOpen] = useState(false);
-	const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const navbarRef = useRef(null);
+  const avatarRef = useRef(null);
+  const [data, setData] = useState();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
-	const controlNavbar = () => {
-		const nav_height = navbarRef.current?.offsetHeight;
-		const allStickyTop = document.querySelectorAll(".sticky-top");
-		if (window.scrollY > lastScrollY && window.scrollY > nav_height) {
-			setShow(false);
-			allStickyTop.forEach((sticky) => {
-				sticky.style.top = 2 + "rem";
-			})
-		} else {
-			setShow(true);
-			const sticky = document.querySelector(".sticky-top");
-			allStickyTop.forEach((sticky) => {
-				sticky.style.top = `calc(${nav_height + "px"} + 2rem)`;
-			})
-		}
-		setLastScrollY(window.scrollY);
+  const controlNavbar = () => {
+    const nav_height = navbarRef.current?.offsetHeight;
+    const allStickyTop = document.querySelectorAll(".sticky-top");
+    if (window.scrollY > lastScrollY && window.scrollY > nav_height) {
+      setShow(false);
+      allStickyTop.forEach((sticky) => {
+        sticky.style.top = 2 + "rem";
+      });
+    } else {
+      setShow(true);
+      const sticky = document.querySelector(".sticky-top");
+      allStickyTop.forEach((sticky) => {
+        sticky.style.top = `calc(${nav_height + "px"} + 2rem)`;
+      });
+    }
+    setLastScrollY(window.scrollY);
+  };
 
-	};
-
-	// useEffect(() => {
-	// 	axios.get(`local/getImage`).then((res) => {
-	// 		console.log(res.data);
-	// 		setData(res.data);
-	// 	})
-	// }, [data])
+  // useEffect(() => {
+  // 	axios.get(`local/getImage`).then((res) => {
+  // 		console.log(res.data);
+  // 		setData(res.data);
+  // 	})
+  // }, [data])
 
   useEffect(() => {
     const nav_height = navbarRef.current?.offsetHeight;
@@ -62,7 +56,7 @@ const Navbar = () => {
       className={
         styles.Navbar_container +
         " " +
-        "container" +
+        "Container" +
         ` ${show ? styles.active : styles.hide}`
       }
     >
@@ -122,5 +116,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-export default Navbar
