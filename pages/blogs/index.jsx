@@ -8,12 +8,12 @@ import { getCookie } from "../../utils/cookie";
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const BlogPage = (props) => {
-  console.log("props.auth");
-  console.log(props.auth);
-
-  const auth = getCookie("auth");
-  console.log("auth");
-  console.log(auth);
+  let auth;
+  try {
+    auth = getCookie("auth");
+  } catch (e) {
+    console.log(e);
+  }
 
   useEffect(() => {
     if (!auth) {

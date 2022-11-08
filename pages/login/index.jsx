@@ -108,7 +108,6 @@ const Login = (props) => {
   };
 
   if (props.isLoggedIn === true) {
-    console.log("this is the reason.");
     Router.push("/blogs");
   }
 

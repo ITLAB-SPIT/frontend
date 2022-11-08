@@ -134,8 +134,6 @@ const Editor = () => {
 
   const publish = async () => {
     const validPost = validatePost();
-    console.log("post");
-    console.log(post);
     if (!validPost) {
       toast.error("Title, Desc, and Blog fields cannot be empty.", {
         position: "top-right",

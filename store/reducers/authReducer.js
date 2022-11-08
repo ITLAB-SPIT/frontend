@@ -5,8 +5,6 @@ let initialState;
 if (typeof localStorage !== "undefined") {
   const authCookie = getCookie("auth");
   if (authCookie) {
-    console.log("authCookie");
-    console.log(authCookie);
     // initialState = JSON.parse(decodeURIComponent(authCookie));
     initialState = {
       isLoggedIn: true,
