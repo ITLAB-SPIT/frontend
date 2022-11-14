@@ -5,9 +5,9 @@ a {
   color: unset;
 }
 
-img {
-  background: var(--txt-100);
-}
+// img {
+//   background: var(--txt-100);
+// }
 
 .ptr {
   cursor: pointer;
@@ -30,7 +30,7 @@ img {
   }
 }
 
-.container {
+.Container {
   padding: 0px $pd-container;
 
   @media screen and (max-width: $break-point-tab) {

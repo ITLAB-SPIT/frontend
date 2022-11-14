@@ -56,7 +56,7 @@ const Navbar = () => {
       className={
         styles.Navbar_container +
         " " +
-        "container" +
+        "Container" +
         ` ${show ? styles.active : styles.hide}`
       }
     >

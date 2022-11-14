@@ -56,7 +56,6 @@ const Login = (props) => {
     }
     return message;
   };
-
   const submit = () => {
     const message = isInputValid();
 
