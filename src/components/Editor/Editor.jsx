@@ -160,6 +160,7 @@ const Editor = () => {
         desc: post.desc,
         bannerImage: post.imageUrl || post.base64,
         tags: post.tags,
+        token: localStorage.getItem("token") || session.user.token,
       })
       .then((res) => {
         if (res.status === 200) {

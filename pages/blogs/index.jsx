@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import BlogContainer from "../../src/container/BlogPage/BlogPage.jsx";
 import { connect } from "react-redux";
 import Router from "next/router";
@@ -8,16 +8,18 @@ import { getCookie } from "../../utils/cookie";
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const BlogPage = (props) => {
-  let auth;
-  try {
-    auth = getCookie("auth");
-  } catch (e) {
-    console.log(e);
-  }
+  const [auth, setAuth] = useState(false);
+  // try {
+  //   auth = getCookie("auth");
+  // } catch (e) {
+  //   console.log(e);
+  // }
 
   useEffect(() => {
-    if (!auth) {
+    if (localStorage.getItem("token") === null) {
       Router.push("/login");
+    } else {
+      setAuth(true);
     }
   }, []);
 

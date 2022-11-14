@@ -11,10 +11,16 @@ const BlogPage = (props) => {
   const [blogsData, setBlogsData] = React.useState([]);
 
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/blogsData`).then((res) => {
-      setBlogsData(res.data);
-      localStorage.setItem("blogsData", JSON.stringify(res.data));
-    });
+    axios
+      .get(`${process.env.NEXT_PUBLIC_SERVER_URL}/blogsData`, {
+        params: {
+          token: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setBlogsData(res.data);
+        localStorage.setItem("blogsData", JSON.stringify(res.data));
+      });
   }, []);
 
   if (!blogsData) {

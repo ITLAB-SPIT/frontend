@@ -40,6 +40,9 @@ export const login = (loginDetails) => {
             localStorage.setItem("lastname", res.data.lastname);
             localStorage.setItem("email", res.data.email);
             localStorage.setItem("image", res.data.image);
+            localStorage.setItem("token", res.data.token);
+            console.log("token");
+            console.log(res.data.token);
             dispatch(authenticateAction(loginDetails));
             Router.push("/blogs");
           }
@@ -85,6 +88,7 @@ export const signUp = (signUpDetails) => {
             localStorage.setItem("lastname", signUpDetails.lastname);
             localStorage.setItem("email", signUpDetails.email);
             localStorage.setItem("image", signUpDetails.image);
+            localStorage.setItem("token", res.data.token);
             dispatch(authenticateAction(signUpDetails));
             Router.push("/blogs");
           }
@@ -113,6 +117,7 @@ export const signUp = (signUpDetails) => {
 
 export const logout = () => {
   return async (dispatch) => {
+    localStorage.removeItem("token");
     dispatch(deAuthenticateAction());
   };
 };

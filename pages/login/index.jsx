@@ -122,6 +122,7 @@ const Login = (props) => {
       })
       .then((res) => {
         if (res.status === 200) {
+          localStorage.setItem("token", res.data.token);
           Router.push("/");
         }
       })
