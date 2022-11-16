@@ -7,6 +7,7 @@ import Picture from "./assets/img/companyLogo.png";
 // import styles from './Banner.module.scss';
 import TrackVisibility from "react-on-screen";
 // import { isVisible } from "@testing-library/user-event/dist/utils";
+// import Globe from "react-globe.gl";
 
 const name = "Tech.";
 const info =
@@ -50,7 +51,8 @@ const Banner = () => {
       setDelta(period / fullText.length);
     }
   };
-
+  // <Globe pointsData={myData} />;
+  // return <Globe />;
   return (
     <div className={styles.Main_Container}>
       <div id="stars"></div>
