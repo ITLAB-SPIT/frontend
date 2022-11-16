@@ -1,39 +1,35 @@
 @import "/public/assets/css/variablesAndThemes/variables.scss";
 
 .Navbar_container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: $nav-height;
-  background-color: #222222;
-  color: var(--txt-000);
-  display: flex;
-  align-items: center;
-  font-size: 1.4rem;
-  transition: 0.2s linear;
-  z-index: $z-navbar;
-
-  &.hide {
-    top: -100%;
-    transition: all 0.2s ease-in-out;
-  }
-
-  &.active {
+    position: fixed;
     top: 0;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .logo {
-    border-radius: 50%;
-  }
-
-  .links_container {
+    left: 0;
+    width: 100%;
+    height: $nav-height;
+    background-color: #222222;
+    color: var(--txt-000);
     display: flex;
-    margin-left: 60px;
     align-items: center;
-    gap: 20px;
-    color: var(--txt-300);
+    font-size: 1.4rem;
+    transition: 0.2s linear;
+    z-index: $z-navbar;
+
+    &.hide {
+        top: -100%;
+        transition: all 0.2s ease-in-out;
+    }
+
+    &.active {
+        top: 0;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .links_container {
+        display: flex;
+        margin-left: 60px;
+        align-items: center;
+        gap: 20px;
+        color: var(--txt-300);
 
     .link,
     .link_dropdown {
