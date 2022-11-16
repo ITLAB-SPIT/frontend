@@ -5,9 +5,21 @@ import Rightbar from "../../src/container/BlogPage/Rightbar/Rightbar";
 import { Dna } from "react-loader-spinner";
 import axios from "axios";
 import Link from "next/link";
+import Select from "react-dropdown-select";
 const News = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [newsData, setNewsData] = useState([]);
+  const [translateTo, setTranslateTo] = useState("hindi");
+  const langCodeDict = {
+    hindi: "hi",
+    english: "en",
+    gujarati: "gu",
+    marathi: "mr",
+    tamil: "ta",
+    french: "fr",
+    russian: "ru",
+  };
+
   useEffect(() => {
     axios
       .get(`${process.env.NEXT_PUBLIC_SERVER_URL}/news`)
@@ -40,7 +52,11 @@ const News = () => {
   return (
     <div className={styles.Main_Container + " container"}>
       <div className={styles.News_Outer_Container}>
-        <h3>Translate to Hindi</h3>
+        <h3>Translate to {translateTo}</h3>
+        <Select
+          options={options}
+          onChange={(values) => this.setValues(values)}
+        />
         {newsData.map((news, index) => {
           return (
             <div key={index} className={styles.News_Container}>
