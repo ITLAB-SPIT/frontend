@@ -17,7 +17,7 @@ const Footer = () => {
             <img src={logo.src} alt="Logo"></img>
           </Col>
           <Col sm={6} className="text-center text-sm-end">
-            {/* <div>
+            <div>
               <a href="#">
                 <img src={navItem1} alt="" />{" "}
               </a>
@@ -27,7 +27,7 @@ const Footer = () => {
               <a href="#">
                 <img src={navItem3} alt="" />{" "}
               </a>
-            </div> */}
+            </div>
             <p className={styles.footer_message}>
               CopyRight 2k22. All Rights Reserved
             </p>

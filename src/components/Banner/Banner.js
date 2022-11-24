@@ -130,7 +130,8 @@ const Banner = () => {
               </TrackVisibility>
             </Col>
             <Col xs={12} md={6} xl={5} id={styles.pageImg}>
-              <img src={Picture.src} alt="Header Img" />
+              <div className={styles.earth}></div>
+              {/* <img src={Picture.src} alt="Header Img" /> */}
             </Col>
           </Row>
         </Container>

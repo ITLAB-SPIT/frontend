@@ -274,21 +274,51 @@ button:hover svg {
   display: block;
 }
 
-#pageImg {
+//------------------globe css-------------
+
+
+.earth {  
+  margin-left: 100px;
+  display: flex;
+	position: relative;
+	width: 350px;
+	height: 350px;
+	border-radius: 50%;
+	background: transparent url("https://i.imgur.com/Qk4UXcU.png");
+	background-size: cover;
+	box-shadow: inset 0px -20px 50px 10px #00ffff80,
+        0px 0px 30px 6px #00ffff70;
+	transform-style: preserve-3d;
+	transform: rotate(20deg);
+	animation: rotate 15s linear infinite;
+}
+
+@keyframes rotate {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: 530px 0;
+	}
+}
+
+
+// #pageImg {
   
-  scale: 0.8;
-  display: flexbox;
-  justify-content: right;
-  /* size: 1rem; */ 
+//   scale: 0.8;
+//   display: flexbox;
+//   justify-content: right;
+//   /* size: 1rem; */ 
 
-}
+// }
 
-img {
-  /* height: 10%;
-  size: 1rem; */
-  /* z-index: 10; */
-  /* animation: updown 3s linear infinite; */
-}
+// img {
+//   /* height: 10%;
+//   size: 1rem; */
+//   /* z-index: 10; */
+//   /* animation: updown 3s linear infinite; */
+// }
 
 @keyframes updown {
   0% {
