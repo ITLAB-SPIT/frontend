@@ -33,13 +33,6 @@ const Navbar = () => {
     setLastScrollY(window.scrollY);
   };
 
-  // useEffect(() => {
-  // 	axios.get(`local/getImage`).then((res) => {
-  // 		console.log(res.data);
-  // 		setData(res.data);
-  // 	})
-  // }, [data])
-
   useEffect(() => {
     const nav_height = navbarRef.current?.offsetHeight;
     document.querySelector("body").style.paddingTop = nav_height + "px";
@@ -70,15 +63,15 @@ const Navbar = () => {
       </div>
       <div className={styles.links_container}>
         <div className={styles.link}>
-          <Link href={"/blogs"}>Blogs</Link>
+          <Link href={"/home"}>Home</Link>
         </div>
-        <div className={styles.link_dropdown}>
-          <div>Participate</div>
-          <BiChevronDown />
-        </div>
+        <div className={styles.link}></div>
         <div className={styles.link_dropdown}>
           <div>Learn</div>
-          <BiChevronDown />
+          {/* <BiChevronDown /> */}
+        </div>
+        <div className={styles.link_dropdown}>
+          <Link href={"/about"}>About</Link>
         </div>
       </div>
       <div className={styles.search_container}>

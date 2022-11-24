@@ -2,7 +2,7 @@
 
 .Main_container {
   display: flex;
-
+  overflow-y: hidden;
   .left_container {
     background-color: #bfbfbf;
     flex: 5;

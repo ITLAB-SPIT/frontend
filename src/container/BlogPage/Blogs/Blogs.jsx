@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import styles from "./Blogs.module.scss";
 import BlogCard from "../../../components/UI/Cards/BlogCard/BlogCard";
-import { Dna } from "react-loader-spinner";
+import SkullManRun from "./../../../../public/assets/gifs/skull_man_running.gif";
+import Image from "next/image";
 import axios from "axios";
 const Blogs = () => {
   const [blogsData, setBlogsData] = React.useState([]);
@@ -31,14 +32,12 @@ const Blogs = () => {
   if (!localStorage.getItem("blogsData")) {
     return (
       <div className={styles.loader}>
-        <Dna
-          visible={true}
-          height="80"
-          width="80"
-          ariaLabel="dna-loading"
-          wrapperStyle={{}}
-          wrapperClass="dna-wrapper"
-        />
+        <Image
+          src={SkullManRun}
+          width={"500px"}
+          height={"500px"}
+          // className={styles.image}
+        ></Image>
       </div>
     );
   } else {

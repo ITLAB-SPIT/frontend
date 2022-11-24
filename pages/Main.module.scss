@@ -1,4 +1,12 @@
-.some_div {
-  width: 50%;
-  height: 50%;
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+
+  .image {
+    width: 1000px;
+    height: 1000px;
+  }
 }

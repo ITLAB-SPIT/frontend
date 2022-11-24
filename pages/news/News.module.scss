@@ -32,6 +32,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .Language {
+      // width: 30%;
+      // width: 100%;
+      h3 {
+        margin-right: 1rem;
+      }
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .dropdown {
+        // width: 100%;
+        // display: none;
+        // color: red;
+        margin-bottom: 0.5rem;
+        // height: 100%;
+      }
+    }
+
     h3 {
       background-color: var(--txt-400);
       padding: 1rem;

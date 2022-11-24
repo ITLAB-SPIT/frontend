@@ -122,7 +122,7 @@ const Banner = () => {
                     {/* <span className={styles.tagline}> Ipsum</span> */}
 
                     <button onClick={() => console.log("connect")}>
-                      Let's Connect{" "}
+                      Lets Connect{" "}
                       <ArrowRightCircle size="25"></ArrowRightCircle>
                     </button>
                   </div>

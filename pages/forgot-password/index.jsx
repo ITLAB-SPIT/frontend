@@ -10,7 +10,8 @@ import {
 import axios from "axios";
 import Router from "next/router";
 import { Dna } from "react-loader-spinner";
-
+import Image from "next/image";
+import SkullManRun from "./../../public/assets/gifs/skull_man_running.gif";
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -76,14 +77,12 @@ const ForgotPassword = () => {
     return (
       <div className={styles.Main_Container}>
         <div className={styles.loader}>
-          <Dna
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="dna-loading"
-            wrapperStyle={{}}
-            wrapperClass="dna-wrapper"
-          />
+          <Image
+            src={SkullManRun}
+            width={"500px"}
+            height={"500px"}
+            // className={styles.image}
+          ></Image>
         </div>
       </div>
     );

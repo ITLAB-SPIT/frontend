@@ -4,7 +4,8 @@ import Feed from "./Feed/Feed";
 import styles from "./BlogPage.module.scss";
 import Rightbar from "./Rightbar/Rightbar";
 import Sidebar from "./Sidebar/Sidebar";
-import { Dna } from "react-loader-spinner";
+import Image from "next/image";
+import SkullManRun from "./../../../public/assets/gifs/skull_man_running.gif";
 import axios from "axios";
 
 const BlogPage = (props) => {
@@ -26,14 +27,12 @@ const BlogPage = (props) => {
   if (!blogsData) {
     return (
       <div className={styles.loader}>
-        <Dna
-          visible={true}
-          height="80"
-          width="80"
-          ariaLabel="dna-loading"
-          wrapperStyle={{}}
-          wrapperClass="dna-wrapper"
-        />
+        <Image
+          src={SkullManRun}
+          width={"500px"}
+          height={"500px"}
+          // className={styles.image}
+        ></Image>
       </div>
     );
   } else {
