@@ -1,12 +1,15 @@
+import axios from "axios";
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
 import contactImg from "./assets/img/contact-img.svg";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 import styles from "./Contact.module.scss";
 
 const Contact = () => {
   const formInitialState = {
-    firstName: "",
-    lastName: "",
+    firstname: "",
+    lastname: "",
     email: "",
     phone: "",
     message: "",
@@ -26,26 +29,34 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
-    let response = await fetch("http://localhost:5000/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/json;charset=utf-8",
-      },
-      body: JSON.stringify(formDetails),
-    });
-    let result = response.json();
-    setFormDetails(formInitialState);
-    if (result.code == 200) {
-      setState({ success: true, message: "Message sent successfully" });
-      setButtonText("Sent");
-    } else {
-      setState({
-        success: false,
-        message: "Something went wrong. Please try again!!",
+    axios
+      .post(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/contact-interview-experiences`,
+        formDetails
+      )
+      .then((response) => {
+        if (response.status === 200) {
+          alert("Message sent successfully");
+          // toast.success("", {
+          //   className: styles.error_container,
+          // });
+          setButtonText("Send");
+          setFormDetails(formInitialState);
+        }
+      })
+      .catch((error) => {
+        console.log("error");
+        console.log(error);
+        alert("Message not sent");
+        setButtonText("Send");
       });
-      setButtonText("Couldn't send");
-    }
   };
+
+  const CloseButton = ({ closeToast }) => (
+    <i className={"material-icons " + styles.close_icon} onClick={closeToast}>
+      <AiOutlineCloseCircle size={"2rem"} />
+    </i>
+  );
 
   return (
     <section className={styles.contact} id="connect">
@@ -61,17 +72,17 @@ const Contact = () => {
                 <Col sm={6} className="px-1">
                   <input
                     type="text"
-                    value={formDetails.firstName}
+                    value={formDetails.firstname}
                     placeholder="First Name"
-                    onChange={(e) => onFormUpdate("firstName", e.target.value)}
+                    onChange={(e) => onFormUpdate("firstname", e.target.value)}
                   ></input>
                 </Col>
                 <Col sm={6} className="px-1">
                   <input
                     type="text"
-                    value={formDetails.lastName}
+                    value={formDetails.lastname}
                     placeholder="Last Name"
-                    onChange={(e) => onFormUpdate("lastName", e.target.value)}
+                    onChange={(e) => onFormUpdate("lastname", e.target.value)}
                   ></input>
                 </Col>
                 <Col sm={6} className="px-1">

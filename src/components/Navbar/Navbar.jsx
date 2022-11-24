@@ -66,6 +66,9 @@ const Navbar = () => {
           <Link href={"/home"}>Home</Link>
         </div>
         <div className={styles.link}>
+          <Link href={"/blogs"}>Blogs</Link>
+        </div>
+        <div className={styles.link}>
           <Link href={"/news"}>News</Link>
         </div>
         <div className={styles.link_dropdown}>

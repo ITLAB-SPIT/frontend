@@ -1,6 +1,5 @@
-
 .news_letter_bx {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 55px;
   color: #121212;
   padding: 85px 125px;
@@ -8,12 +7,11 @@
   margin-top: -122px;
 
   h3 {
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      line-height: 1.2em;
-    }
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.2em;
+  }
 }
-
 
 .new_email_bx {
   background: #fff;
@@ -23,11 +21,34 @@
   z-index: 0;
   display: flex;
   align-items: center;
+  height: 5rem;
+
+  input {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-radius: 20px;
+    color: #121212;
+    padding: 18px 26px;
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: 0.8px;
+    transition: 0.3s ease-in-out;
+  }
+
+  button {
+    font-weight: 700;
+    color: #000;
+    font-size: 18px;
+    margin-right: 2rem;
+    border-radius: 0;
+    position: relative;
+  }
 }
 
 .new_email_bx::before {
   content: "";
-  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
   border-radius: 20px;
   position: absolute;
   z-index: -1;
@@ -59,12 +80,10 @@
 }
 
 .submitButton {
-  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
   padding: 20px 65px;
   color: #fff;
   font-weight: 500;
   letter-spacing: 0.5px;
   border-radius: 18px;
 }
-
-

@@ -1,21 +1,60 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { Col, Row, Alert } from "react-bootstrap";
 import styles from "./Newsletter.module.scss";
 
 export const Newsletter = ({ status, message, onValidated }) => {
   const [email, setEmail] = useState("");
-
+  const [text, setText] = useState("Submit");
   useEffect(() => {
     if (status === "success") clearFields();
   }, [status]);
 
-  const handleSubmit = (e) => {
+  var message = { isValid: false, message: "Invalid input" };
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    email &&
-      email.indexOf("@") > -1 &&
-      onValidated({
-        EMAIL: email,
-      });
+    setText("Sending...");
+    if (email.length === 0) {
+      message.message = "Please enter your email.";
+      alert(message.message);
+      setText("Submit");
+    } else if (!validateEmail(email)) {
+      message.message = "Please enter a valid email address.";
+      alert(message.message);
+      setText("Submit");
+    } else {
+      message.isValid = true;
+      message.message = "Valid input.";
+      axios
+        .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/news-subscription`, {
+          email: email,
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            alert("Congrats you have subscribed to our newsletter.");
+            setText("Submit");
+            setEmail("");
+          } else {
+            alert("Something went wrong. Please try again later.");
+            setText("Submit");
+          }
+        })
+        .catch((error) => {
+          console.log("error");
+          console.log(error);
+          alert("Message not sent");
+          setText("Submit");
+        });
+    }
   };
 
   const clearFields = () => {
@@ -43,7 +82,7 @@ export const Newsletter = ({ status, message, onValidated }) => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email Address"
                 />
-                <button type={styles.submit}>Submit</button>
+                <button type={styles.submit}>{text}</button>
               </div>
             </form>
           </Col>
