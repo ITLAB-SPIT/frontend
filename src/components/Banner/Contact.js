@@ -69,7 +69,7 @@ const Contact = () => {
             <h2>Get in touch</h2>
             <form onSubmit={handleSubmit}>
               <Row>
-                <Col sm={6} className="px-1">
+                <Col sm={5} className="px-1" style={{ marginRight: "2rem" }}>
                   <input
                     type="text"
                     value={formDetails.firstname}
@@ -77,7 +77,7 @@ const Contact = () => {
                     onChange={(e) => onFormUpdate("firstname", e.target.value)}
                   ></input>
                 </Col>
-                <Col sm={6} className="px-1">
+                <Col sm={5} className="px-1" style={{ marginRight: "2rem" }}>
                   <input
                     type="text"
                     value={formDetails.lastname}
@@ -85,7 +85,7 @@ const Contact = () => {
                     onChange={(e) => onFormUpdate("lastname", e.target.value)}
                   ></input>
                 </Col>
-                <Col sm={6} className="px-1">
+                <Col sm={5} className="px-1" style={{ marginRight: "2rem" }}>
                   <input
                     type="email"
                     value={formDetails.email}
@@ -93,7 +93,7 @@ const Contact = () => {
                     onChange={(e) => onFormUpdate("email", e.target.value)}
                   ></input>
                 </Col>
-                <Col sm={6} className="px-1">
+                <Col sm={5} className="px-1" style={{ marginRight: "2rem" }}>
                   <input
                     type="tel"
                     value={formDetails.phone}
@@ -101,14 +101,15 @@ const Contact = () => {
                     onChange={(e) => onFormUpdate("phone", e.target.value)}
                   ></input>
                 </Col>
-                <Col sm={6}>
+                <Col sm={5} className="px-1" style={{ marginRight: "3rem" }}>
                   <textarea
+                    style={{ height: "8rem", width: "57rem" }}
                     row="6"
                     value={formDetails.message}
                     placeholder="Message"
                     onChange={(e) => onFormUpdate("message", e.target.value)}
                   />
-                  <button type="submit">
+                  <button type="submit" style={{ borderRadius: "1rem" }}>
                     <span>{buttonText}</span>
                   </button>
                 </Col>
