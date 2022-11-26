@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import LimitChar from "../../UI/LimitChar/LimitChar";
 import Link from "next/link";
 import styles from "./Sidebar.module.scss";
@@ -9,12 +9,20 @@ import { BsBookmarkStarFill } from "react-icons/bs";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { CgClose } from "react-icons/cg";
 import { signOut } from "next-auth/react";
-import Router from "next/router";
+import { useSelector } from "react-redux";
 import { connect } from "react-redux";
 import { logout } from "../../../../store/actions/main";
-
+import userAvatar from "./../../../../public/assets/images/userAvatar.jpg";
 const Sidebar = ({ avatarRef, setSidebarOpen, dispatch }) => {
   const sidebarRef = useRef(null);
+  const [userImage, setUserImage] = useState(userAvatar.src);
+  const basicUserInfo = useSelector((state) => state.main.basicUserInfo);
+
+  useEffect(() => {
+    if (basicUserInfo.image) {
+      setUserImage(basicUserInfo.image);
+    }
+  }, [basicUserInfo]);
 
   useEffect(() => {
     document.addEventListener("mousedown", clickOutsideRef);
@@ -42,7 +50,7 @@ const Sidebar = ({ avatarRef, setSidebarOpen, dispatch }) => {
       </div>
       <div className={styles.user_info}>
         <div className={styles.avatar}>
-          <img src="/assets/images/mySelf.jpg" alt="User Image" />
+          <img src={userImage} alt="User Image" />
         </div>
         <div className={styles.info}>
           <div className={styles.name}>

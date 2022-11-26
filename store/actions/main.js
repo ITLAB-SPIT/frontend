@@ -41,9 +41,26 @@ export const login = (loginDetails) => {
             localStorage.setItem("email", res.data.email);
             localStorage.setItem("image", res.data.image);
             localStorage.setItem("token", res.data.token);
-            console.log("token");
-            console.log(res.data.token);
+            // localStorage.setItem("blogTitles", res.data.blogTitles);
+            dispatch(
+              setBasicUserInfo({
+                firstname: res.data.firstname,
+                lastname: res.data.lastname,
+                email: res.data.email,
+                image: res.data.image,
+                token: res.data.token,
+              })
+            );
+            const blogTitlesArray = [];
+            res.data.blogTitles.map((blogTitle) => {
+              blogTitlesArray.push({
+                label: blogTitle.title,
+                value: blogTitle.title,
+              });
+            });
+            dispatch(setBlogTitles(blogTitlesArray));
             dispatch(authenticateAction(loginDetails));
+            // window.location.reload();
             Router.push("/blogs");
           }
         })
@@ -89,6 +106,7 @@ export const signUp = (signUpDetails) => {
             localStorage.setItem("email", signUpDetails.email);
             localStorage.setItem("image", signUpDetails.image);
             localStorage.setItem("token", res.data.token);
+            localStorage.setItem("blogTitles", res.data.blogTitles);
             dispatch(authenticateAction(signUpDetails));
             Router.push("/blogs");
           }
@@ -117,7 +135,7 @@ export const signUp = (signUpDetails) => {
 
 export const logout = () => {
   return async (dispatch) => {
-    localStorage.removeItem("token");
+    localStorage.setItem("token", "");
     dispatch(deAuthenticateAction());
   };
 };
@@ -132,5 +150,12 @@ export const setBasicUserInfo = (basicUserInfo) => (dispatch) => {
   dispatch({
     type: types.SET_BASIC_USER_INFO,
     payload: basicUserInfo,
+  });
+};
+
+export const setBlogTitles = (blogTitles) => (dispatch) => {
+  dispatch({
+    type: types.SET_BLOG_TITLES,
+    payload: blogTitles,
   });
 };

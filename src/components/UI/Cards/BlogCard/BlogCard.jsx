@@ -7,7 +7,7 @@ import Image from "next/image";
 import styles from "./BlogCard.module.scss";
 import Link from "next/link";
 import Router from "next/router";
-
+import userAvatar from "./../../../../../public/assets/images/userAvatar.jpg";
 const BlogCard = (props) => {
   return (
     <div className={styles.Blog_card}>
@@ -22,7 +22,14 @@ const BlogCard = (props) => {
               objectFit="cover"
               alt="User Image"
             /> */}
-            <img src={props.blogData.userImageUrl} alt={"User Image"}></img>
+            <img
+              src={
+                props.blogData.userImageUrl
+                  ? props.blogData.userImageUrl
+                  : userAvatar.src
+              }
+              alt={"User Image"}
+            ></img>
           </div>
           <div className={styles.info}>
             <div className={styles.name}>{props.blogData.name}</div>

@@ -14,7 +14,7 @@ const Rightbar = () => {
               <div className={styles.profile}>
                 <div className={styles.image}>
                   <Image
-                    src={"/assets/images/mySelf.jpg"}
+                    src={"/assets/images/userAvatar.jpg"}
                     width="100%"
                     height="100%"
                     layout="fill"
@@ -40,7 +40,7 @@ const Rightbar = () => {
               <div className={styles.profile}>
                 <div className={styles.image}>
                   <Image
-                    src={"/assets/images/mySelf.jpg"}
+                    src={"/assets/images/userAvatar.jpg"}
                     width="100%"
                     height="100%"
                     layout="fill"
@@ -66,7 +66,7 @@ const Rightbar = () => {
               <div className={styles.profile}>
                 <div className={styles.image}>
                   <Image
-                    src={"/assets/images/mySelf.jpg"}
+                    src={"/assets/images/userAvatar.jpg"}
                     width="100%"
                     height="100%"
                     layout="fill"
@@ -91,7 +91,7 @@ const Rightbar = () => {
               <div className={styles.profile}>
                 <div className={styles.image}>
                   <Image
-                    src={"/assets/images/mySelf.jpg"}
+                    src={"/assets/images/userAvatar.jpg"}
                     width="100%"
                     height="100%"
                     layout="fill"

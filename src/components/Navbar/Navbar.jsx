@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Navbar.module.scss";
-import { BiChevronDown, BiSearch } from "react-icons/bi";
-import axios from "axios";
+import { BiSearch } from "react-icons/bi";
 import Sidebar from "./Sidebar/Sidebar";
 import Link from "next/link";
 import Image from "next/image";
-
+import { useSelector } from "react-redux";
+import userAvatar from "./../../../public/assets/images/userAvatar.jpg";
+import SelectSearch from "react-select-search";
 const Navbar = () => {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -13,7 +14,22 @@ const Navbar = () => {
   const avatarRef = useRef(null);
   const [data, setData] = useState();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const basicUserInfo = useSelector((state) => state.main.basicUserInfo);
+  const blogTitles = useSelector((state) => state.main.blogTitles);
+  console.log("blogTitles from the navbar");
+  console.log(blogTitles);
+  const [userImage, setUserImage] = useState(userAvatar.src);
+  const [searchBarValue, setSearchBarValue] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setIsLoggedIn(true);
+    }
+    if (basicUserInfo.image) {
+      setUserImage(basicUserInfo.image);
+    }
+  }, [basicUserInfo]);
 
   const controlNavbar = () => {
     const nav_height = navbarRef.current?.offsetHeight;
@@ -43,6 +59,16 @@ const Navbar = () => {
     };
   }, [lastScrollY]);
 
+  const options = [
+    { name: "Swedish", value: "sv" },
+    { name: "English", value: "en" },
+    {
+      type: "group",
+      name: "Group name",
+      items: [{ name: "Spanish", value: "es" }],
+    },
+  ];
+
   return (
     <div
       ref={navbarRef}
@@ -54,12 +80,15 @@ const Navbar = () => {
       }
     >
       <div>
-        <Image
-          className={styles.logo}
-          src={"/assets/images/logo.png"}
-          width={"40px"}
-          height={"40px"}
-        ></Image>
+        <Link href="/home">
+          <Image
+            className={styles.logo}
+            src={"/assets/images/logo.png"}
+            width={"40px"}
+            height={"40px"}
+            style={{ borderRadius: "1rem" }}
+          />
+        </Link>
       </div>
       <div className={styles.links_container}>
         <div className={styles.link}>
@@ -73,31 +102,38 @@ const Navbar = () => {
         </div>
         <div className={styles.link_dropdown}>
           <div>Learn</div>
-          {/* <BiChevronDown /> */}
         </div>
         <div className={styles.link_dropdown}>
           <Link href={"/about"}>About</Link>
         </div>
       </div>
       <div className={styles.search_container}>
-        <input type="text" placeholder="Search..." />
-        <BiSearch />
+        <SelectSearch
+          options={options}
+          value="sv"
+          name="language"
+          placeholder="Choose your language"
+        />
       </div>
-      {isAuthenticated ? (
+      {isLoggedIn ? (
         <div className={styles.authenticated_container}>
           <div
             ref={avatarRef}
             className={styles.avatar}
             onClick={() => setSidebarOpen((active) => !active)}
           >
-            <img src="/assets/images/mySelf.jpg" alt="user profile" />
+            <img src={userImage} alt="user profile" />
           </div>
         </div>
       ) : (
         <div className={styles.utils_container}>
           <div className={styles.login_signup}>
-            <div className={styles.login}>Login</div>
-            <div className={styles.auth_btn}>Signup</div>
+            <div className={styles.login}>
+              <Link href={"/login"}>Login</Link>
+            </div>
+            <div className={styles.auth_btn}>
+              <Link href={"/signup"}>Signup</Link>
+            </div>
           </div>
           <div className={styles.logged_in}></div>
         </div>

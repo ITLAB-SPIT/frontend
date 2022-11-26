@@ -7,6 +7,7 @@ import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SkullManRun from "./../public/assets/gifs/skull_man_running.gif";
 import styles from "./Main.module.scss";
+
 const Home = (props) => {
   useEffect(() => {
     Router.push("/blogs");
@@ -24,12 +25,12 @@ const Home = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return { basicUserInfo: state.main.basicUserInfo, auth: state.auth };
-};
+// const mapStateToProps = (state) => {
+//   return { basicUserInfo: state.main.basicUserInfo, auth: state.auth };
+// };
 
-const mapDispatchToProps = {
-  setBasicUserInfo,
-};
+// const mapDispatchToProps = {
+//   setBasicUserInfo,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
