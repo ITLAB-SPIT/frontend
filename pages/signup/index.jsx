@@ -230,14 +230,14 @@ const mapStateToProps = (state) => {
   };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onSubmit: (data) => {
-//         dispatch(setAddresses(data))
-//     }
-// }
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSubmit: (data) => {
+      dispatch(setAddresses(data));
+    },
+  };
+};
 
-// export default connect(mapStateToProps)(Signup);
+export default connect(mapStateToProps)(Signup);
 
-export default Signup;
+// export default Signup;

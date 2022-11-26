@@ -9,8 +9,8 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Router from "next/router";
 import axios from "axios";
-import { connect } from "react-redux";
 import { login, setBlogTitles } from "../../store/actions/main";
+import { connect } from "react-redux";
 
 const Login = (props) => {
   const { data: session } = useSession();
@@ -204,16 +204,16 @@ const Login = (props) => {
   }
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     user: state.auth.user,
-//     isLoggedIn: state.auth.isLoggedIn,
-//   };
-// };
+const mapStateToProps = (state) => {
+  return {
+    user: state.auth.user,
+    isLoggedIn: state.auth.isLoggedIn,
+  };
+};
 
-// export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Login);
 
-export default Login;
+// export default Login;
 
 // import React, { useState } from "react";
 // import styles from "./Login.module.scss";

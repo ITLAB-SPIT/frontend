@@ -6,10 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import userAvatar from "./../../../public/assets/images/userAvatar.jpg";
-import { Select } from "react-select";
-
+import SelectSearch from "react-select-search";
 const Navbar = () => {
-  console.log(userAvatar);
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const navbarRef = useRef(null);
@@ -19,8 +17,11 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const basicUserInfo = useSelector((state) => state.main.basicUserInfo);
   const blogTitles = useSelector((state) => state.main.blogTitles);
+  console.log("blogTitles from the navbar");
+  console.log(blogTitles);
   const [userImage, setUserImage] = useState(userAvatar.src);
   const [searchBarValue, setSearchBarValue] = useState("");
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setIsLoggedIn(true);
@@ -29,8 +30,6 @@ const Navbar = () => {
       setUserImage(basicUserInfo.image);
     }
   }, [basicUserInfo]);
-
-  // useEffect(() => {}, [blogTitles]);
 
   const controlNavbar = () => {
     const nav_height = navbarRef.current?.offsetHeight;
@@ -59,6 +58,16 @@ const Navbar = () => {
       window.removeEventListener("scroll", controlNavbar);
     };
   }, [lastScrollY]);
+
+  const options = [
+    { name: "Swedish", value: "sv" },
+    { name: "English", value: "en" },
+    {
+      type: "group",
+      name: "Group name",
+      items: [{ name: "Spanish", value: "es" }],
+    },
+  ];
 
   return (
     <div
@@ -99,18 +108,12 @@ const Navbar = () => {
         </div>
       </div>
       <div className={styles.search_container}>
-        {/* <input type="text" placeholder="Search..." /> */}
-        <Select
-          value={searchBarValue}
-          options={blogTitles}
-          onChange={(e) => {
-            console.log(e);
-            setSearchBarValue(e);
-          }}
-          placeholder="Search..."
-          openMenuOnClick={false}
+        <SelectSearch
+          options={options}
+          value="sv"
+          name="language"
+          placeholder="Choose your language"
         />
-        <BiSearch />
       </div>
       {isLoggedIn ? (
         <div className={styles.authenticated_container}>
