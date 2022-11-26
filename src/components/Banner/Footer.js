@@ -1,6 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { MailchimpForm } from "./MailChimpForm";
 import logo from "./assets/img/logo.svg";
+
 import navItem1 from "./assets/img/nav-icon1.svg";
 import navItem2 from "./assets/img/nav-icon2.svg";
 import navItem3 from "./assets/img/nav-icon3.svg";
@@ -17,7 +18,7 @@ const Footer = () => {
             <img src={logo.src} alt="Logo"></img>
           </Col>
           <Col sm={6} className="text-center text-sm-end">
-            <div>
+            {/* <div>
               <a href="#">
                 <img src={navItem1} alt="" />{" "}
               </a>
@@ -27,7 +28,7 @@ const Footer = () => {
               <a href="#">
                 <img src={navItem3} alt="" />{" "}
               </a>
-            </div>
+            </div> */}
             <p className={styles.footer_message}>
               CopyRight 2k22. All Rights Reserved
             </p>
