@@ -8,6 +8,7 @@ import axios from "axios";
 import Link from "next/link";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
+
 const News = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [newsData, setNewsData] = useState([]);

@@ -2,7 +2,15 @@ import * as types from "../types";
 
 const main = (
   state = {
-    basicUserInfo: { name: "", email: "", imageUrl: "" },
+    basicUserInfo: {
+      firstname: "",
+      lastname: "",
+      email: "",
+      image: "",
+      token: "",
+    },
+    blogTitles: [],
+    name: "shreyash",
   },
   action
 ) => {
@@ -11,6 +19,11 @@ const main = (
       return {
         ...state,
         basicUserInfo: action.payload,
+      };
+    case types.SET_BLOG_TITLES:
+      return {
+        ...state,
+        blogTitles: action.payload,
       };
     default:
       return { ...state };

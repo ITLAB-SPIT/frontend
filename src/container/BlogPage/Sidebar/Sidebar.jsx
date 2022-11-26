@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Sidebar.module.scss";
 import { HiUserGroup } from "react-icons/hi";
 import Image from "next/image";
+import userAvatar from "./../../../../public/assets/images/userAvatar.jpg";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
+  const [userImage, setUserImage] = useState(userAvatar.src);
+  const basicUserInfo = useSelector((state) => state.main.basicUserInfo);
+  useEffect(() => {
+    if (basicUserInfo.image) {
+      setUserImage(basicUserInfo.image);
+    }
+  }, [basicUserInfo]);
   return (
     <div className={styles.Sidebar + " sticky-top"}>
       <div className={styles.SidebarWrapperTop}>
         <div className={styles.profileInfo}>
           <div className={styles.image}>
             <Image
-              src={"/assets/images/mySelf.jpg"}
+              src={userAvatar.src}
               width="100%"
               height="100%"
               layout="fill"

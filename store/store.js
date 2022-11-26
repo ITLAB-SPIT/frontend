@@ -17,15 +17,30 @@
 // export const wrapper = createWrapper(makeStore);
 
 import { createStore, applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import thunkMiddleware from "redux-thunk";
 import rootReducer from "./reducers/rootReducer";
-import logger from "redux-logger";
+import thunk from "redux-thunk";
+import { createWrapper } from "next-redux-wrapper";
 
-export const initStore = (initialState = {}) => {
-  return createStore(
-    rootReducer,
-    initialState,
-    composeWithDevTools(applyMiddleware(thunkMiddleware, logger))
+// export const initStore = (initialState = {}) => {
+//   return createStore(
+//     rootReducer,
+//     initialState,
+//     composeWithDevTools(applyMiddleware(thunkMiddleware, logger))
+//   );
+// };
+
+// import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
+// import ReduxToastr, { reducer as toastrReducer } from "react-redux-toastr";
+
+// const composeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose;
+
+let store = null;
+export const makeStore = (initialState) => {
+  const { composeWithDevTools } = require("redux-devtools-extension");
+  const createStoreWithMiddleware = composeWithDevTools(applyMiddleware(thunk))(
+    createStore
   );
+  store = createStoreWithMiddleware(rootReducer, initialState);
+  return store;
 };
+export const wrapper = createWrapper(makeStore, { debug: true });

@@ -2,7 +2,7 @@ import styles from "./about.module.scss";
 import { useEffect, useState } from "react";
 import New from "./New";
 
-function About() {
+const About = () => {
   const [mouseCoords, setMouseCoords] = useState({ x: 0, y: 0 });
   const obj1 = {
     akansha:
@@ -53,6 +53,6 @@ function About() {
       </div>
     </div>
   );
-}
+};
 
 export default About;

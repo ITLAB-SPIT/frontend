@@ -10,7 +10,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import Router from "next/router";
 import axios from "axios";
 import { connect } from "react-redux";
-import { login } from "../../store/actions/main";
+import { login, setBlogTitles } from "../../store/actions/main";
 
 const Login = (props) => {
   const { data: session } = useSession();
@@ -61,33 +61,6 @@ const Login = (props) => {
 
     if (message.isValid) {
       handleLoginSubmit();
-      // axios
-      //   .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/login`, {
-      //     email: loginData.email,
-      //     password: loginData.password,
-      //   })
-      //   .then((res) => {
-      //     if (res.status === 200) {
-      //       toast.success("Login successful!");
-      //       console.log(res.data);
-      //       Router.push("/");
-      //     }
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //     if (err.response.status == 401) {
-      //       toast.error("Invalid Credentials.", {
-      //         position: "top-right",
-      //         autoClose: 5000,
-      //         hideProgressBar: false,
-      //         closeOnClick: true,
-      //         pauseOnHover: true,
-      //         draggable: true,
-      //         progress: undefined,
-      //         className: styles.error_container,
-      //       });
-      //     }
-      //   });
     } else {
       toast.error(message.message, {
         progress: undefined,
@@ -120,20 +93,18 @@ const Login = (props) => {
         image: image,
       })
       .then((res) => {
+        // console.log(123);
         if (res.status === 200) {
           localStorage.setItem("token", res.data.token);
+          localStorage.setItem("blogTitles", res.data.blogTitles);
+          // console.log("res.data");
+          // console.log(res.data);
           Router.push("/");
         }
       })
       .catch((err) => {
         console.log(err);
       });
-    // return (
-    //   <div>
-    //     <p>Welcome, {session.user.email}</p>
-    //     <button onClick={() => signOut()}>signOut</button>
-    //   </div>
-    // );
   } else {
     return (
       <div className={styles.Main_container}>
@@ -233,14 +204,16 @@ const Login = (props) => {
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.auth.user,
-    isLoggedIn: state.auth.isLoggedIn,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     user: state.auth.user,
+//     isLoggedIn: state.auth.isLoggedIn,
+//   };
+// };
 
-export default connect(mapStateToProps)(Login);
+// export default connect(mapStateToProps)(Login);
+
+export default Login;
 
 // import React, { useState } from "react";
 // import styles from "./Login.module.scss";

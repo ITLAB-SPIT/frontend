@@ -37,8 +37,8 @@ const Blog = (props) => {
   return <BlogContainer pageName={"blog"} />;
 };
 
-const mapStateToProps = (state) => {
-  return { basicUserInfo: state.main.basicUserInfo, auth: state.auth };
-};
+// const mapStateToProps = (state) => {
+//   return { basicUserInfo: state.main.basicUserInfo, auth: state.auth };
+// };
 
-export default connect(mapStateToProps)(Blog);
+export default Blog;
