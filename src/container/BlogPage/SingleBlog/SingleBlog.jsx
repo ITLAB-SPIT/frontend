@@ -7,9 +7,7 @@ import BlogCard from "../../../components/UI/Cards/BlogCard/BlogCard";
 import ViewBlogCard from "../../../components/UI/Cards/ViewBlogCard/ViewBlogCard";
 
 const SingleBlog = () => {
-  const [activeLink, setActiveLink] = useState("blogs");
   const [scrollBtnActive, setScrollBtnActive] = useState(false);
-  const [addContainerShow, setAddContainerShow] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", toggleScrollBtn);

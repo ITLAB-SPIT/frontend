@@ -4,29 +4,20 @@ import { AiFillLike, AiFillPlayCircle } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { BsSave } from "react-icons/bs";
-import LimitChar from "../../LimitChar/LimitChar";
-import Image from "next/image";
 import styles from "./ViewBlogCard.module.scss";
 import Link from "next/link";
-import blogs from "../../../../../pages/blogs";
+import { useSelector } from "react-redux";
 
 const ViewBlogCard = (props) => {
-  const blogData = JSON.parse(localStorage.getItem("blogsData"))[
-    localStorage.getItem("blogIndex")
-  ];
+  // const blogsData = useSelector((state) => state.main.blogsData);
+  // const blogData = blogsData[localStorage.getItem("blogIndex")];
+  const blogData = useSelector((state) => state.main.currentBlogData);
+  console.log("blogData", blogData);
   return (
     <div className={styles.Blog_card}>
       <div className={styles.user_profile}>
         <div className={styles.profile}>
           <div className={styles.image}>
-            {/* <Image
-              src={blogData.userImageUrl}
-              width="100%"
-              height="100%"
-              layout="fill"
-              objectFit="cover"
-              alt="User Image"
-            /> */}
             <img src={blogData.userImageUrl} alt={"User Image"}></img>
           </div>
           <div className={styles.info}>

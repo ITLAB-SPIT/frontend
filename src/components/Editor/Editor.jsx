@@ -67,52 +67,11 @@ const Editor = () => {
     });
   };
 
-  //   const isUrlValid = async (url) => {
-  //     try {
-  //       const res = await axios.get(url);
-  //       console.log("res");
-  //       console.log(res);
-  //       if (res.status === 200) {
-  //         return true;
-  //       } else {
-  //         return false;
-  //       }
-  //     } catch (err) {
-  //       console.log(err);
-  //       return false;
-  //     }
-  //   };
-
-  //   const isBannerValid = async () => {
-  //     const res = await isUrlValid(post.imageUrl);
-  //     if (res) {
-  //       return post.imageUrl;
-  //     }
-  //     if (post.base64) {
-  //       return post.base64;
-  //     }
-  //   };
-
   const handleInputChange = (event) => {
     setPost((prev) => {
       return { ...prev, [event.target.name]: event.target.value };
     });
   };
-
-  //   const handleImageUrlChange = async (event) => {
-  //     setImageData((prev) => {
-  //       return { ...prev, imageUrl: event.target.value };
-  //     });
-  //     const res = await isUrlValid(event.target.value);
-  //     if (res) {
-  //       setIsBannerAvailable(true);
-  //       setBannerSrc(event.target.value);
-  //     }
-  //     if (!res && imageData.base64) {
-  //       setIsBannerAvailable(true);
-  //       setBannerSrc(imageData.base64);
-  //     }
-  //   };
 
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
@@ -122,10 +81,6 @@ const Editor = () => {
         setPost((prev) => {
           return { ...prev, base64: result };
         });
-        // if (!bannerSrc) {
-        //   setIsBannerAvailable(true);
-        //   setBannerSrc(result);
-        // }
       })
       .catch((err) => {
         console.log(err);

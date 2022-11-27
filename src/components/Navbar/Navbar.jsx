@@ -7,20 +7,30 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import userAvatar from "./../../../public/assets/images/userAvatar.jpg";
 import SelectSearch from "react-select-search";
+import ReactSearchBox from "react-search-box";
+import Select from "react-select";
+import { SearchBar } from "../searchBar";
+
 const Navbar = () => {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const navbarRef = useRef(null);
   const avatarRef = useRef(null);
-  const [data, setData] = useState();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const basicUserInfo = useSelector((state) => state.main.basicUserInfo);
   const blogTitles = useSelector((state) => state.main.blogTitles);
-  console.log("blogTitles from the navbar");
-  console.log(blogTitles);
   const [userImage, setUserImage] = useState(userAvatar.src);
   const [searchBarValue, setSearchBarValue] = useState("");
+
+  const aquaticCreatures = [
+    { label: "Shark", value: "Shark" },
+    { label: "Dolphin", value: "Dolphin" },
+    { label: "Whale", value: "Whale" },
+    { label: "Octopus", value: "Octopus" },
+    { label: "Crab", value: "Crab" },
+    { label: "Lobster", value: "Lobster" },
+  ];
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -58,16 +68,6 @@ const Navbar = () => {
       window.removeEventListener("scroll", controlNavbar);
     };
   }, [lastScrollY]);
-
-  const options = [
-    { name: "Swedish", value: "sv" },
-    { name: "English", value: "en" },
-    {
-      type: "group",
-      name: "Group name",
-      items: [{ name: "Spanish", value: "es" }],
-    },
-  ];
 
   return (
     <div
@@ -108,12 +108,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className={styles.search_container}>
-        <SelectSearch
-          options={options}
-          value="sv"
-          name="language"
-          placeholder="Choose your language"
-        />
+        {isLoggedIn && <SearchBar />}
       </div>
       {isLoggedIn ? (
         <div className={styles.authenticated_container}>

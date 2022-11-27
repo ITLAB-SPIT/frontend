@@ -49,32 +49,22 @@
 
   .search_container {
     margin-left: auto;
-    width: 400px;
-    height: max-content;
+    width: 45rem;
+    height: 7rem;
     border-radius: $br-0;
     overflow: hidden;
     display: flex;
     align-items: center;
-    padding: 7px 2.5rem;
+    // padding: 7px 2.5rem;
     padding-right: 1.5rem;
     color: var(--txt-000);
-    background: var(--txt-400);
+    // background: red;
     margin-right: 20px;
-
-    input {
-      font-size: 1.3rem;
-      width: 100%;
-      background: transparent;
-      color: var(--txt-200);
-      border: none;
-      outline: none;
-    }
-
-    svg {
-      font-size: 2rem;
-      margin-left: 20px;
-      color: var(--txt-200);
-      cursor: pointer;
+    .search_box {
+      margin-top: 1rem;
+      height: 5rem;
+      width: 60rem;
+      // font-size: 10rem;
     }
   }
 

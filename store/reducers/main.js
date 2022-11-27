@@ -9,7 +9,10 @@ const main = (
       image: "",
       token: "",
     },
+    blogTitle: "",
     blogTitles: [],
+    blogsData: [],
+    currentBlogData: {},
     name: "shreyash",
   },
   action
@@ -24,6 +27,21 @@ const main = (
       return {
         ...state,
         blogTitles: action.payload,
+      };
+    case types.SET_BLOG_TITLE:
+      return {
+        ...state,
+        blogTitle: action.payload,
+      };
+    case types.SELECTED_BLOG_DATA:
+      return {
+        ...state,
+        currentBlogData: action.payload,
+      };
+    case types.SET_BLOGS_DATA:
+      return {
+        ...state,
+        blogsData: action.payload,
       };
     default:
       return { ...state };
