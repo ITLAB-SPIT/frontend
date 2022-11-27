@@ -1,14 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Navbar.module.scss";
-import { BiSearch } from "react-icons/bi";
 import Sidebar from "./Sidebar/Sidebar";
 import Link from "next/link";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import userAvatar from "./../../../public/assets/images/userAvatar.jpg";
-import SelectSearch from "react-select-search";
-import ReactSearchBox from "react-search-box";
-import Select from "react-select";
 import { SearchBar } from "../searchBar";
 
 const Navbar = () => {
@@ -100,10 +96,10 @@ const Navbar = () => {
         <div className={styles.link}>
           <Link href={"/news"}>News</Link>
         </div>
-        <div className={styles.link_dropdown}>
+        <div className={styles.link}>
           <div>Learn</div>
         </div>
-        <div className={styles.link_dropdown}>
+        <div className={styles.link}>
           <Link href={"/about"}>About</Link>
         </div>
       </div>

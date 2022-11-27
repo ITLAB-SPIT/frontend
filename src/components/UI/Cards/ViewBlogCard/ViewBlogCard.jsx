@@ -7,18 +7,24 @@ import { BsSave } from "react-icons/bs";
 import styles from "./ViewBlogCard.module.scss";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-
+import userAvatar from "./../../../../../public/assets/images/userAvatar.jpg";
 const ViewBlogCard = (props) => {
-  // const blogsData = useSelector((state) => state.main.blogsData);
-  // const blogData = blogsData[localStorage.getItem("blogIndex")];
   const blogData = useSelector((state) => state.main.currentBlogData);
-  console.log("blogData", blogData);
+  console.log("blogData");
+  console.log(blogData);
   return (
     <div className={styles.Blog_card}>
       <div className={styles.user_profile}>
         <div className={styles.profile}>
           <div className={styles.image}>
-            <img src={blogData.userImageUrl} alt={"User Image"}></img>
+            <img
+              src={
+                blogData.userImageUrl != "undefined"
+                  ? blogData.userImageUrl
+                  : userAvatar.src
+              }
+              alt={"User Image"}
+            ></img>
           </div>
           <div className={styles.info}>
             <div className={styles.name}>{blogData.name}</div>
@@ -43,46 +49,6 @@ const ViewBlogCard = (props) => {
           dangerouslySetInnerHTML={{ __html: blogData.blogData }}
         />
       </div>
-      {/* <div className={styles.blog_container}>
-        <div className={styles.card_left}>
-          <div className={styles.title}>
-            <LimitChar limit={40} word={blogData.title}></LimitChar>
-          </div>
-          <div className={styles.desc}>
-            <LimitChar
-              fitContent={true}
-              limit={200}
-              hoverhide={true}
-              word={blogData.desc}
-            ></LimitChar>
-          </div>
-          <div className={styles.card_footer}>
-            <div className={styles.tags}>
-              <div className={styles.category}>
-                <LimitChar limit={15} word={"Web development"}></LimitChar>
-              </div>
-            </div>
-            <div className={styles.utils}>
-              <div className={styles.icon}>
-                <BsBookmarkPlus />
-              </div>
-              <div className={styles.icon}>
-                <BiCommentDetail />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.card_right}>
-          <Image
-            src={"/assets/images/mySelf.jpg"}
-            width="100%"
-            height="100%"
-            layout="fill"
-            objectFit="cover"
-            alt=""
-          />
-        </div>
-      </div> */}
       <div className={styles.blog_bottom}>
         <div className={styles.left_div}>
           <div className={styles.sub_left_div}>

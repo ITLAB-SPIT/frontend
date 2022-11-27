@@ -64,8 +64,8 @@ const SearchInput = styled.input`
 const SearchIcon = styled.span`
   color: #bebebe;
   font-size: 2rem;
-  margin-right: 10px;
-  margin-top: 1rem;
+  margin-right: 5px;
+  margin-top: 0.3rem;
   vertical-align: middle;
 `;
 
