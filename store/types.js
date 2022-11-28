@@ -6,3 +6,5 @@ export const SET_BLOG_TITLES = "SET_BLOG_TITLES";
 export const SET_BLOG_TITLE = "SET_BLOG_TITLE";
 export const SELECTED_BLOG_DATA = "SELECTED_BLOG_DATA";
 export const SET_BLOGS_DATA = "SET_BLOGS_DATA";
+export const SET_TOKEN = "SET_TOKEN";
+export const SET_USER_PROF_INFO = "SET_USER_PROF_INFO";

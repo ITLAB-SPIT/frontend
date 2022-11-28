@@ -6,7 +6,7 @@ import { GrLinkedinOption } from "react-icons/gr";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import Router from "next/router";
 import axios from "axios";
 import { login, setBlogTitles } from "../../store/actions/main";
@@ -96,6 +96,7 @@ const Login = (props) => {
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("blogTitles", res.data.blogTitles);
           props.setBlogTitles(res.data.blogTitles);
+          props.setToken(res.data.token);
           Router.push("/");
         }
       })
@@ -205,6 +206,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setBlogTitles: (blogTitles) => dispatch(setBlogTitles(blogTitles)),
     login: (loginData) => dispatch(login(loginData)),
+    setToken: (token) => dispatch(setToken(token)),
   };
 };
 export default connect(null, mapDispatchToProps)(Login);

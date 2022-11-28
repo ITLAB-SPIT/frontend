@@ -7,9 +7,11 @@ import { setBlogData } from "../../../store/actions/main";
 const Blog = (props) => {
   const blogTitle = useSelector((state) => state.main.blogTitle);
   const blogsData = useSelector((state) => state.main.blogsData);
-  if (blogTitle === "") {
-    Router.push("/blogs");
-  }
+  useEffect(() => {
+    if (blogTitle === "") {
+      Router.push("/blogs");
+    }
+  }, [blogTitle]);
   useEffect(() => {
     if (blogsData) {
       let blogData = blogsData.filter((blog) => blog.title === blogTitle);

@@ -52,6 +52,14 @@ export const login = (loginDetails) => {
                 token: res.data.token,
               })
             );
+            dispatch(
+              setUserProfInfo({
+                linkedinUrl: res.data.linkedinUrl,
+                githubUrl: res.data.githubUrl,
+                about: res.data.about,
+                workExperience: res.data.workExperience,
+              })
+            );
             const blogTitlesArray = [];
             res.data.blogTitles.map((blogTitle) => {
               blogTitlesArray.push({
@@ -135,6 +143,24 @@ export const setBlogTitles = (blogTitles) => (dispatch) => {
     type: types.SET_BLOG_TITLES,
     payload: blogTitles,
   });
+};
+
+export const setToken = (token) => {
+  return (dispatch) => {
+    dispatch({
+      type: types.SET_TOKEN,
+      payload: token,
+    });
+  };
+};
+
+export const setUserProfInfo = (userProfInfo) => {
+  return (dispatch) => {
+    dispatch({
+      type: types.SET_USER_PROF_INFO,
+      payload: userProfInfo,
+    });
+  };
 };
 
 export const setBlogTitle = (blogTitle) => (dispatch) => {

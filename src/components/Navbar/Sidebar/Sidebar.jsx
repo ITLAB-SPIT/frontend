@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { connect } from "react-redux";
 import { logout } from "../../../../store/actions/main";
 import userAvatar from "./../../../../public/assets/images/userAvatar.jpg";
+import Router from "next/router";
 const Sidebar = ({ avatarRef, setSidebarOpen, dispatch }) => {
   const sidebarRef = useRef(null);
   const [userImage, setUserImage] = useState(userAvatar.src);
@@ -92,9 +93,15 @@ const Sidebar = ({ avatarRef, setSidebarOpen, dispatch }) => {
           <BsBookmarkStarFill />
           <div>Library</div>
         </div>
-        <div className={styles.link} onClick={() => setSidebarOpen(false)}>
+        <div
+          className={styles.link}
+          onClick={() => {
+            Router.push("/EditProfile");
+            setSidebarOpen(false);
+          }}
+        >
           <MdManageAccounts />
-          <div>Account</div>
+          <div>Settings</div>
         </div>
       </div>
       <div

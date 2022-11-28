@@ -135,8 +135,6 @@ export function SearchBar(props) {
   const isEmpty = !tvShows || tvShows.length === 0;
 
   let blogTitless = useSelector((state) => state.main.blogTitles);
-  const [blogTitles, setBlogTitles] = useState(blogTitless);
-
   const changeHandler = (e) => {
     e.preventDefault();
     if (e.target.value.trim() === "") setNoTvShows(false);
@@ -154,7 +152,6 @@ export function SearchBar(props) {
     setLoading(false);
     setNoTvShows(false);
     setTvShows([]);
-    setBlogTitles(localStorage.getItem("blogTitles"));
     if (inputRef.current) inputRef.current.value = "";
   };
 
@@ -244,8 +241,8 @@ export function SearchBar(props) {
           )}
           {!isLoading && !isEmpty && (
             <>
-              {blogTitles &&
-                blogTitles.map((blogTitle) => (
+              {blogTitless &&
+                blogTitless.map((blogTitle) => (
                   <TvShow key={blogTitle.value} name={blogTitle.value} />
                 ))}
             </>

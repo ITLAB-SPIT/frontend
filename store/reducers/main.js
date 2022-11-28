@@ -9,11 +9,18 @@ const main = (
       image: "",
       token: "",
     },
+    userProfInfo: {
+      linkedinUrl: "",
+      githubUrl: "",
+      about: "",
+      workExperience: "",
+    },
     blogTitle: "",
     blogTitles: [],
     blogsData: [],
     currentBlogData: {},
     name: "shreyash",
+    token: "",
   },
   action
 ) => {
@@ -42,6 +49,16 @@ const main = (
       return {
         ...state,
         blogsData: action.payload,
+      };
+    case types.SET_TOKEN:
+      return {
+        ...state,
+        token: action.payload,
+      };
+    case types.SET_USER_PROF_INFO:
+      return {
+        ...state,
+        userProfInfo: action.payload,
       };
     default:
       return { ...state };

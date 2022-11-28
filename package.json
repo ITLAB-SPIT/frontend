@@ -34,6 +34,7 @@
     "react-on-screen": "^2.1.1",
     "react-redux": "^8.0.4",
     "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.4.3",
     "react-router-redux": "^5.0.0-alpha.9",
     "react-search-box": "^2.3.0",
     "react-searchable-dropdown": "^2.0.3",
