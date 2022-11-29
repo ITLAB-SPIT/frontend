@@ -24,6 +24,12 @@
     transition: all 0.2s ease-in-out;
   }
 
+  .logo {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   .links_container {
     display: flex;
     margin-left: 70px;

@@ -76,9 +76,8 @@ const Signup = (props) => {
   };
 
   const handleSignupSubmit = () => {
-    const { dispatch } = props;
     localStorage.setItem("loginData", JSON.stringify(loginData));
-    dispatch(signUp(loginData));
+    props.signUp(loginData);
   };
 
   const submit = () => {
@@ -234,6 +233,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onSubmit: (data) => {
       dispatch(setAddresses(data));
+    },
+    signUp: (data) => {
+      dispatch(signUp(data));
     },
   };
 };

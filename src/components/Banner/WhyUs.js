@@ -36,6 +36,7 @@ const WhyUs = () => {
           <div className="col-12">
             <div className={styles.skill_bx}>
               <h2>Why us?</h2>
+<<<<<<< HEAD
               <div>
                 <p>
                   <t>Code.Int</t> helps you enhance your skills, expand your
@@ -45,6 +46,13 @@ const WhyUs = () => {
                 </p>
               </div>
 
+=======
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry.<br></br> Lorem Ipsum has been the industrys standard
+                dummy text.
+              </p>
+>>>>>>> dcf28300a38654fd85173723b06a505b57e78059
               <Carousel
                 responsive={responsive}
                 infinite={true}

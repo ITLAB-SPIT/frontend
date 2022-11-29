@@ -50,14 +50,34 @@ export const login = (loginDetails) => {
                 email: res.data.email,
                 image: res.data.image,
                 token: res.data.token,
+                tag: res.data.tag,
               })
             );
             dispatch(
               setUserProfInfo({
+                profession: res.data.profession,
                 linkedinUrl: res.data.linkedinUrl,
                 githubUrl: res.data.githubUrl,
                 about: res.data.about,
                 workExperience: res.data.workExperience,
+                currentlyWorkingAt: res.data.currentlyWorkingAt,
+              })
+            );
+
+            console.log("res.data");
+            console.log(res.data);
+
+            dispatch(
+              setAchievementsAndSkills({
+                yearsOfExperience: res.data.yearsOfExperience,
+                resumeUrl: res.data.resumeUrl,
+                fieldOfExpertise: res.data.fieldOfExpertise,
+                skills: res.data.skills,
+                hackathonWins: res.data.hackathonWins,
+                problemsSolved: res.data.problemsSolved,
+                projects: res.data.projects,
+                codechefRating: res.data.codechefRating,
+                leetcodeRating: res.data.leetcodeRating,
               })
             );
             const blogTitlesArray = [];
@@ -143,6 +163,15 @@ export const setBlogTitles = (blogTitles) => (dispatch) => {
     type: types.SET_BLOG_TITLES,
     payload: blogTitles,
   });
+};
+
+export const setAchievementsAndSkills = (achievementsAndSkills) => {
+  return (dispatch) => {
+    dispatch({
+      type: types.SET_ACHIEVEMENTS_AND_SKILLS,
+      payload: achievementsAndSkills,
+    });
+  };
 };
 
 export const setToken = (token) => {

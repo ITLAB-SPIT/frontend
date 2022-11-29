@@ -24,7 +24,12 @@ const BlogPage = (props) => {
   } else {
     return (
       <div className={styles.loader}>
-        <Image src={SkullManRun} width={"500px"} height={"500px"} />
+        <Image
+          src={SkullManRun}
+          width={"500px"}
+          height={"500px"}
+          alt={"Loader"}
+        />
       </div>
     );
   }

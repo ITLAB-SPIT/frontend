@@ -22,7 +22,7 @@ const Share = () => {
             height="100%"
             layout="fill"
             objectFit="cover"
-            alt=""
+            alt="User Image"
           />
         </div>
         <button onClick={() => Router.push("/blogs/create-blog")}>
