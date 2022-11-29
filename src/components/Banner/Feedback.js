@@ -65,15 +65,15 @@ const Feedback = () => {
               )}
             </TrackVisibility>
             <Tab.Container id={styles.projects_tabs} defaultActiveKey="first">
-              <Nav
+              {/* <Nav
                 variant="pills"
                 className={
                   styles.nav_pills +
                   " mb-5 justify-content-center align-items-center"
                 }
                 id={styles.pills_tab}
-              >
-                <Nav.Item>
+              > */}
+              {/* <Nav.Item>
                   <Nav.Link eventKey="first">Tab 1</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
@@ -82,7 +82,7 @@ const Feedback = () => {
                 <Nav.Item>
                   <Nav.Link eventKey="third">Tab 3</Nav.Link>
                 </Nav.Item>
-              </Nav>
+              </Nav> */}
               <Tab.Content id="wow slideInUp">
                 <Tab.Pane eventKey="first">
                   <Row>
