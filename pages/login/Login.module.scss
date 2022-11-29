@@ -5,7 +5,7 @@
   overflow-y: hidden;
   .left_container {
     background-color: #bfbfbf;
-    flex: 5;
+    flex: 7;
     // height: calc(100vh - var(--nav-height));
     height: calc(100vh - 70px);
     background-image: url("../../public/assets/images/loginPage.jfif");
@@ -36,7 +36,7 @@
   }
 
   .right_container {
-    flex: 7;
+    flex: 5;
     background-color: #000000;
     color: #bfbfbf;
     display: flex;
@@ -62,7 +62,7 @@
   .login_container {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 50%;
 
     h3 {
       color: white;
