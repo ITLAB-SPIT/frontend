@@ -79,6 +79,7 @@ const Navbar = () => {
         <Link href="/home">
           <Image
             className={styles.logo}
+            alt="logo"
             src={"/assets/images/logo.png"}
             width={"40px"}
             height={"40px"}

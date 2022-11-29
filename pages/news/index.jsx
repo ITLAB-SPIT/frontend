@@ -67,7 +67,7 @@ const News = () => {
             src={SkullManRun}
             width={"500px"}
             height={"500px"}
-            // className={styles.image}
+            alt={"Loader"}
           ></Image>
         </div>
       </div>

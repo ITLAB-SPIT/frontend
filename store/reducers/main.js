@@ -10,10 +10,23 @@ const main = (
       token: "",
     },
     userProfInfo: {
+      profession: "",
       linkedinUrl: "",
       githubUrl: "",
       about: "",
       workExperience: "",
+      currentlyWorkingAt: "",
+    },
+    achievementsAndSkills: {
+      yearsOfExperience: "",
+      resumeUrl: "",
+      fieldOfExpertise: "",
+      skills: ["", "", "", ""],
+      hackathonWins: "",
+      problemsSolved: "",
+      projects: "",
+      codechefRating: "",
+      leetcodeRating: "",
     },
     blogTitle: "",
     blogTitles: [],
@@ -59,6 +72,11 @@ const main = (
       return {
         ...state,
         userProfInfo: action.payload,
+      };
+    case types.SET_ACHIEVEMENTS_AND_SKILLS:
+      return {
+        ...state,
+        achievementsAndSkills: action.payload,
       };
     default:
       return { ...state };

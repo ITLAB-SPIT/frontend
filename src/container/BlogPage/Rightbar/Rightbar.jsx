@@ -45,7 +45,7 @@ const Rightbar = () => {
                     height="100%"
                     layout="fill"
                     objectFit="cover"
-                    alt=""
+                    alt="User Image"
                   />
                 </div>
                 <div className={styles.info}>
@@ -71,7 +71,7 @@ const Rightbar = () => {
                     height="100%"
                     layout="fill"
                     objectFit="cover"
-                    alt=""
+                    alt="User Image"
                   />
                 </div>
                 <div className={styles.info}>
@@ -96,7 +96,7 @@ const Rightbar = () => {
                     height="100%"
                     layout="fill"
                     objectFit="cover"
-                    alt=""
+                    alt="User Image"
                   />
                 </div>
                 <div className={styles.info}>

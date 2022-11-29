@@ -8,29 +8,41 @@ import { useSelector } from "react-redux";
 const Sidebar = () => {
   const [userImage, setUserImage] = useState(userAvatar.src);
   const basicUserInfo = useSelector((state) => state.main.basicUserInfo);
+  const userProfInfo = useSelector((state) => state.main.userProfInfo);
+
   useEffect(() => {
     if (basicUserInfo.image) {
       setUserImage(basicUserInfo.image);
     }
   }, [basicUserInfo]);
+
   return (
     <div className={styles.Sidebar + " Sticky-top"}>
       <div className={styles.SidebarWrapperTop}>
         <div className={styles.profileInfo}>
           <div className={styles.image}>
             <Image
-              src={userAvatar.src}
+              src={userImage}
               width="100%"
               height="100%"
               layout="fill"
               objectFit="cover"
-              alt=""
+              alt="User Image"
             />
           </div>
-          <div className={styles.profileInfoName}>Noman</div>
+          <div className={styles.profileInfoName}>
+            {basicUserInfo.firstname + " " + basicUserInfo.lastname}
+          </div>
+          <div className={styles.profession}>
+            {userProfInfo.profession
+              ? userProfInfo.profession
+              : "No profession"}
+          </div>
           <div className={styles.profileInfoDesc}>
-            Student at Bhartiya Vidya Bhavans Sardar Patel Institute of
-            Technology Munshi Nagar Andheri Mumbai
+            {userProfInfo.about
+              ? userProfInfo.about
+              : "Student at Bhartiya Vidya Bhavans Sardar Patel Institute of\
+            Technology Munshi Nagar Andheri Mumbai"}
           </div>
         </div>
         <hr className={styles.partition}></hr>

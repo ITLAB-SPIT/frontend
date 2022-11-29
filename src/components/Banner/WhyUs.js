@@ -38,7 +38,7 @@ const WhyUs = () => {
               <h2>Why us?</h2>
               <p>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.<br></br> Lorem Ipsum has been the industry's standard
+                industry.<br></br> Lorem Ipsum has been the industrys standard
                 dummy text.
               </p>
               <Carousel
