@@ -7,6 +7,7 @@ const main = (
       lastname: "",
       email: "",
       image: "",
+      tag: "",
       token: "",
     },
     userProfInfo: {

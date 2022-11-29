@@ -18,9 +18,6 @@ const EditProfile = (props) => {
     (state) => state.main.achievementsAndSkills
   );
 
-  console.log("achievementsAndSkills");
-  console.log(achievementsAndSkills);
-
   const [settingNum, setSettingNum] = useState(0);
   const [userData, setUserData] = useState({
     oldPassword: "",
@@ -55,7 +52,9 @@ const EditProfile = (props) => {
     firstname: basicUserInfo.firstname,
     lastname: basicUserInfo.lastname,
     email: basicUserInfo.email,
+    tag: basicUserInfo.tag,
     imageUrl: basicUserInfo.image,
+    token: basicUserInfo.token,
   });
   const [sidenNavElements, setSidenNavElements] = useState([
     {
@@ -165,12 +164,14 @@ const EditProfile = (props) => {
       basicInfo.firstname !== basicUserInfo.firstname ||
       basicInfo.lastname !== basicUserInfo.lastname ||
       basicInfo.email !== basicUserInfo.email ||
-      basicInfo.imageUrl !== basicUserInfo.image
+      basicInfo.imageUrl !== basicUserInfo.image ||
+      basicInfo.tag !== basicUserInfo.tag
     ) {
       if (
         basicInfo.firstname === "" ||
         basicInfo.lastname === "" ||
-        basicInfo.email === ""
+        basicInfo.email === "" ||
+        basicInfo.tag === ""
       ) {
         alert("All Fields are required");
         return;
@@ -180,23 +181,29 @@ const EditProfile = (props) => {
           lastname: basicInfo.lastname,
           email: basicInfo.email,
           image: basicInfo.imageUrl,
-          token: localStorage.getItem("token"),
+          tag: basicInfo.tag,
+          token: basicInfo.token,
         });
         axios
           .patch(`${process.env.NEXT_PUBLIC_SERVER_URL}/update-user-info`, {
             firstname: basicInfo.firstname,
             lastname: basicInfo.lastname,
             imageUrl: basicInfo.imageUrl,
+            tag: basicInfo.tag,
             token: localStorage.getItem("token"),
           })
           .then((res) => {
+            console.log("res");
+            console.log(res);
             if (res.status === 200) {
+              alert("updated successfully.");
               props.setBasicUserInfo({
                 firstname: basicInfo.firstname,
                 lastname: basicInfo.lastname,
                 email: basicInfo.email,
                 image: basicInfo.imageUrl,
-                token: localStorage.getItem("token"),
+                tag: basicInfo.tag,
+                token: basicInfo.token,
               });
             } else {
               alert("Profile Update Failed");
@@ -236,7 +243,7 @@ const EditProfile = (props) => {
         }
       })
       .catch((err) => {
-        log(err);
+        console.log(err);
       });
   };
 
@@ -306,29 +313,47 @@ const EditProfile = (props) => {
               }}
             />
           </div>
-          <h3>Firstname</h3>
-          <input
-            type="text"
-            name="fistname"
-            placeholder="Firstame"
-            value={basicInfo.firstname}
-            onChange={handleChange1}
-          />
-          <h3>Lastname</h3>
-          <input
-            type="text"
-            name="lastname"
-            placeholder="Lastname"
-            value={basicInfo.lastname}
-            onChange={handleChange1}
-          />
-          <h3>Email</h3>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email ID"
-            value={basicInfo.email}
-          />
+          <div className={styles.username}>
+            <div className={styles.inner_username}>
+              <h3>Firstname</h3>
+              <input
+                type="text"
+                name="fistname"
+                placeholder="Firstame"
+                value={basicInfo.firstname}
+                onChange={handleChange1}
+              />
+            </div>
+            <div className={styles.inner_username}>
+              <h3>Lastname</h3>
+              <input
+                type="text"
+                name="lastname"
+                placeholder="Lastname"
+                value={basicInfo.lastname}
+                onChange={handleChange1}
+              />
+            </div>
+          </div>
+          <div className={styles.email}>
+            <h3>Email</h3>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email ID"
+              value={basicInfo.email}
+            />
+          </div>
+          <div className={styles.email}>
+            <h3>Tagline</h3>
+            <input
+              type="text"
+              name="tag"
+              placeholder="Cool, Nerd, Student"
+              value={basicInfo.tag}
+              onChange={handleChange1}
+            />
+          </div>
           <div className={styles.btn} onClick={updateProfile}>
             Update Profile
           </div>

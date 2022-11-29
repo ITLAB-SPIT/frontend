@@ -50,6 +50,7 @@ export const login = (loginDetails) => {
                 email: res.data.email,
                 image: res.data.image,
                 token: res.data.token,
+                tag: res.data.tag,
               })
             );
             dispatch(
