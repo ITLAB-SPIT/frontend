@@ -34,7 +34,6 @@ const News = () => {
       .get(`${process.env.NEXT_PUBLIC_SERVER_URL}/news`)
       .then((res) => {
         setIsLoading(false);
-        // console.log(res.data);
         setNewsData(res.data);
         setData(res.data);
       })

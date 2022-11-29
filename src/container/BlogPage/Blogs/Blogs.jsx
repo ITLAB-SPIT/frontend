@@ -32,12 +32,7 @@ const Blogs = () => {
   if (!localStorage.getItem("blogsData")) {
     return (
       <div className={styles.loader}>
-        <Image
-          src={SkullManRun}
-          width={"500px"}
-          height={"500px"}
-          // className={styles.image}
-        ></Image>
+        <Image src={SkullManRun} width={"500px"} height={"500px"}></Image>
       </div>
     );
   } else {

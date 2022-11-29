@@ -14,7 +14,7 @@ const Sidebar = () => {
     }
   }, [basicUserInfo]);
   return (
-    <div className={styles.Sidebar + " sticky-top"}>
+    <div className={styles.Sidebar + " Sticky-top"}>
       <div className={styles.SidebarWrapperTop}>
         <div className={styles.profileInfo}>
           <div className={styles.image}>

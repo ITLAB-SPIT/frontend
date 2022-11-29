@@ -1,15 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./SingleBlog.module.scss";
 import { AiOutlineArrowUp } from "react-icons/ai";
-import Blogs from "../Blogs/Blogs";
-import Share from "../../../components/Share/Share";
-import BlogCard from "../../../components/UI/Cards/BlogCard/BlogCard";
 import ViewBlogCard from "../../../components/UI/Cards/ViewBlogCard/ViewBlogCard";
 
 const SingleBlog = () => {
-  const [activeLink, setActiveLink] = useState("blogs");
   const [scrollBtnActive, setScrollBtnActive] = useState(false);
-  const [addContainerShow, setAddContainerShow] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", toggleScrollBtn);
@@ -43,7 +38,7 @@ const SingleBlog = () => {
           <AiOutlineArrowUp />
         </div>
         <div>
-          <ViewBlogCard></ViewBlogCard>
+          <ViewBlogCard />
         </div>
       </div>
     </div>

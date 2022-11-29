@@ -5,9 +5,7 @@ import Blogs from "../Blogs/Blogs";
 import Share from "../../../components/Share/Share";
 
 const Feed = () => {
-  const [activeLink, setActiveLink] = useState("blogs");
   const [scrollBtnActive, setScrollBtnActive] = useState(false);
-  const [addContainerShow, setAddContainerShow] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", toggleScrollBtn);
@@ -31,19 +29,6 @@ const Feed = () => {
 
   return (
     <div className={styles.Feed}>
-      {/* <div className={styles.top_nav}>
-        <div className={styles.tab_container}>
-          <div
-            className={
-              styles.nav_link +
-              ` ${activeLink === "blogs" ? styles.active : ""}`
-            }
-            onClick={() => setActiveLink("blogs")}
-          >
-            Blogs
-          </div>
-        </div>
-      </div> */}
       <div>
         <Share />
       </div>

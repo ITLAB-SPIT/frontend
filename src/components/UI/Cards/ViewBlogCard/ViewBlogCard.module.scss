@@ -24,8 +24,8 @@
       cursor: pointer;
 
       .image {
-        width: 2.5rem;
-        height: 2.5rem;
+        width: 5rem;
+        height: 5rem;
         border-radius: 50%;
         position: relative;
         overflow: hidden;
@@ -38,7 +38,8 @@
       align-items: center;
 
       .name {
-        font-size: 1.5rem;
+        font-size: 2rem;
+        // color: red;
       }
 
       .circle {
@@ -49,12 +50,13 @@
       }
 
       .time {
+        font-size: 1.5rem;
         color: var(--txt-200);
       }
     }
 
     .connect {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       color: var(--primary-300);
       cursor: pointer;
       font-weight: $font-bold;

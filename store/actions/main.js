@@ -1,6 +1,7 @@
 import * as types from "../types";
 import axios from "axios";
 import Router from "next/router";
+import { useSelector } from "react-redux";
 
 export const authenticateAction = (user) => {
   return {
@@ -51,10 +52,18 @@ export const login = (loginDetails) => {
                 token: res.data.token,
               })
             );
+            dispatch(
+              setUserProfInfo({
+                linkedinUrl: res.data.linkedinUrl,
+                githubUrl: res.data.githubUrl,
+                about: res.data.about,
+                workExperience: res.data.workExperience,
+              })
+            );
             const blogTitlesArray = [];
             res.data.blogTitles.map((blogTitle) => {
               blogTitlesArray.push({
-                label: blogTitle.title,
+                key: blogTitle.title,
                 value: blogTitle.title,
               });
             });
@@ -66,18 +75,6 @@ export const login = (loginDetails) => {
         })
         .catch((err) => {
           console.log(err);
-          // if (err.response.status == 401) {
-          //   toast.error("Invalid Credentials.", {
-          //     position: "top-right",
-          //     autoClose: 5000,
-          //     hideProgressBar: false,
-          //     closeOnClick: true,
-          //     pauseOnHover: true,
-          //     draggable: true,
-          //     progress: undefined,
-          //     className: styles.error_container,
-          //   });
-          // }
         });
     } catch (error) {
       console.log(error);
@@ -113,18 +110,6 @@ export const signUp = (signUpDetails) => {
         })
         .catch((err) => {
           console.log(err);
-          // if (err.response.status == 401) {
-          //   toast.error("Invalid Credentials.", {
-          //     position: "top-right",
-          //     autoClose: 5000,
-          //     hideProgressBar: false,
-          //     closeOnClick: true,
-          //     pauseOnHover: true,
-          //     draggable: true,
-          //     progress: undefined,
-          //     className: styles.error_container,
-          //   });
-          // }
         });
     } catch (error) {
       console.log(error);
@@ -157,5 +142,50 @@ export const setBlogTitles = (blogTitles) => (dispatch) => {
   dispatch({
     type: types.SET_BLOG_TITLES,
     payload: blogTitles,
+  });
+};
+
+export const setToken = (token) => {
+  return (dispatch) => {
+    dispatch({
+      type: types.SET_TOKEN,
+      payload: token,
+    });
+  };
+};
+
+export const setUserProfInfo = (userProfInfo) => {
+  return (dispatch) => {
+    dispatch({
+      type: types.SET_USER_PROF_INFO,
+      payload: userProfInfo,
+    });
+  };
+};
+
+export const setBlogTitle = (blogTitle) => (dispatch) => {
+  const blogsData = JSON.parse(localStorage.getItem("blogsData"));
+  const blogData = blogsData.filter((blog) => blog.title === blogTitle)[0];
+  dispatch({
+    type: types.SELECTED_BLOG_DATA,
+    payload: blogData,
+  });
+  dispatch({
+    type: types.SET_BLOG_TITLE,
+    payload: blogTitle,
+  });
+};
+
+export const setBlogData = (blogData) => (dispatch) => {
+  dispatch({
+    type: types.SELECTED_BLOG_DATA,
+    payload: blogData,
+  });
+};
+
+export const setBlogsData = (blogs) => (dispatch) => {
+  dispatch({
+    type: types.SET_BLOGS_DATA,
+    payload: blogs,
   });
 };

@@ -1,44 +1,31 @@
-import { useEffect } from "react";
-import BlogContainer from "../../../src/container/BlogPage/BlogPage.jsx";
-import { connect } from "react-redux";
 import Router from "next/router";
-import { Dna } from "react-loader-spinner";
-import styles from "./Blogs.module.scss";
-import { getCookie } from "../../../utils/cookie";
+import { useEffect } from "react";
+import { connect, useSelector } from "react-redux";
+import BlogPage from "../../../src/container/BlogPage/BlogPage";
+import { setBlogData } from "../../../store/actions/main";
 
 const Blog = (props) => {
-  // const auth = getCookie("auth");
-  // console.log("auth");
-  // console.log(auth);
-
-  // useEffect(() => {
-  //   if (!auth) {
-  //     Router.push("/login");
-  //   }
-  // }, []);
-
-  // if (auth) {
-  //   return <BlogContainer />;
-  // } else {
-  //   return (
-  //     <div className={styles.loader}>
-  //       <Dna
-  //         visible={true}
-  //         height="80"
-  //         width="80"
-  //         ariaLabel="dna-loading"
-  //         wrapperStyle={{}}
-  //         wrapperClass="dna-wrapper"
-  //       />
-  //     </div>
-  //   );
-  // }
-
-  return <BlogContainer pageName={"blog"} />;
+  const blogTitle = useSelector((state) => state.main.blogTitle);
+  const blogsData = useSelector((state) => state.main.blogsData);
+  useEffect(() => {
+    if (blogTitle === "") {
+      Router.push("/blogs");
+    }
+  }, [blogTitle]);
+  useEffect(() => {
+    if (blogsData) {
+      let blogData = blogsData.filter((blog) => blog.title === blogTitle);
+      props.setBlogData(blogData[0]);
+    }
+  }, [blogTitle]);
+  return <BlogPage pageName={"blog"} />;
 };
 
-// const mapStateToProps = (state) => {
-//   return { basicUserInfo: state.main.basicUserInfo, auth: state.auth };
-// };
-
-export default Blog;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setBlogData: (data) => {
+      dispatch(setBlogData(data));
+    },
+  };
+};
+export default connect(null, mapDispatchToProps)(Blog);

@@ -41,7 +41,7 @@ const authReducer = (state = initialState, action) => {
 
     case types.RESTORE_AUTH_STATE:
       return {
-        isLoggedIn: true,
+        isLoggedIn: true, 
         user: action.payload.user,
       };
 

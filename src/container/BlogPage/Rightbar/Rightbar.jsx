@@ -5,7 +5,7 @@ import { MdAdd } from "react-icons/md";
 
 const Rightbar = () => {
   return (
-    <div className={styles.Rightbar + " sticky-top"}>
+    <div className={styles.Rightbar + " Sticky-top"}>
       <div className={styles.rightCard}>
         <h1>Suggestions for you</h1>
         <ul className={styles.listRecommend}>
