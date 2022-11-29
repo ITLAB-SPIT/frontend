@@ -11,7 +11,7 @@ import {
 
 const CreateBlog = () => {
   const JoditEditor = dynamic(
-    () => import("../../../src/components/Editor/Editor"),
+    () => import("./../../src/components/Editor/Editor"),
     {
       ssr: false,
     }
