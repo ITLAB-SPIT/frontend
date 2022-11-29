@@ -14,7 +14,7 @@ const Homepage = () => {
       <WhyUs />
       <Feedback />
       <Contact />
-      <Footer />
+      {/* <Footer /> */}
       {/* <Skills/> */}
     </div>
   );

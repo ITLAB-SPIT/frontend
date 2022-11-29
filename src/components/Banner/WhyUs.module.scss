@@ -5,24 +5,32 @@
   
   
   .skill_bx {
-    background: #151515;
+    // background: #151515;
+    background: black;
     border-radius: 64px;
     text-align: center;
     padding: 60px 50px;
     margin-top: -60px;
   }
   
+
 h2 {
     font-size: 45px;
     font-weight: 700;
   }
   
 p {
+  
     color: #B8B8B8;
-    font-size: 18px;
+    font-size: 17px;
     letter-spacing: 0.8px;
     line-height: 1.5em;
-    margin: 14px 0 75px 0;
+    margin: 14px 60px 75px 60px;
+    t {
+      color: #ff49b6;
+      font-size: 25px;
+      margin-left: -1px;
+    }
   }
   
   .skill-slider {

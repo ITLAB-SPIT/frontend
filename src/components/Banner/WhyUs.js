@@ -36,11 +36,15 @@ const WhyUs = () => {
           <div className="col-12">
             <div className={styles.skill_bx}>
               <h2>Why us?</h2>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.<br></br> Lorem Ipsum has been the industry's standard
-                dummy text.
-              </p>
+              <div>
+                <p>
+                  <t>Code.Int</t> helps you enhance your skills, expand your
+                  knowledge and prepare for job interviews. We collects reviews
+                  and interview questions from real employees to help you make
+                  informed career decisions.
+                </p>
+              </div>
+
               <Carousel
                 responsive={responsive}
                 infinite={true}
@@ -67,7 +71,7 @@ const WhyUs = () => {
           </div>
         </div>
       </div>
-      <img className="background-image-left" src={colorSharp} alt="Image" />
+      {/* <img className="background-image-left" src={colorSharp} alt="Image" /> */}
     </section>
   );
 };

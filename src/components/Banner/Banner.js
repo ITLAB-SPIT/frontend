@@ -11,7 +11,7 @@ import TrackVisibility from "react-on-screen";
 
 const name = "Tech.";
 const info =
-  "Reduced object rendering time by 75% by applying Floyd’s algorithm, leading to a 10% reduction in system boot time.";
+  "Stay in the flow with instant dev experiences. No more hours stashing/pulling/installing locally — just click, and start coding.";
 
 const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -78,16 +78,14 @@ const Banner = () => {
                     </h1>
                     <p>{info}</p>
 
-                    {/* <span className={styles.tagline}></span> */}
+                    {/* <div className={styles.tagline}>
+                      Master the interview & land a job worth loving.
+                    </div> */}
 
-                    <span className={styles.tagline}>
-                      {/* <svg class="icon-arrow after" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 403.8 200.3" style="enable-background:new 0 0 403.8 200.3;" xml:space="preserve"> */}
-                      <style type="text/css"></style>
-
-                      <span>
-                        <p>Master the interview & land a job worth loving. </p>
-                      </span>
-                    </span>
+                    <button onClick={() => console.log("connect")}>
+                      Lets Connect{" "}
+                      <ArrowRightCircle size="25"></ArrowRightCircle>
+                    </button>
                   </div>
                 )}
               </TrackVisibility>
