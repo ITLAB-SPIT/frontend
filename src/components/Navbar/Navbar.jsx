@@ -17,16 +17,6 @@ const Navbar = () => {
   const basicUserInfo = useSelector((state) => state.main.basicUserInfo);
   const blogTitles = useSelector((state) => state.main.blogTitles);
   const [userImage, setUserImage] = useState(userAvatar.src);
-  const [searchBarValue, setSearchBarValue] = useState("");
-
-  const aquaticCreatures = [
-    { label: "Shark", value: "Shark" },
-    { label: "Dolphin", value: "Dolphin" },
-    { label: "Whale", value: "Whale" },
-    { label: "Octopus", value: "Octopus" },
-    { label: "Crab", value: "Crab" },
-    { label: "Lobster", value: "Lobster" },
-  ];
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -96,6 +86,9 @@ const Navbar = () => {
         </div>
         <div className={styles.link}>
           <Link href={"/news"}>News</Link>
+        </div>
+        <div className={styles.link}>
+          <Link href={"/qna"}>QnA</Link>
         </div>
         <div className={styles.link}>
           <div>Learn</div>

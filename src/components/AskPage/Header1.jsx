@@ -48,31 +48,33 @@ const ProfileLink = styled(Link)`
 `;
 
 function Header() {
-  const { user } = useContext(UserContext);
+  //   const { user } = useContext(UserContext);
+  const user = {
+    id: 1,
+    name: "John Doe",
+    email: "shreyashdhamane@gmail.com",
+    password: "123456",
+  };
   return (
     <StyledHeader>
-      <LogoLink to={"/"} className="logo">
+      {/* <LogoLink to={"/"} className="logo">
         <FontAwesomeIcon icon={faStackOverflow} size="2x" />
         <span>
           stack<b>overcloned</b>
         </span>
-      </LogoLink>
+      </LogoLink> */}
       {/*<form action="" className="search">*/}
       {/*  <SearchInput type="text" placeholder="Search..."/>*/}
       {/*</form>*/}
-      {user && (
+      {/* {user && (
         <ProfileLink to={"/users/" + user.id} className="profile">
           {user.name || user.email}
         </ProfileLink>
-      )}
+      )} */}
       {!user && (
         <div>
-          <ProfileLink to={"/login"} className="profile">
-            Log in
-          </ProfileLink>
-          <ProfileLink to={"/register"} className="profile">
-            Register
-          </ProfileLink>
+          <label>Log in</label>
+          <label>Register</label>
         </div>
       )}
     </StyledHeader>

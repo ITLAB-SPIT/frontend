@@ -1,0 +1,122 @@
+@import "/public/assets/css/variablesAndThemes/variables.scss";
+
+.Feed {
+    width: 100%;
+    max-width: 65rem;
+    min-width: 40rem;
+
+    @media screen and (max-width: $break-point-tab) {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+    }
+
+    .top_nav {
+        background: var(--txt-400);
+        border-radius: $br-0;
+        padding: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        z-index: $z-subnav;
+
+        .tab_container {
+            display: flex;
+            align-items: center;
+
+            .nav_link {
+                font-size: 1.4rem;
+                color: var(--txt-200);
+                font-weight: $font-bold;
+                cursor: pointer;
+                padding: .5rem 1rem;
+                text-align: center;
+                width: max-content;
+
+                &:hover {
+                    color: var(--txt-100);
+                }
+
+                &.active {
+                    color: var(--txt-100);
+                    background: var(--primary-200);
+                    border-radius: $br-0;
+                }
+            }
+        }
+
+        .utils {
+            margin-left: auto;
+            margin-right: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            font-size: 1.4rem;
+            cursor: pointer;
+
+            .add_btn {
+                font-size: 2rem;
+                font-weight: 600;
+                background: var(--primary-200);
+                width: 2.6rem;
+                height: 2.6rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: $br-0;
+            }
+
+            .text {
+                background: transparent;
+            }
+        }
+
+    }
+
+    .add_container {
+        background: var(--txt-400);
+        margin-bottom: 2rem;
+        border-radius: $br-0;
+        height: 10rem;
+        height: 0;
+        margin-bottom: 0;
+        opacity: 0;
+        pointer-events: none;
+        transition: .3s ease;
+
+        &.active {
+            height: 10rem;
+            margin-bottom: 2rem;
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+
+    .scroll_to_top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        cursor: pointer;
+        height: 4rem;
+        width: 4rem;
+        background: var(--txt-400);
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        transform: scale(0);
+        transition: .2s ease;
+
+        svg {
+            font-size: 1.6rem;
+            color: var(--txt-000);
+        }
+
+        &.active {
+            transform: scale(1.1);
+        }
+    }
+
+    
+}

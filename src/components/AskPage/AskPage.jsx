@@ -1,97 +1,84 @@
-import styled from "styled-components";
-import Header1 from "./Header1";
 import BlueButton from "./BlueButton";
 import Input from "./Input";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import styles from "./AskPage.module.scss";
+import { useSelector } from "react-redux";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
-import ReactTags from "react-tag-autocomplete";
-import PostBodyTextarea from "./PostBodyTextarea";
-
-const Container = styled.div`
-  padding: 30px 20px;
-`;
+import Router from "next/router";
 
 export default function AskPage() {
-  const reactTags = React.createRef();
-
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionBody, setQuestionBody] = useState("");
-  const [redirect, setRedirect] = useState("");
-  const [tags, setTags] = useState([]);
-  const [tagSuggestions, setTagSuggestions] = useState([]);
+  const [questionTags, setQuestionTags] = useState("");
+  const userBasicInfo = useSelector((state) => state.main.basicUserInfo);
 
-  function sendQuestion(ev) {
-    ev.preventDefault();
-    axios
-      .post(
-        "http://localhost:3030/questions",
-        {
-          title: questionTitle,
-          content: questionBody,
-          tags: tags.map((tag) => tag.id),
-        },
-        { withCredentials: true }
-      )
-      .then((response) => {
-        console.log(response.data);
-        setRedirect("/questions/" + response.data[0]);
-      });
-  }
-
-  function getTags() {
-    axios.get("http://localhost:3030/tags").then((response) => {
-      setTagSuggestions(response.data);
-    });
-  }
-
-  function onTagAddition(tag) {
-    const chosenTags = tags;
-    chosenTags.push(tag);
-    setTags(chosenTags);
-  }
-
-  function onTagDelete(indexToDelete) {
-    const newTags = [];
-    for (let i = 0; i < tags.length; i++) {
-      if (i !== indexToDelete) {
-        newTags.push(tags[i]);
-      }
+  const validatePost = () => {
+    if (questionTitle === "" || questionBody === "") {
+      return false;
     }
-    setTags(newTags);
-  }
+    return true;
+  };
 
-  useEffect(() => {
-    getTags();
-  }, []);
+  const publish = async () => {
+    const validPost = validatePost();
+    if (!validPost) {
+      alert("Please fill all the fields");
+      return;
+    }
+    axios
+      .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/ask-question`, {
+        userImageUrl: userBasicInfo.image || session.user.image,
+        email:
+          userBasicInfo.email ||
+          localStorage.getItem("email") ||
+          session.user.email,
+        title: questionTitle,
+        desc: questionBody,
+        tags: questionTags,
+        token: localStorage.getItem("token") || session.user.token,
+        name: userBasicInfo.firstname + " " + userBasicInfo.lastname,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Question Posted Successfully");
+          Router.push("/qna");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("error while posting the question.");
+      });
+  };
 
   return (
-    <Container>
-      {redirect && <Redirect to={redirect} />}
-      <Header1 style={{ marginBottom: "20px" }}>Ask a public question</Header1>
-      <form onSubmit={(ev) => sendQuestion(ev)}>
+    <div className={styles.Ask_Question}>
+      <div>
         <Input
+          className={styles.input}
           type="text"
           value={questionTitle}
           onChange={(e) => setQuestionTitle(e.target.value)}
           placeholder="Title of your question"
         />
-        <PostBodyTextarea
+        <textarea
+          className={styles.input_bigone}
           placeholder={
             "More info about your question. You can use markdown here"
           }
           value={questionBody}
-          handlePostBodyChange={(value) => setQuestionBody(value)}
+          onChange={(e) => setQuestionBody(e.target.value)}
         />
-        <ReactTags
-          ref={reactTags}
-          tags={tags}
-          suggestions={tagSuggestions}
-          onDelete={(ev) => onTagDelete(ev)}
-          onAddition={(ev) => onTagAddition(ev)}
+        <Input
+          className={styles.input}
+          type="text"
+          value={questionTags}
+          onChange={(e) => setQuestionTags(e.target.value)}
+          placeholder="Tags (separated by commas)"
         />
-        <BlueButton type={"submit"}>Post question</BlueButton>
-      </form>
-    </Container>
+        <BlueButton onClick={publish} style={{ fontSize: "1.5rem" }}>
+          Post question
+        </BlueButton>
+      </div>
+    </div>
   );
 }

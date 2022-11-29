@@ -1,7 +1,6 @@
 import * as types from "../types";
 import axios from "axios";
 import Router from "next/router";
-import { useSelector } from "react-redux";
 
 export const authenticateAction = (user) => {
   return {
@@ -63,9 +62,6 @@ export const login = (loginDetails) => {
                 currentlyWorkingAt: res.data.currentlyWorkingAt,
               })
             );
-
-            console.log("res.data");
-            console.log(res.data);
 
             dispatch(
               setAchievementsAndSkills({
@@ -165,6 +161,13 @@ export const setBlogTitles = (blogTitles) => (dispatch) => {
   });
 };
 
+export const setQnaData = (qnaData) => (dispatch) => {
+  dispatch({
+    type: types.SET_QNA_DATA,
+    payload: qnaData,
+  });
+};
+
 export const setAchievementsAndSkills = (achievementsAndSkills) => {
   return (dispatch) => {
     dispatch({
@@ -209,6 +212,13 @@ export const setBlogData = (blogData) => (dispatch) => {
   dispatch({
     type: types.SELECTED_BLOG_DATA,
     payload: blogData,
+  });
+};
+
+export const setQnaTitle = (qnaTitle) => (dispatch) => {
+  dispatch({
+    type: types.SET_QNA_TITLE,
+    payload: qnaTitle,
   });
 };
 
