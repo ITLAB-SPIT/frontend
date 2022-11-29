@@ -62,7 +62,7 @@ const Contact = () => {
     <section className={styles.contact} id="connect">
       <Container>
         <Row className="align-items:center">
-          <Col md={6}>
+          <Col md={5}>
             <img src={contactImg.src} alt="Contact Us"></img>
           </Col>
           <Col>

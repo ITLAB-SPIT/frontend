@@ -54,26 +54,24 @@ const Feedback = () => {
                     isVisible ? "animate__animated animate__bounce" : ""
                   }
                 >
-                  <h2>Feedbacks</h2>
+                  <h2>Reviews that inspires us!</h2>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolore ut, itaque illum voluptatem possimus odit et
-                    repudiandae ratione nihil expedita. Enim facere illo
-                    expedita hic, neque quod ipsam nam? Quibusdam? Lorem Ipsum
-                    is simply dummy text of the printing and typesetting
-                    industry. Lorem Ipsum has been the industry`s standard dummy
-                    text ever since the 1500s, when an unknown printer took a
-                    galley of type and scrambled it to make a type specimen
-                    book.
+                    Without change there is no innovation, creativity, or
+                    incentive for improvement. Those who initiate change will
+                    have a better opportunity to manage the change that is
+                    inevitable.
                   </p>
                 </div>
               )}
             </TrackVisibility>
-            <Tab.Container id="projects-tabs" defaultActiveKey="first">
+            <Tab.Container id={styles.projects_tabs} defaultActiveKey="first">
               <Nav
                 variant="pills"
-                className="nav-pills mb-5 justify-content-center align-items-center"
-                id="pills-tab"
+                className={
+                  styles.nav_pills +
+                  " mb-5 justify-content-center align-items-center"
+                }
+                id={styles.pills_tab}
               >
                 <Nav.Item>
                   <Nav.Link eventKey="first">Tab 1</Nav.Link>

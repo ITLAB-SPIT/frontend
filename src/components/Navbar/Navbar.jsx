@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import userAvatar from "./../../../public/assets/images/userAvatar.jpg";
-import SelectSearch from "react-select-search";
+// import SelectSearch from "react-select-search";
 const Navbar = () => {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -108,12 +108,12 @@ const Navbar = () => {
         </div>
       </div>
       <div className={styles.search_container}>
-        <SelectSearch
+        {/* <SelectSearch
           options={options}
           value="sv"
           name="language"
           placeholder="Choose your language"
-        />
+        /> */}
       </div>
       {isLoggedIn ? (
         <div className={styles.authenticated_container}>

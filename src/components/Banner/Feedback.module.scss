@@ -21,7 +21,7 @@ p {
   width: 56%;
 }
 
-.project .nav.nav-pills {
+.nav_pills {
   width: 72%;
   margin: 0 auto;
   border-radius: 50px;
@@ -29,11 +29,11 @@ p {
   overflow: hidden;
 }
 
-.project .nav.nav-pills .nav-item {
+.nav_pills {
   width: 33.33333%;
 }
 
-.project .nav.nav-pills .nav-link {
+.nav_pills {
   background-color: transparent;
   border-radius: 0;
   padding: 17px 0;
@@ -48,7 +48,7 @@ p {
   z-index: 0;
 }
 
-.project .nav.nav-pills .nav-link::before {
+.nav_pills .nav-link::before {
   content: "";
   position: absolute;
   width: 0;
@@ -60,11 +60,11 @@ p {
   transition: 0.3s ease-in-out;
 }
 
-.project .nav.nav-pills .nav-link.active::before {
+.nav_pills .nav-link.active::before {
   width: 100% !important;
 }
 
-.project .nav.nav-pills .nav-link.active {
+.nav_pills .nav-link.active {
   border: 1px solid rgba(255, 255, 255, 1);
 }
 
