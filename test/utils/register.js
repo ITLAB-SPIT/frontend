@@ -1,25 +1,32 @@
 const assert = require("assert");
-const { By , until } = require('selenium-webdriver');
+const { By, until } = require("selenium-webdriver");
 
-const register = async (driver,email,password) => {
+const register = async (driver, firstname, lastname, email, password) => {
+  let registerButton = await driver.findElement(By.partialLinkText("Signup"));
+  await registerButton.click();
 
-    let registerButton = await driver.findElement(By.id('registerButton'));
+  let emailTextBox = await driver.findElement(By.name("email"));
+  let passwordTextBox = await driver.findElement(By.name("password"));
+  let continueButton = await driver.findElement(By.name("continue"));
 
-    await registerButton.click();
+  await emailTextBox.sendKeys(email);
+  await passwordTextBox.sendKeys(password);
+  await continueButton.click();
 
-    let emailTextBox = await driver.findElement(By.id("registerEmail"));
-    let passwordTextBox = await driver.findElement(By.id("registerPassword"));
-    let confirmPasswordTextBox = await driver.findElement(By.id("registerConfirmPassword"));
-    let submitButton = await driver.findElement(By.xpath("//button[@name='registerButton']"));
+  await driver.wait(until.elementLocated(By.name("firstname")), 5000);
 
-    await emailTextBox.sendKeys(email);
-    await passwordTextBox.sendKeys(password);
-    await confirmPasswordTextBox.sendKeys(password);
+  let firstnameTextBox = await driver.findElement(By.name("firstname"));
+  let lastnameTextBox = await driver.findElement(By.name("lastname"));
+  let submitButton = await driver.findElement(By.name("finish"));
 
-    await submitButton.click();
+  await firstnameTextBox.sendKeys(firstname);
+  await lastnameTextBox.sendKeys(lastname);
+  await submitButton.click();
 
-    let secondaryHeader = await driver.wait(until.elementLocated(By.name("secondaryHeader")), 20000);
-
-}
+  //   let secondaryHeader = await driver.wait(
+  //     until.elementLocated(By.name("secondaryHeader")),
+  //     20000
+  //   );
+};
 
 module.exports = register;

@@ -16,12 +16,16 @@ import { connect, useSelector } from "react-redux";
 const BlogPage = (props) => {
   const blogsData = useSelector((state) => state.main.blogsData);
   const qnaData = useSelector((state) => state.main.qnaData);
+  const config = {
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  };
   useEffect(() => {
     axios
       .get(`${process.env.NEXT_PUBLIC_SERVER_URL}/blogsData`, {
         params: {
           token: localStorage.getItem("token"),
         },
+        config,
       })
       .then((res) => {
         props.setBlogsData(res.data);

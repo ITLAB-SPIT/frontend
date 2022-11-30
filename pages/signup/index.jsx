@@ -146,7 +146,9 @@ const Signup = (props) => {
                 value={loginData.lastname}
                 onChange={handleChange}
               />
-              <button onClick={submit}>Continue</button>
+              <button onClick={submit} name={"finish"}>
+                Continue
+              </button>
             </div>
           ) : (
             <div>
@@ -166,7 +168,9 @@ const Signup = (props) => {
                 value={loginData.password}
                 onChange={handleChange}
               />
-              <button onClick={submit}>Agree & Join</button>
+              <button onClick={submit} name={"continue"}>
+                Agree & Join
+              </button>
             </div>
           )}
 
