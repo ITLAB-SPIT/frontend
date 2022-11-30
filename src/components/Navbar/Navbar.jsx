@@ -88,6 +88,9 @@ const Navbar = () => {
           <Link href={"/news"}>News</Link>
         </div>
         <div className={styles.link}>
+          <Link href={"/find-jobs"}>Jobs</Link>
+        </div>
+        <div className={styles.link}>
           <Link href={"/qna"}>QnA</Link>
         </div>
         <div className={styles.link}>

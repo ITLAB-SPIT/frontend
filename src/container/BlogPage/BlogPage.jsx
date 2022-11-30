@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import SingleBlog from "./SingleBlog/SingleBlog";
 import SingleQna from "./SingleQna/SingleBlog";
 import Feed from "./Feed/Feed";
+import JobsFeed from "./JobsFeed/Feed";
 import QnaFeed from "./QnaFeed/Feed";
 import styles from "./BlogPage.module.scss";
 import Rightbar from "./Rightbar/Rightbar";
@@ -55,6 +56,14 @@ const BlogPage = (props) => {
       <div className={styles.Home_page + " container"}>
         <Sidebar />
         <Feed />
+        <Rightbar />
+      </div>
+    );
+  } else if (props.pageName === "jobs") {
+    return (
+      <div className={styles.Home_page + " container"}>
+        <Sidebar />
+        <JobsFeed />
         <Rightbar />
       </div>
     );
