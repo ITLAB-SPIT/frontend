@@ -10,6 +10,7 @@ const main = (
       tag: "",
       token: "",
     },
+
     userProfInfo: {
       profession: "",
       linkedinUrl: "",
@@ -32,6 +33,8 @@ const main = (
     blogTitle: "",
     blogTitles: [],
     blogsData: [],
+    qnaData: [],
+    qnaTitle: "",
     currentBlogData: {},
     name: "shreyash",
     token: "",
@@ -79,6 +82,17 @@ const main = (
         ...state,
         achievementsAndSkills: action.payload,
       };
+    case types.SET_QNA_TITLE:
+      return {
+        ...state,
+        qnaTitle: action.payload,
+      };
+    case types.SET_QNA_DATA:
+      return {
+        ...state,
+        qnaData: action.payload,
+      };
+
     default:
       return { ...state };
   }

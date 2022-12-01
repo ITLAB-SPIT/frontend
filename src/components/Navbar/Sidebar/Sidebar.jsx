@@ -55,7 +55,11 @@ const Sidebar = ({ avatarRef, setSidebarOpen, dispatch }) => {
         </div>
         <div className={styles.info}>
           <div className={styles.name}>
-            <LimitChar word="Noman" fitContent={true} limit={15} />
+            <LimitChar
+              word={basicUserInfo.firstname}
+              fitContent={true}
+              limit={15}
+            />
           </div>
           <div className={styles.subTitle}>
             <LimitChar

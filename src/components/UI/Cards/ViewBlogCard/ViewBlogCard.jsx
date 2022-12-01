@@ -8,10 +8,16 @@ import styles from "./ViewBlogCard.module.scss";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import userAvatar from "./../../../../../public/assets/images/userAvatar.jpg";
+import { useEffect } from "react";
 const ViewBlogCard = (props) => {
-  const blogData = useSelector((state) => state.main.currentBlogData);
-  console.log("blogData");
-  console.log(blogData);
+  const qnaData = useSelector((state) => state.main.qnaData);
+  const qnaTitle = useSelector((state) => state.main.qnaTitle);
+  useEffect(() => {
+    if (qnaTitle === "") {
+      Router.push("/qna");
+    }
+  }, []);
+  const blogData = qnaData.filter((item) => item.title === qnaTitle);
   return (
     <div className={styles.Blog_card}>
       <div className={styles.user_profile}>

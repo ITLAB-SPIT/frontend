@@ -9,7 +9,6 @@ import Router from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
-import { FaGripLines } from "react-icons/fa";
 
 const Editor = () => {
   const { data: session } = useSession();

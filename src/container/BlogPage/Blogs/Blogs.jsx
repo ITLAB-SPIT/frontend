@@ -29,7 +29,7 @@ const Blogs = () => {
     return data;
   };
 
-  if (!localStorage.getItem("blogsData")) {
+  if (blogsData.length === 0) {
     return (
       <div className={styles.loader}>
         <Image

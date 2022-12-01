@@ -149,7 +149,9 @@ const Login = (props) => {
               placeholder="Enter password"
               onChange={handleChange}
             />
-            <button onClick={submit}>Login</button>
+            <button onClick={submit} name="login_submit">
+              Login
+            </button>
             <div className={styles.signup_container}>
               <p>New to Dev.Env?</p>
               <Link href="/signup">
