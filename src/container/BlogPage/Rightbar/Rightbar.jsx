@@ -50,11 +50,11 @@ const Rightbar = () => {
                 </div>
                 <div className={styles.info}>
                   <div className={styles.nameFollow + " " + styles.name}>
-                    <div className={styles.name}>Shreyash</div>
+                    <div className={styles.name}>Shubham</div>
                     <MdAdd />
                   </div>
                   <div className={styles.desc}>
-                    Full Stack developer | Studypaq
+                    Frontend developer | BakerHuges
                   </div>
                 </div>
               </div>
@@ -76,11 +76,11 @@ const Rightbar = () => {
                 </div>
                 <div className={styles.info}>
                   <div className={styles.nameFollow + " " + styles.name}>
-                    <div className={styles.name}>Shreyash</div>
+                    <div className={styles.name}>Aakansha</div>
                     <MdAdd />
                   </div>
                   <div className={styles.desc}>
-                    Full Stack developer | Studypaq
+                    Backend developer | Autobuddy
                   </div>
                 </div>
               </div>
@@ -101,11 +101,11 @@ const Rightbar = () => {
                 </div>
                 <div className={styles.info}>
                   <div className={styles.nameFollow + " " + styles.name}>
-                    <div className={styles.name}>Shreyash</div>
+                    <div className={styles.name}>Pratik</div>
                     <MdAdd />
                   </div>
                   <div className={styles.desc}>
-                    Full Stack developer | Studypaq
+                    Flutter developer | Studypaq
                   </div>
                 </div>
               </div>

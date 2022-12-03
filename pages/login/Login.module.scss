@@ -8,19 +8,34 @@
     flex: 7;
     // height: calc(100vh - var(--nav-height));
     height: calc(100vh - 70px);
-    background-image: url("../../public/assets/images/loginPage.jfif");
+    background-image: url("https://img.freepik.com/free-vector/employer-meeting-job-applicant-pre-employment-assessment-employee-evaluation-assessment-form-report-performance-review-concept-illustration_335657-2058.jpg?w=740&t=st=1670045583~exp=1670046183~hmac=5b0eef37fde8876f1bf93111946481e414f94f668f000e9d14cf68da4f599cf6");
+    // background-image: url("../../public/assets/images/loginPage.jfif");
     .left_inner_container {
-      margin-top: 25%;
-      margin-left: 1rem;
+      margin-top: 59%;
+      margin-left: 21rem;
       text-align: center;
       line-height: 7rem;
+      display: flex;
 
-      h1 {
-        color: white;
-        font-size: 10rem;
-        margin-bottom: 5rem;
-      }
 
+          .preffix {
+            color: #0C0265;
+            font-size: 8rem;
+            font-weight: 700;
+            margin-bottom: 5rem;   
+          }
+
+      
+          .suffix {
+            // margin-left: 50%;
+            float: left;
+            color: #000000;
+            font-size: 8rem;
+            font-weight: 700;
+            margin-bottom: 5rem;   
+          }
+
+      
       h2 {
         color: white;
         font-size: 10rem;

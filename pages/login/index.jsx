@@ -120,10 +120,12 @@ const Login = (props) => {
         />
         <div className={styles.left_container}>
           <div className={styles.left_inner_container}>
-            <h1>Interview Experiences</h1>
-            <h2>One Stop</h2>
+           <h1 className={styles.preffix}>Code</h1>
+           <h2 className={styles.suffix}>.Int</h2>
+
+            {/* <h2>One Stop</h2> 
             <h3>for</h3>
-            <h2>All.</h2>
+            <h2>All.</h2> */}
           </div>
         </div>
         <div className={styles.right_container}>
