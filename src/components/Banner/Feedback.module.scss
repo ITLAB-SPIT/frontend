@@ -203,6 +203,8 @@
   }
 }
 .card_img{
+  // border-bottom-left-radius: 35px;
+  // border-top-left-radius: 35px;
   width: fit-content;
   // height: fit-content;
   height: 359px;
@@ -210,6 +212,8 @@
 }
 
 .card_text{
+  border-bottom-right-radius: 35px;
+  border-top-right-radius: 35px;
   background-color: white;
   color: black;
   padding: 2rem 4rem; 
