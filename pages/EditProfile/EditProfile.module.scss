@@ -1,0 +1,356 @@
+.edit_profile_base_container {
+  overflow: hidden;
+  .edit_profile_container {
+    height: 80%;
+    min-height: 600px;
+    width: 65%;
+    margin: auto;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
+    background: #222222;
+    // background-image: '';
+
+    box-shadow: var(--box-shadow);
+    border-radius: 40px;
+    // padding: 20px;
+
+    .sidebar {
+      min-height: 100%;
+      border-right: solid rgb(241, 241, 241);
+      padding: 30px 0;
+      display: flex;
+      flex-direction: column;
+      font-size: 1.5rem;
+      border-radius: 40px;
+      min-width: 30%;
+      box-shadow: var(--box-shadow);
+      margin-right: 1px;
+      ul {
+        list-style-type: none;
+      }
+
+      li {
+        border-left: solid medium rgb(203, 202, 202);
+        margin-left: 2px;
+        padding: 20px 0;
+        padding-left: 20px;
+
+        &:hover {
+          background-color: black;
+          cursor: pointer;
+          border-left: solid medium black;
+        }
+
+        Link {
+          &:hover {
+            color: black;
+          }
+        }
+      }
+
+      .active {
+        background-color: rgb(243, 243, 243);
+        border-left: solid medium black;
+      }
+    }
+
+    .edit_component {
+      display: flex;
+      justify-content: center;
+      // align-items: center;
+      width: 100%;
+    }
+  }
+
+  .personal_info {
+    background-color: white;
+    // padding-left: 20rem;
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 5rem;
+    border-top-left-radius: 5rem;
+    border-bottom-right-radius: 3rem;
+    border-top-right-radius: 3rem;
+    // padding: 10rem 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    padding-left: 23rem;
+    color: black;
+
+    input {
+      border: none;
+      border-bottom: 1px solid black;
+      background-color: white;
+      color: black;
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      margin-bottom: 2rem;
+      width: 50%;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .btn {
+      display: block;
+      width: 50%;
+      // margin: auto;
+      margin-top: 1.5rem;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      padding: 1rem;
+
+      font-size: 1.5rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .prof_info {
+    background-color: white;
+    // padding-left: 20rem;
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 5rem;
+    border-top-left-radius: 5rem;
+    border-bottom-right-radius: 3rem;
+    border-top-right-radius: 3rem;
+    // padding: 10rem 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    padding-left: 15rem;
+    color: black;
+
+    .work_profession_container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .working_container {
+        width: 45%;
+      }
+    }
+
+    input {
+      border: none;
+      border-bottom: 1px solid black;
+      background-color: white;
+      color: black;
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      margin-bottom: 2rem;
+      width: 75%;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .btn {
+      display: block;
+      width: 24%;
+      // margin: auto;
+      margin-top: 1.5rem;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      padding: 1rem;
+
+      font-size: 1.5rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .achievements_and_skills {
+    background-color: white;
+    // padding-left: 20rem;
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 5rem;
+    border-top-left-radius: 5rem;
+    border-bottom-right-radius: 3rem;
+    border-top-right-radius: 3rem;
+    // padding: 10rem 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    padding-left: 15rem;
+    color: black;
+
+    .work_profession_container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .working_container {
+        width: 45%;
+      }
+    }
+
+    input {
+      border: none;
+      border-bottom: 1px solid black;
+      background-color: white;
+      color: black;
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      margin-bottom: 2rem;
+      width: 75%;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .skills_container {
+      display: flex;
+      flex-direction: column;
+      .skills_inner_container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        input {
+          width: 34%;
+          margin-right: 6rem;
+        }
+      }
+    }
+
+    .rating_container {
+      display: flex;
+      flex-direction: row;
+      .inner_rating_container {
+        label {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .cp_rating_container {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .btn {
+      display: block;
+      width: 24%;
+      margin-top: 1.5rem;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      padding: 1rem;
+
+      font-size: 1.5rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .edit_info_title {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 5rem;
+    border-top-left-radius: 5rem;
+    border-bottom-right-radius: 3rem;
+    border-top-right-radius: 3rem;
+    // padding: 10rem 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    color: black;
+
+    .user_image_div {
+      // border-radius: 3rem;
+      margin-left: 5rem;
+      margin-bottom: 2rem;
+      padding-left: 23rem;
+      .user_image {
+        border-radius: 5rem;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.5;
+        }
+      }
+      input {
+        display: none;
+      }
+    }
+
+    .username {
+      // background-color: red;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin-left: 2.5rem;
+      text-align: left;
+      .inner_username {
+        // background-color: pink;
+        margin: 0;
+        padding: 0;
+        width: 20%;
+        text-align: center;
+        margin-right: 1rem;
+        h3 {
+          // background-color: green;
+        }
+        input {
+          text-align: center;
+          width: 75%;
+          // background-color: grey;
+        }
+      }
+    }
+
+    .email {
+      h3 {
+        margin-left: 1.5rem;
+      }
+      margin-left: 23rem;
+    }
+
+    input {
+      border: none;
+      border-bottom: 1px solid black;
+      background-color: white;
+      color: black;
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      margin-bottom: 2rem;
+      width: 60%;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .btn {
+      display: block;
+      width: 40%;
+      margin-top: 1.5rem;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+      margin-left: 23rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

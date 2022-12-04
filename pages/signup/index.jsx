@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import styles from "./Signup.module.scss";
 import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
-import { BsApple, BsGithub } from "react-icons/bs";
+import { BsGithub, BsGoogle } from "react-icons/bs";
 import { GrLinkedinOption } from "react-icons/gr";
 import { ToastContainer, toast } from "react-toastify";
+import { useSession, signIn, signOut } from "next-auth/react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-const Login = () => {
+import Router from "next/router";
+import { signUp } from "../../store/actions/main";
+import { connect } from "react-redux";
+const Signup = (props) => {
+  const { data: session } = useSession();
   const [loginData, setLoginData] = useState({
-    devname: "",
+    firstname: "",
+    lastname: "",
+    email: "",
     password: "",
-    cnfrmPassword: "",
   });
+  const [toggleInput, setToggleInput] = useState(false);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -23,41 +30,68 @@ const Login = () => {
   };
 
   const isInputValid = () => {
-    const { devname, password, cnfrmPassword } = loginData;
-    let message = { isValid: false, message: "Invalid input" };
+    const { firstname, lastname, email, password } = loginData;
+    const message = { isValid: false, message: "Invalid input" };
 
-    if (devname.length < 6) {
-      message.message = "Username has to be atleast 6 characters long.";
-    } else if (password.length < 8) {
-      message.message = "Password has to be atleast 8 characters long.";
-    } else if (password !== cnfrmPassword) {
-      message.message = "Password fields are not matching.";
+    const validateEmail = (email) => {
+      return String(email)
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
+
+    const validatePassword = (password) => {
+      return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+        password
+      );
+    };
+
+    if (!toggleInput) {
+      if (email.length === 0) {
+        message.message = "Please enter your email.";
+      } else if (!validateEmail(email)) {
+        message.message = "Please enter a valid email address.";
+      } else if (password.length === 0) {
+        message.message = "Please enter your password.";
+      } else if (!validatePassword(password)) {
+        message.message =
+          "Password must contain minimum eight characters,\n at least one uppercase letter,\n one lowercase letter,\n one number\n and one special character:";
+      } else {
+        message.isValid = true;
+        message.message = "Valid input.";
+      }
     } else {
-      message = { isValid: true, message: "Valid input." };
+      if (firstname.length === 0) {
+        message.message = "Please enter your first name.";
+      } else if (lastname.length === 0) {
+        message.message = "Please enter your last name.";
+      } else {
+        message.isValid = true;
+        message.message = "Valid input.";
+      }
     }
+
     return message;
+  };
+
+  const handleSignupSubmit = () => {
+    localStorage.setItem("loginData", JSON.stringify(loginData));
+    props.signUp(loginData);
   };
 
   const submit = () => {
     const message = isInputValid();
-    if (message.isValid) {
-      axios
-        .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/signup`, {
-          name: "shreyash",
-          password: "shreyash",
-        })
-        .then((response) => {
-          console.log("response came.");
-          console.log(response);
-        });
+
+    if (message.isValid && !toggleInput) {
+      setToggleInput(true);
+      return;
+    }
+
+    if (message.isValid && toggleInput) {
+      handleSignupSubmit();
     } else {
       toast.error(message.message, {
-        position: "top-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
         progress: undefined,
         className: styles.error_container,
       });
@@ -70,8 +104,13 @@ const Login = () => {
     </i>
   );
 
+  if (session) {
+    Router.push("/blogs");
+    return;
+  }
+
   return (
-    <div className={styles.Main_container + " " + "container"}>
+    <div className={styles.Main_container}>
       <ToastContainer
         position="top-left"
         autoClose={5000}
@@ -89,28 +128,52 @@ const Login = () => {
         <div className={styles.signup_container}>
           <h3>Welcome 👏</h3>
           <h2>Create your Dev account</h2>
-          <label>Devname</label>
-          <input
-            type="text"
-            name="devname"
-            placeholder="Enter devname"
-            onChange={handleChange}
-          />
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter password"
-            onChange={handleChange}
-          />
-          <label>Confirm password</label>
-          <input
-            type="password"
-            name="cnfrmPassword"
-            placeholder="Re-enter password"
-            onChange={handleChange}
-          />
-          <button onClick={submit}>Sign Up</button>
+          {toggleInput ? (
+            <div>
+              <label>First Name</label>
+              <input
+                type="text"
+                name="firstname"
+                placeholder="First name"
+                value={loginData.firstname}
+                onChange={handleChange}
+              />
+              <label>Last Name</label>
+              <input
+                type="text"
+                name="lastname"
+                placeholder="Last name"
+                value={loginData.lastname}
+                onChange={handleChange}
+              />
+              <button onClick={submit} name={"finish"}>
+                Continue
+              </button>
+            </div>
+          ) : (
+            <div>
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={loginData.email}
+                onChange={handleChange}
+              />
+              <label>Password</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                value={loginData.password}
+                onChange={handleChange}
+              />
+              <button onClick={submit} name={"continue"}>
+                Agree & Join
+              </button>
+            </div>
+          )}
+
           <div className={styles.login_container}>
             <p>Already have an account?</p>
             <Link href="/login">
@@ -125,10 +188,21 @@ const Login = () => {
           <div className={styles.other_signup_container}>
             <label>Signup using</label>
             <div className={styles.icons_container}>
-              <FcGoogle className={styles.icons} size={"3.5rem"} />
-              <BsApple className={styles.icons} size={"3.5rem"} />
-              <GrLinkedinOption className={styles.icons} size={"3.5rem"} />
-              <BsGithub className={styles.icons} size={"3.5rem"} />
+              <BsGoogle
+                className={styles.icons}
+                size={"3.5rem"}
+                onClick={() => signIn("google")}
+              />
+              <GrLinkedinOption
+                className={styles.icons}
+                size={"3.5rem"}
+                onClick={() => signIn("linkedin")}
+              />
+              <BsGithub
+                className={styles.icons}
+                size={"3.5rem"}
+                onClick={() => signIn("github")}
+              />
             </div>
           </div>
           <div className={styles.company_info_container}>
@@ -152,4 +226,24 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    user: state.auth.user,
+    isLoggedIn: state.auth.isLoggedIn,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSubmit: (data) => {
+      dispatch(setAddresses(data));
+    },
+    signUp: (data) => {
+      dispatch(signUp(data));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+
+// export default Signup;

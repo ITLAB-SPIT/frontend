@@ -1,0 +1,169 @@
+@import "/public/assets/css/variablesAndThemes/variables.scss";
+
+.Blog_card {
+  display: flex;
+  flex-direction: column;
+  background: var(--txt-400);
+  padding: 1rem 1.5rem;
+  padding-bottom: 1.5rem;
+  border-radius: $br-0;
+  height: max-content;
+  color: var(--txt-100);
+
+  .user_profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      cursor: pointer;
+
+      .image {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+      }
+    }
+
+    .info {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+
+      .name {
+        font-size: 2rem;
+        // color: red;
+      }
+
+      .circle {
+        height: 0.4rem;
+        width: 0.4rem;
+        border-radius: 50%;
+        background: var(--txt-200);
+      }
+
+      .time {
+        font-size: 1.5rem;
+        color: var(--txt-200);
+      }
+    }
+
+    .connect {
+      font-size: 1.5rem;
+      color: var(--primary-300);
+      cursor: pointer;
+      font-weight: $font-bold;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+
+      span {
+        font-size: 1.8rem;
+        font-weight: $font-light;
+      }
+    }
+  }
+
+  .blog_container {
+    display: flex;
+    gap: 1rem;
+
+    .card_left {
+      .title {
+        font-size: 1.8rem;
+        font-weight: $font-bold;
+      }
+
+      .desc {
+        margin-top: 1rem;
+        font-size: 1.4rem;
+        color: var(--txt-200);
+      }
+
+      .card_footer {
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+
+        .tags {
+          display: flex;
+          align-items: center;
+          font-size: 1.2rem;
+
+          .category {
+            border-radius: $br-0;
+            background: var(--txt-300);
+            padding: 0.4rem 1rem;
+            cursor: pointer;
+          }
+        }
+
+        .utils {
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+          gap: 1.2rem;
+          margin-right: 1rem;
+
+          .icon {
+            svg {
+              font-size: 1.6rem;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    .card_right {
+      position: relative;
+      height: 8.5rem;
+      min-width: 8.5rem;
+      border: 2px solid var(--txt-200);
+      border-radius: $br-0;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+  }
+  .blog_bottom {
+    border: 1px solid white;
+    border-radius: 1rem;
+    margin-top: 4rem;
+    padding: 1rem 3rem;
+
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .left_div {
+      display: flex;
+      align-items: center;
+      .sub_left_div {
+        margin-right: 3rem;
+        display: flex;
+        align-items: center;
+        .num {
+          margin-left: 0.5rem;
+          font-size: 1.5rem;
+        }
+      }
+    }
+    .right_div {
+      display: flex;
+      align-items: center;
+      .sub_right_div {
+        display: flex;
+        align-items: center;
+        margin-left: 3rem;
+      }
+    }
+  }
+}

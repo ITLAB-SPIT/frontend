@@ -1,12 +1,16 @@
 import "../public/assets/css/variablesAndThemes/root.scss";
 import "../public/assets/css/variablesAndThemes/theme.scss";
 import "../public/assets/css/globals.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../public/assets/css/utils.scss";
+
 import { useEffect } from "react";
 import { Footer, Navbar } from "../src/components/import";
+import { SessionProvider } from "next-auth/react";
+import { wrapper } from "../store/store";
 
 const DEFAULT_THEME = process.env.NEXT_PUBLIC_DEFAULT_THEME;
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, session }) {
   useEffect(() => {
     setTheme();
   }, []);
@@ -24,16 +28,16 @@ function MyApp({ Component, pageProps }) {
   const Layout = Component.Layout || EmptyLayout;
 
   return (
-    <div className="App">
+    <SessionProvider session={session}>
       <Navbar />
       <Layout>
         <Component {...pageProps} />
       </Layout>
       <Footer />
-    </div>
+    </SessionProvider>
   );
 }
 
-export default MyApp;
-
 const EmptyLayout = ({ children }) => <>{children}</>;
+
+export default wrapper.withRedux(MyApp);
