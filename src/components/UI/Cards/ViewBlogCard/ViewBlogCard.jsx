@@ -10,14 +10,22 @@ import { useSelector } from "react-redux";
 import userAvatar from "./../../../../../public/assets/images/userAvatar.jpg";
 import { useEffect } from "react";
 const ViewBlogCard = (props) => {
-  const qnaData = useSelector((state) => state.main.qnaData);
-  const qnaTitle = useSelector((state) => state.main.qnaTitle);
+  // const qnaData = useSelector((state) => state.main.qnaData);
+  // const qnaTitle = useSelector((state) => state.main.qnaTitle);
+  const blogsDatas = useSelector((state) => state.main.blogsData);
   useEffect(() => {
-    if (qnaTitle === "") {
+    if (blogData === "") {
       Router.push("/qna");
     }
   }, []);
-  const blogData = qnaData.filter((item) => item.title === qnaTitle);
+  // console.log("qnaData");
+  // console.log(qnaData);
+  // const blogData = localStorage.getItem("blogData");
+  // const blogData = qnaData.filter((item) => item.title === qnaTitle);
+  const blogData = blogsDatas[localStorage.getItem("blogIndex")];
+  // console.log("blogData");
+  // console.log(blogData);
+
   return (
     <div className={styles.Blog_card}>
       <div className={styles.user_profile}>
