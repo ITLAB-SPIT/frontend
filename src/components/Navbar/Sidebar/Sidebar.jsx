@@ -113,6 +113,7 @@ const Sidebar = ({ avatarRef, setSidebarOpen, dispatch }) => {
         onClick={async () => {
           setSidebarOpen(false);
           await signOut({ callbackUrl: "/api/auth/logout" });
+          Router.push("/login");
           dispatch(logout());
         }}
       >
