@@ -115,6 +115,7 @@ const Sidebar = ({ avatarRef, setSidebarOpen, dispatch }) => {
           await signOut({ callbackUrl: "/api/auth/logout" });
           Router.push("/login");
           dispatch(logout());
+          // ola?
         }}
       >
         <BiLogOut />
