@@ -95,7 +95,7 @@ const Navbar = () => {
           <Link href={"/qna"}>QnA</Link>
         </div>
         <div className={styles.link}>
-          <div>Learn</div>
+          <Link href={"https://workat.tech/general"}>Roadmap</Link>
         </div>
         <div className={styles.link}>
           <Link href={"/about"}>About</Link>
